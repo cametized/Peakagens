@@ -1,3 +1,19 @@
 {
-  "item.peakagens.radical": "Radical Radio"
+  "item.peakagens.radical": "Elite RadicalRadio Fragment",
+  "creativeTab.peakagens": "Peakagens",
+
+  "item.peakagens.strengthfrag": "Mythic Fragment of Strength",
+  "item.peakagens.strengthmin": "Faint Fragment of Strength",
+  "item.peakagens.strengthmax": "Fragment of Strength",
+
+  "item.peakagens.swiftnessfrag": "Swiftness Fragment",
+  "item.peakagens.hastefrag": "Haste Fragment",
+  "item.peakagens.jumpfrag": "Jump Fragment",
+  "item.peakagens.resistancefrag": "Resistance Fragment",
+  "item.peakagens.extraheartfrag": "Absorption Fragment",
+  "item.peakagens.fireresfrag": "Fire Resistance Fragment",
+  "item.peakagens.nightvisionfrag": "Night Vision Fragment",
+  "item.peakagens.waterbreathefrag": "Water Breathing Fragment",
+  "item.peakagens.invisfrag": "Invisibility Fragment",
+  "item.peakagens.lifesteal": "Lifesteal Fragment"
 }
