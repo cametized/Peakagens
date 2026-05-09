@@ -19,11 +19,6 @@ public class ItemStuff {
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
         return item;
     }
-
-    public static final ResourceKey<CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
-    );
-
     public static final Item RadicalRadio = register("radical", Item::new, new Item.Properties());
 
     public static void initialize() {}
