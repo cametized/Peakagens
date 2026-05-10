@@ -2,18 +2,21 @@
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
   "creativeTab.peakagens": "Peakagens",
 
-  "item.peakagens.strengthfrag": "Mythic Fragment of Strength",
-  "item.peakagens.strengthmin": "Faint Fragment of Strength",
-  "item.peakagens.strengthmax": "Fragment of Strength",
 
-  "item.peakagens.swiftnessfrag": "Swiftness Fragment",
-  "item.peakagens.hastefrag": "Haste Fragment",
-  "item.peakagens.jumpfrag": "Jump Fragment",
-  "item.peakagens.resistancefrag": "Resistance Fragment",
-  "item.peakagens.extraheartfrag": "Absorption Fragment",
-  "item.peakagens.fireresfrag": "Fire Resistance Fragment",
-  "item.peakagens.nightvisionfrag": "Night Vision Fragment",
-  "item.peakagens.waterbreathefrag": "Water Breathing Fragment",
-  "item.peakagens.invisfrag": "Invisibility Fragment",
-  "item.peakagens.lifesteal": "Lifesteal Fragment"
+  "item.peakagens.frag_0": "Faint Fragment of ",
+  "item.peakagens.frag_1": "Fragment of ",
+  "item.peakagens.frag_2": "Greater Fragment of ",
+  "item.peakagens.frag_3": "Mythic Fragment of ",
+
+  "item.peakagens.strength": "Strength",
+  "item.peakagens.swiftness": "Swiftness",
+  "item.peakagens.haste": "Haste",
+  "item.peakagens.jump": "Jump",
+  "item.peakagens.resistance": "Resistance",
+  "item.peakagens.extraheart": "Absorption",
+  "item.peakagens.fireres": "Fire Resistance",
+  "item.peakagens.nightvision": "Night Vision",
+  "item.peakagens.waterbreathe": "Water Breathing",
+  "item.peakagens.invis": "Invisibility",
+  "item.peakagens.lifesteal": "Lifesteal"
 }

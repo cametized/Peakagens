@@ -17,8 +17,9 @@ public class Peakagens implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Hello Peak inc.. -Cam");
+		LOGGER.info("nuke the whole generation -LLEVC");
 
         ItemStuff.initialize();
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
+		ModComponents.initialize();
 	}
 }

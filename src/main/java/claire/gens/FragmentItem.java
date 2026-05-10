@@ -1,5 +1,6 @@
 package claire.gens;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -39,7 +40,8 @@ public class FragmentItem extends Item {
                 tickCount++;
                 if (tickCount > 19) {
                     tickCount = 0;
-                    Objects.requireNonNull(owner.asLivingEntity()).addEffect(mobEffectInstance);
+                    MobEffectInstance hey = new MobEffectInstance(mobEffectInstance.getEffect(),mobEffectInstance.getDuration(),itemStack.getOrDefault(ModComponents.FragmentLevel, 0));
+                    Objects.requireNonNull(owner.asLivingEntity()).addEffect(hey.withScaledDuration(1.0f));
                 }
             }
         }
@@ -48,10 +50,16 @@ public class FragmentItem extends Item {
     @Override
     public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
         if (type.equals(FragmentType.PotionUse)) {
+            ItemStack itemStack = player.getUseItem();
             player.getCooldowns().addCooldown(this.getDefaultInstance(),mobEffectInstance.getDuration()*3);
-            player.addEffect(mobEffectInstance.withScaledDuration(1.0F));
+            player.addEffect(mobEffectInstance.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
             return InteractionResult.SUCCESS;
         }
         return super.use(level,player,hand);
+    }
+
+    @Override
+    public Component getName(ItemStack itemStack) {
+        return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
     }
 }
