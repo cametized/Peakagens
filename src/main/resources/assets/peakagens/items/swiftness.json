@@ -1,6 +1,74 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "peakagens:item/swiftnessfrag"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "peakagen:fragment_level",
+    "cases": [
+      {
+        "when": 0,
+        "model": {
+          "type": "minecraft:model",
+          "model": "peakagens:item/fragment1",
+          "tints": [
+            {
+              "type": "minecraft:constant",
+              "value": [
+                0,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "when": 1,
+        "model": {
+          "type": "minecraft:model",
+          "model": "peakagens:item/fragment2",
+          "tints": [
+            {
+              "type": "minecraft:constant",
+              "value": [
+                0,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "when": 2,
+        "model": {
+          "type": "minecraft:model",
+          "model": "peakagens:item/fragment3",
+          "tints": [
+            {
+              "type": "minecraft:constant",
+              "value": [
+                0,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "peakagens:item/fragment4",
+      "tints": [
+        {
+          "type": "minecraft:constant",
+          "value": [
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    }
   }
 }

@@ -1,6 +1,8 @@
 package claire.gens;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,12 +37,20 @@ public class FragmentItem extends Item {
 
     @Override
     public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
+        Integer gey = itemStack.getOrDefault(ModComponents.FragmentLevel, 0);
+        Identifier identifier = Identifier.tryParse(itemStack.getItem().toString() + String.valueOf(gey + 1));
+
+        if (identifier != itemStack.get(DataComponents.ITEM_MODEL)) {
+            //Peakagens.LOGGER.info(itemStack.getItem().toString());
+            itemStack.set(DataComponents.ITEM_MODEL, identifier);
+        }
+
         if (Objects.requireNonNull(owner.asLivingEntity()).isHolding(itemStack.getItem())) {
             if (type.equals(FragmentType.PotionPassive)) { // its its own separate if statement because we dont know if anything else will be needed in the future
                 tickCount++;
                 if (tickCount > 19) {
                     tickCount = 0;
-                    MobEffectInstance hey = new MobEffectInstance(mobEffectInstance.getEffect(),mobEffectInstance.getDuration(),itemStack.getOrDefault(ModComponents.FragmentLevel, 0));
+                    MobEffectInstance hey = new MobEffectInstance(mobEffectInstance.getEffect(),mobEffectInstance.getDuration(),gey);
                     Objects.requireNonNull(owner.asLivingEntity()).addEffect(hey.withScaledDuration(1.0f));
                 }
             }

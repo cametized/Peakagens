@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "peakagens:item/fragment3",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": [
+          1,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

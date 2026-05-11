@@ -24,67 +24,66 @@ public class ItemStuff {
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
         return item;
     }
+
     public static final Item RadicalRadio = register(
             "radical",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.STRENGTH,60*20,5),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
-
     public static final Item strength = register(
             "strength",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.STRENGTH,60*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
-
     public static final Item swiftness = register(
             "swiftness",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.SPEED,60*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item haste = register(
             "haste",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.HASTE,5*20,0),false),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item jumpboos = register(
             "jump",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.JUMP_BOOST,60*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item resist = register(
             "resistance",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.RESISTANCE,60*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item absorption = register(
             "extraheart",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.ABSORPTION,120*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item fireres = register(
             "fireres",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.FIRE_RESISTANCE,5*20,0),false),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item nightvision = register(
             "nightvision",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.NIGHT_VISION,10*20,0),false),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item waterbreath = register(
             "waterbreathe",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.WATER_BREATHING,5*20,0),false),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item invis = register(
             "invis",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
     public static final Item lifesteal = register(
             "lifesteal",
             properties -> new FragmentItem(properties,FragmentType.Lifesteal,null),
-            new Item.Properties().component(ModComponents.FragmentLevel,0)
+            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
 
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
