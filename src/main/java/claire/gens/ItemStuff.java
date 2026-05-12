@@ -9,6 +9,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,9 +28,37 @@ public class ItemStuff {
 
     public static final Item RadicalRadio = register(
             "radical",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.STRENGTH,60*20,5),true),
-            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+            Item::new,
+            new Item.Properties()
     );
+
+    public static final Item ricebowl = register(
+            "rice_bowl",
+            Item::new,
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(3)
+                    .saturationModifier(0.3f)
+                    .build())
+    );
+
+    public static final Item friedegg = register(
+            "fried_egg",
+            Item::new,
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(4)
+                    .saturationModifier(0.5f)
+                    .build())
+    );
+
+    public static final Item bacon = register(
+            "bacon",
+            Item::new,
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(3)
+                    .saturationModifier(0.2f)
+                    .build())
+    );
+
     public static final Item strength = register(
             "strength",
             properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.STRENGTH,60*20,0),true),
@@ -90,10 +119,14 @@ public class ItemStuff {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
     );
     public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(ItemStuff.RadicalRadio))
+            .icon(() -> new ItemStack(ItemStuff.friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
                 output.accept(ItemStuff.RadicalRadio);
+
+                output.accept(ItemStuff.ricebowl);
+                output.accept(ItemStuff.friedegg);
+                output.accept(ItemStuff.bacon);
 
                 output.accept(ItemStuff.strength);
                 output.accept(ItemStuff.haste);
