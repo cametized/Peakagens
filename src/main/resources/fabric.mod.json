@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"claire.gens.client.PeakagensClient"
+		],
+		"fabric-datagen": [
+			"claire.gens.client.ClientDataGeneration"
 		]
 	},
 	"mixins": [

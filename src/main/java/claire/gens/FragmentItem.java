@@ -12,25 +12,33 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class FragmentItem extends Item {
     FragmentType type;
-    MobEffectInstance mobEffectInstance;
+    //MobEffectInstance mobEffectInstance;
 
-    public FragmentItem(Properties properties, FragmentType type1, @Nullable MobEffectInstance mobEffectInstance1) {
+    public FragmentItem(Properties properties, FragmentType type1) {
         super(properties);
         type = type1;
-        mobEffectInstance = mobEffectInstance1;
+        //mobEffectInstance = mobEffectInstance1;
     }
 
-    public FragmentItem(Properties properties, MobEffectInstance mobEffectInstance1, boolean bool) {
+    public FragmentItem(Properties properties, boolean bool) {
         super(properties);
         type = bool ? FragmentType.PotionUse : FragmentType.PotionPassive;
-        mobEffectInstance = mobEffectInstance1;
+        //mobEffectInstance = mobEffectInstance1;
     }
 
     int tickCount = 0;
@@ -38,7 +46,7 @@ public class FragmentItem extends Item {
     @Override
     public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
         Integer gey = itemStack.getOrDefault(ModComponents.FragmentLevel, 0);
-        Identifier identifier = Identifier.tryParse(itemStack.getItem().toString() + String.valueOf(gey + 1));
+        Identifier identifier = Identifier.tryParse("peakagens:fragment" + String.valueOf(gey + 1));
 
         if (identifier != itemStack.get(DataComponents.ITEM_MODEL)) {
             //Peakagens.LOGGER.info(itemStack.getItem().toString());
@@ -50,8 +58,13 @@ public class FragmentItem extends Item {
                 tickCount++;
                 if (tickCount > 19) {
                     tickCount = 0;
-                    MobEffectInstance hey = new MobEffectInstance(mobEffectInstance.getEffect(),mobEffectInstance.getDuration(),gey);
-                    Objects.requireNonNull(owner.asLivingEntity()).addEffect(hey.withScaledDuration(1.0f));
+                    PotionContents gay = itemStack.getOrDefault(DataComponents.POTION_CONTENTS,PotionContents.EMPTY);
+                    Iterator<MobEffectInstance> sup = gay.customEffects().iterator();
+                    while (sup.hasNext()) {
+                        MobEffectInstance lesbian = sup.next();
+                        MobEffectInstance hey = new MobEffectInstance(lesbian.getEffect(),lesbian.getDuration(),gey);
+                        Objects.requireNonNull(owner.asLivingEntity()).addEffect(hey.withScaledDuration(1.0f));
+                    }
                 }
             }
         }
@@ -61,8 +74,13 @@ public class FragmentItem extends Item {
     public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
         if (type.equals(FragmentType.PotionUse)) {
             ItemStack itemStack = player.getUseItem();
-            player.getCooldowns().addCooldown(this.getDefaultInstance(),mobEffectInstance.getDuration()*3);
-            player.addEffect(mobEffectInstance.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
+            PotionContents gay = itemStack.getOrDefault(DataComponents.POTION_CONTENTS,PotionContents.EMPTY);
+            Iterator<MobEffectInstance> sup = gay.customEffects().iterator();
+            while (sup.hasNext()) {
+                MobEffectInstance lesbian = sup.next();
+                player.getCooldowns().addCooldown(this.getDefaultInstance(),lesbian.getDuration()*3);
+                player.addEffect(lesbian.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
+            }
             return InteractionResult.SUCCESS;
         }
         return super.use(level,player,hand);
@@ -70,6 +88,15 @@ public class FragmentItem extends Item {
 
     @Override
     public Component getName(ItemStack itemStack) {
-        return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
+        if (type.equals(FragmentType.PotionUse) || type.equals(FragmentType.PotionPassive)) {
+            return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
+        }
+        return super.getName(itemStack);
     }
+
+    public static PotionContents createPotionOf(MobEffectInstance mobEffectInstance1) {
+        PotionContents gaming = new PotionContents(Optional.empty(),Optional.empty(), List.of(mobEffectInstance1),Optional.empty());
+        return gaming;
+    }
+
 }

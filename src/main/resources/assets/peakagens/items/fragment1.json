@@ -4,12 +4,8 @@
     "model": "peakagens:item/fragment1",
     "tints": [
       {
-        "type": "minecraft:constant",
-        "value": [
-          1,
-          0,
-          0
-        ]
+        "type": "minecraft:potion",
+        "default": 16777215
       }
     ]
   }

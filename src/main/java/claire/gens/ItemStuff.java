@@ -2,6 +2,7 @@ package claire.gens;
 
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -13,8 +14,10 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class ItemStuff {
@@ -59,59 +62,92 @@ public class ItemStuff {
                     .build())
     );
 
+    // PLACEHOLDERS BEGINNNNN
+    public static final Item place1 = register(
+            "haste1",
+            Item::new,
+            new Item.Properties()
+    );
+    public static final Item place2 = register(
+            "haste2",
+            Item::new,
+            new Item.Properties()
+    );
+    public static final Item place3 = register(
+            "haste3",
+            Item::new,
+            new Item.Properties()
+    );
+    public static final Item place4 = register(
+            "haste4",
+            Item::new,
+            new Item.Properties()
+    );
+    //PLACEHOLDERSS ENNDDDD
+
     public static final Item strength = register(
             "strength",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.STRENGTH,60*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,60*20,0)))
     );
     public static final Item swiftness = register(
             "swiftness",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.SPEED,60*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.SPEED,60*20,0)))
     );
     public static final Item haste = register(
             "haste",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.HASTE,5*20,0),false),
+            properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.HASTE,5*20,0)))
     );
     public static final Item jumpboos = register(
             "jump",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.JUMP_BOOST,60*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.JUMP_BOOST,60*20,0)))
     );
     public static final Item resist = register(
             "resistance",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.RESISTANCE,60*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.RESISTANCE,60*20,0)))
     );
     public static final Item absorption = register(
             "extraheart",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.ABSORPTION,120*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,120*20,0)))
     );
     public static final Item fireres = register(
             "fireres",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.FIRE_RESISTANCE,5*20,0),false),
+            properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,5*20,0)))
     );
     public static final Item nightvision = register(
             "nightvision",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.NIGHT_VISION,10*20,0),false),
+            properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.NIGHT_VISION,10*20,0)))
     );
     public static final Item waterbreath = register(
             "waterbreathe",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.WATER_BREATHING,5*20,0),false),
+            properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.WATER_BREATHING,5*20,0)))
     );
     public static final Item invis = register(
             "invis",
-            properties -> new FragmentItem(properties,new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0),true),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0)))
     );
     public static final Item lifesteal = register(
             "lifesteal",
-            properties -> new FragmentItem(properties,FragmentType.Lifesteal,null),
+            properties -> new FragmentItem(properties,FragmentType.Lifesteal),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
     );
 
@@ -128,16 +164,28 @@ public class ItemStuff {
                 output.accept(ItemStuff.friedegg);
                 output.accept(ItemStuff.bacon);
 
-                output.accept(ItemStuff.strength);
-                output.accept(ItemStuff.haste);
-                output.accept(ItemStuff.swiftness);
-                output.accept(ItemStuff.jumpboos);
-                output.accept(ItemStuff.fireres);
-                output.accept(ItemStuff.resist);
-                output.accept(ItemStuff.absorption);
-                output.accept(ItemStuff.nightvision);
-                output.accept(ItemStuff.waterbreath);
-                output.accept(ItemStuff.invis);
+                List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
+                for (int i = 0; i < hey.size()-1; i++) {
+                    ItemStack yo = new ItemStack(hey.get(i));
+                    ItemStack so = yo.copy();
+                    ItemStack bro = yo.copy();
+                    ItemStack ho = yo.copy();
+
+                    yo.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "1"));
+                    so.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "2"));
+                    bro.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "3"));
+                    ho.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "4"));
+
+                    so.set(ModComponents.FragmentLevel,1);
+                    bro.set(ModComponents.FragmentLevel,2);
+                    ho.set(ModComponents.FragmentLevel,3);
+
+                    output.accept(yo);
+                    output.accept(so);
+                    output.accept(bro);
+                    output.accept(ho);
+                }
+
                 output.accept(ItemStuff.lifesteal);
             })
             .build();
