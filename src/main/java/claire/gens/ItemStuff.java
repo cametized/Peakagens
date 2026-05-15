@@ -58,10 +58,16 @@ public class ItemStuff {
             new Item.Properties()
     );
 
+    public static final Item wilted_alloy = register(
+            "wiltedalloy",
+            Item::new,
+            new Item.Properties()
+    );
+
     public static final Item angelsword = register(
             "angels_longsword",
             Item::new,
-            new Item.Properties().sword(angels_material,5f,-2f)
+            new Item.Properties().sword(angels_material,6.5f,-2f)
     );
 
     public static final Item cloaker_mask = register(
@@ -69,6 +75,24 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.HELMET)
                     .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
+    );
+    public static final Item cloaker_robe = register(
+            "cloaker_robe",
+            Item::new,
+            new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.CHESTPLATE)
+                    .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
+    );
+    public static final Item cloaker_boots = register(
+            "cloaker_boots",
+            Item::new,
+            new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.BOOTS)
+                    .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
+    );
+
+    public static final Item spycicle = register(
+            "spycicle",
+            Item::new,
+            new Item.Properties()
     );
 
     public static final Item ricebowl = register(
@@ -177,6 +201,11 @@ public class ItemStuff {
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
                 output.accept(ItemStuff.RadicalRadio);
+                output.accept(ItemStuff.cloaker_mask);
+                output.accept(ItemStuff.angelsword);
+                output.accept(ItemStuff.wilted_alloy);
+                output.accept(ItemStuff.spycicle);
+
                 output.accept(ItemStuff.ricebowl);
                 output.accept(ItemStuff.friedegg);
                 output.accept(ItemStuff.bacon);
@@ -204,9 +233,6 @@ public class ItemStuff {
                 }
 
                 output.accept(alchemy);
-
-                output.accept(ItemStuff.angelsword);
-                output.accept(ItemStuff.cloaker_mask);
             })
             .build();
 

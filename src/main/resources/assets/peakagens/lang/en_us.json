@@ -1,8 +1,10 @@
 {
   "creativeTab.peakagens": "Peakagens",
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
+  "item.peakagens.spycicle": "Spycicle",
+  "item.peakagens.wiltedalloy": "Wilted Alloy",
 
-  "item.peakagens.angels_longsword": "Angels' Longsword",
+  "item.peakagens.angels_longsword": "Angels' Alloy",
 
   "item.peakagens.rice_bowl": "Rice Bowl",
   "item.peakagens.fried_egg": "Fried Egg",
@@ -16,7 +18,7 @@
   "item.peakagens.strength": "Strength",
   "item.peakagens.swiftness": "Swiftness",
   "item.peakagens.haste": "Haste",
-  "item.peakagens.jump": "Jump",
+  "item.peakagens.jump": "Jump Boost",
   "item.peakagens.resistance": "Resistance",
   "item.peakagens.extraheart": "Absorption",
   "item.peakagens.fireres": "Fire Resistance",
