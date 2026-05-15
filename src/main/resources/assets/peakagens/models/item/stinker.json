@@ -1,0 +1,6 @@
+{
+  "parent": "peakagens:item/angels_longsword",
+  "textures": {
+    "layer0": "peakagens:item/tweak1"
+  }
+}

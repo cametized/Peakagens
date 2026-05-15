@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "peakagens:item/angels_longsword"
+      },
+      {
+        "type": "minecraft:model",
+        "model": "peakagens:item/stinker"
+      }
+    ]
+  },
+  "oversized_in_gui": false
+}
