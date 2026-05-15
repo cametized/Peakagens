@@ -98,29 +98,6 @@ public class ItemStuff {
                     .build())
     );
 
-    // PLACEHOLDERS BEGINNNNN
-    public static final Item place1 = register(
-            "haste1",
-            Item::new,
-            new Item.Properties()
-    );
-    public static final Item place2 = register(
-            "haste2",
-            Item::new,
-            new Item.Properties()
-    );
-    public static final Item place3 = register(
-            "haste3",
-            Item::new,
-            new Item.Properties()
-    );
-    public static final Item place4 = register(
-            "haste4",
-            Item::new,
-            new Item.Properties()
-    );
-    //PLACEHOLDERSS ENNDDDD
-
     public static final Item strength = register(
             "strength",
             properties -> new FragmentItem(properties,true),
