@@ -3,5 +3,8 @@ package claire.gens;
 public enum FragmentType {
     PotionPassive,
     PotionUse,
-    Lifesteal
+    Alchemy,
+    Enchanting,
+    Lifesteal,
+    Storming
 }

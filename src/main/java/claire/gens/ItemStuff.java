@@ -145,6 +145,11 @@ public class ItemStuff {
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0)))
     );
+    public static final Item alchemy = register(
+            "alchemy_fragment",
+            AlchemyFragmentItem::new,
+            new Item.Properties().stacksTo(1).component(DataComponents.POTION_CONTENTS,PotionContents.EMPTY)
+    );
     public static final Item lifesteal = register(
             "lifesteal",
             properties -> new FragmentItem(properties,FragmentType.Lifesteal),
@@ -158,11 +163,11 @@ public class ItemStuff {
             .icon(() -> new ItemStack(ItemStuff.friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
-                output.accept(ItemStuff.RadicalRadio);
+                output.accept(RadicalRadio);
 
-                output.accept(ItemStuff.ricebowl);
-                output.accept(ItemStuff.friedegg);
-                output.accept(ItemStuff.bacon);
+                output.accept(ricebowl);
+                output.accept(friedegg);
+                output.accept(bacon);
 
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {
@@ -171,10 +176,10 @@ public class ItemStuff {
                     ItemStack bro = yo.copy();
                     ItemStack ho = yo.copy();
 
-                    yo.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "1"));
-                    so.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "2"));
-                    bro.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "3"));
-                    ho.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment" + "4"));
+                    yo.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment1"));
+                    so.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment2"));
+                    bro.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment3"));
+                    ho.set(DataComponents.ITEM_MODEL,Identifier.parse("peakagens:fragment4"));
 
                     so.set(ModComponents.FragmentLevel,1);
                     bro.set(ModComponents.FragmentLevel,2);
@@ -186,7 +191,8 @@ public class ItemStuff {
                     output.accept(ho);
                 }
 
-                output.accept(ItemStuff.lifesteal);
+                output.accept(alchemy);
+                output.accept(lifesteal);
             })
             .build();
 

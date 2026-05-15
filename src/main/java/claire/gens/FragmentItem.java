@@ -26,7 +26,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class FragmentItem extends Item {
-    FragmentType type;
+    public FragmentType type;
     //MobEffectInstance mobEffectInstance;
 
     public FragmentItem(Properties properties, FragmentType type1) {
