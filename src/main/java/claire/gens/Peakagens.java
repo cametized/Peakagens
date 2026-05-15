@@ -1,5 +1,6 @@
 package claire.gens;
 
+import claire.gens.effect.EffectStuff;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.core.Registry;
@@ -21,5 +22,6 @@ public class Peakagens implements ModInitializer {
 
         ItemStuff.initialize();
 		ModComponents.initialize();
+		EffectStuff.initialize();
 	}
 }

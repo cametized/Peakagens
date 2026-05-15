@@ -27,11 +27,7 @@
 		]
 	},
 	"mixins": [
-		"peakagens.mixins.json",
-		{
-			"config": "peakagens.client.mixins.json",
-			"environment": "client"
-		}
+		"peakagens.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.2",

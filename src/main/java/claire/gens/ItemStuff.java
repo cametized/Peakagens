@@ -104,6 +104,15 @@ public class ItemStuff {
                     .build())
     );
 
+    public static final Item rice = register(
+            "rice",
+            Item::new,
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(2)
+                    .saturationModifier(0.15f)
+                    .build())
+    );
+
     public static final Item friedegg = register(
             "fried_egg",
             Item::new,
@@ -207,6 +216,7 @@ public class ItemStuff {
                 output.accept(ItemStuff.spycicle);
 
                 output.accept(ItemStuff.ricebowl);
+                output.accept(ItemStuff.rice);
                 output.accept(ItemStuff.friedegg);
                 output.accept(ItemStuff.bacon);
 
