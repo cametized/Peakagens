@@ -73,14 +73,16 @@ public class FragmentItem extends Item {
     @Override
     public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
         if (type.equals(FragmentType.PotionUse)) {
-            ItemStack itemStack = player.getUseItem();
+            ItemStack itemStack = player.getItemInHand(hand);
             PotionContents gay = itemStack.getOrDefault(DataComponents.POTION_CONTENTS,PotionContents.EMPTY);
-            Iterator<MobEffectInstance> sup = gay.customEffects().iterator();
+            Iterator<MobEffectInstance> sup = gay.getAllEffects().iterator();
+            float cooldown = 1f;
             while (sup.hasNext()) {
                 MobEffectInstance lesbian = sup.next();
-                player.getCooldowns().addCooldown(this.getDefaultInstance(),lesbian.getDuration()*3);
+                cooldown = cooldown+ (float) lesbian.getDuration()*3;
                 player.addEffect(lesbian.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
             }
+            player.getCooldowns().addCooldown(this.getDefaultInstance(),Math.round(cooldown));
             return InteractionResult.SUCCESS;
         }
         return super.use(level,player,hand);

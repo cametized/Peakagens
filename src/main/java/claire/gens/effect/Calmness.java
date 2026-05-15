@@ -15,7 +15,7 @@ public class Calmness extends MobEffect {
 
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
         this.addAttributeModifier(Attributes.SNEAKING_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     }
 
     @Override

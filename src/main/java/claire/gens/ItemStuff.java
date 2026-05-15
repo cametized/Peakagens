@@ -210,6 +210,7 @@ public class ItemStuff {
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
                 output.accept(ItemStuff.RadicalRadio);
+                output.accept(alchemy);
                 output.accept(ItemStuff.cloaker_mask);
                 output.accept(ItemStuff.angelsword);
                 output.accept(ItemStuff.wilted_alloy);
@@ -241,8 +242,6 @@ public class ItemStuff {
                     output.accept(bro);
                     output.accept(ho);
                 }
-
-                output.accept(alchemy);
             })
             .build();
 

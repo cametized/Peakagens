@@ -1,0 +1,21 @@
+{
+  "model": {
+	"type": "minecraft:composite",
+	"models": [
+	  {
+	    "type": "minecraft:model",
+	    "model": "peakagens:item/alchemy_fragment_overlay",
+	    "tints": [
+	      {
+		    "type": "minecraft:potion",
+		    "default": 16777215
+	      }
+	    ]
+	  },
+	  {
+        "type": "minecraft:model",
+        "model": "peakagens:item/alchemy_fragment"
+      }
+	]
+  }
+}
