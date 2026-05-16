@@ -20,11 +20,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-public class AlchemyFragmentItem extends Item {
-    public FragmentType type = FragmentType.Alchemy;
+public class AlchemyFragmentItem extends BlankFragmentItem {
+    //public FragmentType type = FragmentType.Alchemy;
 
     public AlchemyFragmentItem(Properties properties) {
-        super(properties);
+        super(properties,FragmentType.Alchemy);
     }
 
     @Override
@@ -50,9 +50,7 @@ public class AlchemyFragmentItem extends Item {
                 if (player.getEffect(consequence.getEffect()) != null) {
                     MobEffectInstance already = player.getEffect(consequence.getEffect());
                     assert already != null;
-                    int lvl = (consequence.getAmplifier() <= already.getAmplifier() ? already : consequence).getAmplifier();
-                    int dur = consequence.getDuration() + already.getDuration();
-                    MobEffectInstance combined = new MobEffectInstance(consequence.getEffect(),dur,lvl);
+                    MobEffectInstance combined = combineEffects(consequence,already);
                     player.addEffect(combined);
                 } else {
                     player.addEffect(consequence.withScaledDuration(1.0f));
@@ -120,5 +118,12 @@ public class AlchemyFragmentItem extends Item {
             return new ItemStackTemplate(ItemStuff.alchemy);
         }
         return super.getCraftingRemainder(stack);
+    }
+
+    public MobEffectInstance combineEffects(MobEffectInstance consequence, MobEffectInstance already) {
+        int lvl = (consequence.getAmplifier() <= already.getAmplifier() ? already : consequence).getAmplifier();
+        int dur = consequence.getDuration() + already.getDuration();
+        MobEffectInstance combined = new MobEffectInstance(consequence.getEffect(),dur,lvl);
+        return combined;
     }
 }

@@ -1,7 +1,11 @@
 package claire.gens;
 
 import claire.gens.effect.EffectStuff;
+import claire.gens.recipes.AlchemyBottleRecipe;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;;
 public class Peakagens implements ModInitializer {
@@ -17,5 +21,7 @@ public class Peakagens implements ModInitializer {
 		ModComponents.initialize();
 		EffectStuff.initialize();
 		Obtain.register();
+
+		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 	}
 }

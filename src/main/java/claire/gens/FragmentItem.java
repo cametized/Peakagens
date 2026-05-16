@@ -25,19 +25,16 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class FragmentItem extends Item {
-    public FragmentType type;
+public class FragmentItem extends BlankFragmentItem {
     //MobEffectInstance mobEffectInstance;
 
     public FragmentItem(Properties properties, FragmentType type1) {
-        super(properties);
-        type = type1;
+        super(properties, type1);
         //mobEffectInstance = mobEffectInstance1;
     }
 
     public FragmentItem(Properties properties, boolean bool) {
-        super(properties);
-        type = bool ? FragmentType.PotionUse : FragmentType.PotionPassive;
+        super(properties, bool ? FragmentType.PotionUse : FragmentType.PotionPassive);
         //mobEffectInstance = mobEffectInstance1;
     }
 
@@ -72,7 +69,7 @@ public class FragmentItem extends Item {
 
     @Override
     public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        if (type.equals(FragmentType.PotionUse)) {
+        if (type.equals(FragmentType.PotionUse) || type.equals(FragmentType.PotionUseAmplifier)) {
             ItemStack itemStack = player.getItemInHand(hand);
             PotionContents gay = itemStack.getOrDefault(DataComponents.POTION_CONTENTS,PotionContents.EMPTY);
             Iterator<MobEffectInstance> sup = gay.getAllEffects().iterator();
@@ -80,7 +77,12 @@ public class FragmentItem extends Item {
             while (sup.hasNext()) {
                 MobEffectInstance lesbian = sup.next();
                 cooldown = cooldown+ (float) lesbian.getDuration()*3;
-                player.addEffect(lesbian.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
+                if (type.equals(FragmentType.PotionUse)) {
+                    player.addEffect(lesbian.withScaledDuration(1.0f*(itemStack.getOrDefault(ModComponents.FragmentLevel, 0)+1)));
+                } else if (type.equals(FragmentType.PotionUseAmplifier)) {
+                    MobEffectInstance gesbian = new MobEffectInstance(lesbian.getEffect(),lesbian.getDuration(),itemStack.getOrDefault(ModComponents.FragmentLevel, 0));
+                    player.addEffect(gesbian);
+                }
             }
             player.getCooldowns().addCooldown(this.getDefaultInstance(),Math.round(cooldown));
             return InteractionResult.SUCCESS;
@@ -90,7 +92,7 @@ public class FragmentItem extends Item {
 
     @Override
     public Component getName(ItemStack itemStack) {
-        if (type.equals(FragmentType.PotionUse) || type.equals(FragmentType.PotionPassive)) {
+        if (type.equals(FragmentType.PotionUse) || type.equals(FragmentType.PotionPassive) || type.equals(FragmentType.PotionUseAmplifier)) {
             return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
         }
         return super.getName(itemStack);

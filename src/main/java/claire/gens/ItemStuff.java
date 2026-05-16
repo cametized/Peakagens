@@ -131,11 +131,12 @@ public class ItemStuff {
                     .build())
     );
 
+    //Gems
     public static final Item strength = register(
             "strength",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,30*20,0)))
     );
     public static final Item swiftness = register(
             "swiftness",
@@ -163,7 +164,7 @@ public class ItemStuff {
     );
     public static final Item absorption = register(
             "extraheart",
-            properties -> new FragmentItem(properties,true),
+            properties -> new FragmentItem(properties,FragmentType.PotionUseAmplifier),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,120*20,0)))
     );
@@ -191,17 +192,21 @@ public class ItemStuff {
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0)))
     );
+
+    //Fragments
     public static final Item alchemy = register(
             "alchemy_fragment",
             AlchemyFragmentItem::new,
             new Item.Properties().stacksTo(1).component(DataComponents.POTION_CONTENTS,PotionContents.EMPTY)
     );
     public static final Item lifesteal = register(
-            "lifesteal",
-            properties -> new FragmentItem(properties,FragmentType.Lifesteal),
-            new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
+            "lifesteal_fragment",
+            LifestealFragmentItem::new,
+            new Item.Properties().stacksTo(1)
     );
 
+
+    //Creative Tabs
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
     );
@@ -211,6 +216,7 @@ public class ItemStuff {
             .displayItems((params, output) -> {
                 output.accept(ItemStuff.RadicalRadio);
                 output.accept(alchemy);
+                output.accept(lifesteal);
                 output.accept(ItemStuff.cloaker_mask);
                 output.accept(ItemStuff.angelsword);
                 output.accept(ItemStuff.wilted_alloy);
