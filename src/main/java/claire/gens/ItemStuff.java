@@ -14,7 +14,6 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.nbt.DoubleTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -23,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Function;
-import claire.gens.CloakMaterial;
 
 public class ItemStuff {
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
@@ -67,7 +65,7 @@ public class ItemStuff {
     public static final Item angelsword = register(
             "angels_longsword",
             Item::new,
-            new Item.Properties().sword(angels_material,6.5f,-2f)
+            new Item.Properties().sword(angels_material,3.5f,-2.5f)
     );
 
     public static final Item cloaker_mask = register(
@@ -99,8 +97,8 @@ public class ItemStuff {
             "rice_bowl",
             Item::new,
             new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(3)
-                    .saturationModifier(0.3f)
+                    .nutrition(6)
+                    .saturationModifier(0.2f)
                     .build())
     );
 
@@ -108,7 +106,7 @@ public class ItemStuff {
             "rice",
             Item::new,
             new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(2)
+                    .nutrition(4)
                     .saturationModifier(0.15f)
                     .build())
     );
@@ -117,8 +115,8 @@ public class ItemStuff {
             "fried_egg",
             Item::new,
             new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(4)
-                    .saturationModifier(0.5f)
+                    .nutrition(6)
+                    .saturationModifier(1.5f)
                     .build())
     );
 

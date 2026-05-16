@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class Calmness {
-
     @Inject(method = "completeUsingItem", at = @At("HEAD"))
     private void applyFoodEffect(CallbackInfo ci) {
         // FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK YOU
@@ -24,7 +23,6 @@ public abstract class Calmness {
         ItemStack stack = entity.getItemInHand(entity.getUsedItemHand());
 
         if (!level.isClientSide() && entity instanceof Player player) {
-            // Check if the item actually has the food component
             if (stack.has(DataComponents.FOOD)) {
                 player.addEffect(new MobEffectInstance(
                         EffectStuff.CALMNESS,

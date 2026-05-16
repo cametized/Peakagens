@@ -2,6 +2,7 @@ package claire.gens;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +36,7 @@ public class Obtain {
             Block.popResource(level, pos, new ItemStack(ItemStuff.rice, 2));
             level.setBlock(pos, state.setValue(CropBlock.AGE, 0), 3);
             stack.hurtAndBreak(1, player, hand);
+            player.playSound(SoundEvents.CROP_BREAK, 1.0F, 1.0F);
         }
     }
 }

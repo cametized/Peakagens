@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class Calmness extends MobEffect {
     public Calmness() {
-        super(MobEffectCategory.BENEFICIAL, 0xe9b8b3);
+        super(MobEffectCategory.BENEFICIAL, 0x33f4ff);
 
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
         this.addAttributeModifier(Attributes.SNEAKING_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
