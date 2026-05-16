@@ -5,7 +5,8 @@
   "mixins": [
     "Calmness",
     "GemTooltipMixin",
-    "LifestealMixin"
+    "LifestealMixin",
+    "HideChat"
   ],
   "injectors": {
     "defaultRequire": 1

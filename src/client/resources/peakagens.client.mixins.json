@@ -3,7 +3,8 @@
 	"package": "claire.gens.client.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
-		"ExampleClientMixin"
+		"ExampleClientMixin",
+		"HideTag"
 	],
 	"injectors": {
 		"defaultRequire": 1

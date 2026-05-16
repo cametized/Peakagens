@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "peakagens:item/cloak_hood"
+    "layer0": "peakagens:item/cardboardbox"
   }
 }

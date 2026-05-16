@@ -1,5 +1,6 @@
-package claire.gens;
+package claire.gens.armor;
 
+import claire.gens.Peakagens;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -13,26 +14,26 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 
 import java.util.Map;
 
-public class CloakMaterial {
-    public static final int BASE_DURABILITY = 15;
+public class CardboardBox {
+    public static final int BASE_DURABILITY = 125;
 
-    public static final ResourceKey<EquipmentAsset> CLOAKER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "cloak_material"));
+    public static final ResourceKey<EquipmentAsset> BOX_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "cardboardbox"));
 
-    public static final TagKey<Item> REPAIRS_CLOAKER = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "repairs_cloaker"));
+    public static final TagKey<Item> REPAIR_BOX = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "repair_box"));
 
     public static final ArmorMaterial INSTANCE = new ArmorMaterial(
             BASE_DURABILITY,
             Map.of(
-                    ArmorType.HELMET, 3,
+                    ArmorType.HELMET, 1,
                     ArmorType.CHESTPLATE, 8,
                     ArmorType.LEGGINGS, 6,
                     ArmorType.BOOTS, 3
             ),
             5,
-            SoundEvents.ARMOR_EQUIP_IRON,
+            SoundEvents.ARMOR_EQUIP_GENERIC,
             0.0F,
             0.0F,
-            REPAIRS_CLOAKER,
-            CLOAKER_MATERIAL_KEY
+            REPAIR_BOX,
+            BOX_KEY
     );
 }

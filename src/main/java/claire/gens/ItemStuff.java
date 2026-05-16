@@ -1,5 +1,6 @@
 package claire.gens;
 
+import claire.gens.armor.CardboardBox;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -41,15 +42,6 @@ public class ItemStuff {
             ToolMaterial.GOLD.repairItems()
     );
 
-    public static final ToolMaterial cloakermat = new ToolMaterial(
-            BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-            455,
-            5.0F,
-            1.5F,
-            22,
-            CloakMaterial.REPAIRS_CLOAKER
-    );
-
     public static final Item RadicalRadio = register(
             "radical",
             Item::new,
@@ -68,24 +60,13 @@ public class ItemStuff {
             new Item.Properties().sword(angels_material,3.5f,-2.5f)
     );
 
-    public static final Item cloaker_mask = register(
-            "cloaker_hood",
+    public static final Item cardboardbox = register(
+            "cardboardbox",
             Item::new,
-            new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY))
     );
-    public static final Item cloaker_robe = register(
-            "cloaker_robe",
-            Item::new,
-            new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.CHESTPLATE)
-                    .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
-    );
-    public static final Item cloaker_boots = register(
-            "cloaker_boots",
-            Item::new,
-            new Item.Properties().humanoidArmor(CloakMaterial.INSTANCE, ArmorType.BOOTS)
-                    .durability(ArmorType.HELMET.getDurability(CloakMaterial.BASE_DURABILITY))
-    );
+
 
     public static final Item spycicle = register(
             "spycicle",
@@ -115,7 +96,7 @@ public class ItemStuff {
             "fried_egg",
             Item::new,
             new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(6)
+                    .nutrition(9)
                     .saturationModifier(1.5f)
                     .build())
     );
@@ -215,7 +196,7 @@ public class ItemStuff {
                 output.accept(ItemStuff.RadicalRadio);
                 output.accept(alchemy);
                 output.accept(lifesteal);
-                output.accept(ItemStuff.cloaker_mask);
+                output.accept(ItemStuff.cardboardbox);
                 output.accept(ItemStuff.angelsword);
                 output.accept(ItemStuff.wilted_alloy);
                 output.accept(ItemStuff.spycicle);
