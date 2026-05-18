@@ -2,8 +2,7 @@
   "anvil_cost": 4,
   "description": {
     "translate": "enchantment.peakagens.inconspicuous",
-    "color": "dark_gray",
-    "italic": false
+    "italic": true
   },
   "max_cost": {
     "base": 75,
