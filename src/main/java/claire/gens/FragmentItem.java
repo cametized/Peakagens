@@ -92,10 +92,7 @@ public class FragmentItem extends BlankFragmentItem {
 
     @Override
     public Component getName(ItemStack itemStack) {
-        if (type.equals(FragmentType.PotionUse) || type.equals(FragmentType.PotionPassive) || type.equals(FragmentType.PotionUseAmplifier)) {
-            return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
-        }
-        return super.getName(itemStack);
+        return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
     }
 
     public static PotionContents createPotionOf(MobEffectInstance mobEffectInstance1) {

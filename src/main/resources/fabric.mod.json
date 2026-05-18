@@ -3,7 +3,7 @@
 	"id": "peakagens",
 	"version": "${version}",
 	"name": "Peakagens",
-	"description": "Made for a funny Minecraft Server hosted by me and zPhoenix. Extra Creds for the big Jamer. JamerchGIT. The Goat.",
+	"description": "Made for a funny Minecraft Server hosted by me and zPhoenix. Extra Creds for the big Jamer. JamerchGIT. The Goat. \"we ALL sliming cam out btw\" -LLEVC",
 	"authors": [
 		"Cametized",
 		"LLEVC"
@@ -27,7 +27,8 @@
 		]
 	},
 	"mixins": [
-		"peakagens.mixins.json"
+		"peakagens.mixins.json",
+		"peakagens.client.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.2",

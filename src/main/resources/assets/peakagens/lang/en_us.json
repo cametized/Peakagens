@@ -1,7 +1,7 @@
 {
   "creativeTab.peakagens": "Peakagens",
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
-  "item.peakagens.spycicle": "Spycicle",
+  "item.peakagens.monocle": "Monocle",
   "item.peakagens.wiltedalloy": "Wilted Alloy",
   "item.peakagens.cardboardbox": "Cardboard Box",
 
@@ -31,6 +31,8 @@
   "item.peakagens.invis": "Invisibility",
 
   "item.peakagens.alchemy_fragment": "Alchemy Fragment",
-  "item.peakagens.lifesteal": "Life Fragment",
+  "item.peakagens.enchant_fragment": "Life Fragment",
+  "item.peakagens.lifesteal_fragment": "Life Fragment",
+  "item.peakagens.storm_fragment": "Storm Fragment",
   "item.peakagens.alchemy_potion": "Alchemy Potion"
 }

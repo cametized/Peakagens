@@ -1,6 +1,8 @@
 package claire.gens;
 
 import claire.gens.armor.CardboardBox;
+import claire.gens.effect.Calmness;
+import claire.gens.effect.EffectStuff;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,11 +14,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.*;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -45,7 +49,7 @@ public class ItemStuff {
     public static final Item RadicalRadio = register(
             "radical",
             Item::new,
-            new Item.Properties()
+            new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE, Consumables.ENCHANTED_GOLDEN_APPLE)
     );
 
     public static final Item wilted_alloy = register(
@@ -69,45 +73,44 @@ public class ItemStuff {
 
 
     public static final Item spycicle = register(
-            "spycicle",
-            Item::new,
-            new Item.Properties()
+            "monocle",
+            MonocleItem::new,
+            new Item.Properties().stacksTo(1)
     );
 
     public static final Item ricebowl = register(
             "rice_bowl",
             Item::new,
-            new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(6)
-                    .saturationModifier(0.2f)
-                    .build())
+            new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(6).saturationModifier(0.2f).build(),
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+            )
     );
 
     public static final Item rice = register(
             "rice",
             Item::new,
-            new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(4)
-                    .saturationModifier(0.15f)
-                    .build())
+            new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationModifier(0.15f).build()
+            )
     );
 
     public static final Item friedegg = register(
             "fried_egg",
             Item::new,
-            new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(9)
-                    .saturationModifier(1.5f)
-                    .build())
+            new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(9).saturationModifier(1.5f).build(),
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+            )
     );
 
     public static final Item bacon = register(
             "bacon",
             Item::new,
-            new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(3)
-                    .saturationModifier(0.2f)
-                    .build())
+            new Item.Properties().food(
+                            new FoodProperties.Builder().nutrition(3).saturationModifier(0.2f).build(),
+                            Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+                    )
     );
 
     //Gems
@@ -167,9 +170,9 @@ public class ItemStuff {
     );
     public static final Item invis = register(
             "invis",
-            properties -> new FragmentItem(properties,true),
+            properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,5*20,0)))
     );
 
     //Fragments
@@ -178,9 +181,19 @@ public class ItemStuff {
             AlchemyFragmentItem::new,
             new Item.Properties().stacksTo(1).component(DataComponents.POTION_CONTENTS,PotionContents.EMPTY)
     );
+    public static final Item enchanting = register(
+            "enchantment_fragment",
+            EnchantingFragment::new,
+            new Item.Properties().stacksTo(1)
+    );
     public static final Item lifesteal = register(
             "lifesteal_fragment",
             LifestealFragmentItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+    public static final Item storming = register(
+            "storm_fragment",
+            StormingFragment::new,
             new Item.Properties().stacksTo(1)
     );
 
@@ -189,22 +202,24 @@ public class ItemStuff {
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
     );
-    public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(ItemStuff.friedegg))
+    public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricCreativeModeTab.builder() // hi :)
+            .icon(() -> new ItemStack(friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
-                output.accept(ItemStuff.RadicalRadio);
+                output.accept(RadicalRadio);
                 output.accept(alchemy);
+                output.accept(enchanting);
                 output.accept(lifesteal);
-                output.accept(ItemStuff.cardboardbox);
-                output.accept(ItemStuff.angelsword);
-                output.accept(ItemStuff.wilted_alloy);
-                output.accept(ItemStuff.spycicle);
+                output.accept(storming);
+                output.accept(cardboardbox);
+                output.accept(angelsword);
+                output.accept(wilted_alloy);
+                output.accept(spycicle);
 
-                output.accept(ItemStuff.ricebowl);
-                output.accept(ItemStuff.rice);
-                output.accept(ItemStuff.friedegg);
-                output.accept(ItemStuff.bacon);
+                output.accept(ricebowl);
+                output.accept(rice);
+                output.accept(friedegg);
+                output.accept(bacon);
 
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {

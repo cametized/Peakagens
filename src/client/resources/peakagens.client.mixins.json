@@ -1,15 +1,17 @@
 {
-	"required": true,
-	"package": "claire.gens.client.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"client": [
-		"ExampleClientMixin",
-		"HideTag"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	}
+  "required": true,
+  "package": "claire.gens.client.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "AnvilClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "mixins": [
+    "FovMixin"
+  ]
 }

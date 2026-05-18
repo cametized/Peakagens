@@ -26,7 +26,7 @@ public class LifestealFragmentItem extends BlankFragmentItem {
             Iterator<Player> plrList = level.getEntitiesOfClass(Player.class, AABB.ofSize(player.position(), 10, 10, 10)).iterator();
             while (plrList.hasNext() && !found) {
                 Player cool = plrList.next();
-                if (cool.isLookingAtMe(player, 0.025, true, false, new double[]{player.getEyeY()}) && cool != player) {
+                if (cool.isLookingAtMe(player, 0.025, true, false, new double[]{player.getEyeY()}) && cool != player) { // to fix later: add priority for ppl the player is looking at more
                     found = true;
                     player1 = cool;
                 }

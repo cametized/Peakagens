@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:spyglass",
+  "result": "peakagens:monocle"
+}
