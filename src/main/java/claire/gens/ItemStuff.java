@@ -1,7 +1,6 @@
 package claire.gens;
 
 import claire.gens.armor.CardboardBox;
-import claire.gens.effect.Calmness;
 import claire.gens.effect.EffectStuff;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -14,13 +13,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +46,23 @@ public class ItemStuff {
     public static final Item RadicalRadio = register(
             "radical",
             Item::new,
-            new Item.Properties().food(Foods.ENCHANTED_GOLDEN_APPLE, Consumables.ENCHANTED_GOLDEN_APPLE)
+            new Item.Properties().component(
+            DataComponents.LORE,
+                    new ItemLore(List.of(
+                    Component.literal("wait a minute whys he here").withColor(0x61dfff)
+                    ))
+                            )
+    );
+
+    public static final Item ThisItemDoesNothingAndItsForShow = register(
+            "godsgem",
+            Item::new,
+            new Item.Properties().component(
+                    DataComponents.LORE,
+                    new ItemLore(List.of(
+                            Component.literal("You think this actually does something? Lmao nah, it's just for show. Entitorium is Cam's Lore Character.").withColor(0xa561ff)
+                    ))
+            )
     );
 
     public static final Item wilted_alloy = register(
@@ -61,7 +74,7 @@ public class ItemStuff {
     public static final Item angelsword = register(
             "angels_longsword",
             Item::new,
-            new Item.Properties().sword(angels_material,3.5f,-2.5f)
+            new Item.Properties().sword(angels_material, 3.5f, -2.5f)
     );
 
     public static final Item cardboardbox = register(
@@ -207,6 +220,7 @@ public class ItemStuff {
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
                 output.accept(RadicalRadio);
+                output.accept(ThisItemDoesNothingAndItsForShow);
                 output.accept(alchemy);
                 output.accept(enchanting);
                 output.accept(lifesteal);
