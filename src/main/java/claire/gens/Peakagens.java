@@ -20,7 +20,8 @@ public class Peakagens implements ModInitializer {
         ItemStuff.initialize();
 		ModComponents.initialize();
 		EffectStuff.initialize();
-		Obtain.register();
+		ShearWheat.register();
+		FloristEnchant.init();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 	}

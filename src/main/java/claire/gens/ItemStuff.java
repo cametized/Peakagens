@@ -71,6 +71,12 @@ public class ItemStuff {
             new Item.Properties()
     );
 
+    public static final Item pitchfork = register(
+            "pitchfork", // this is like supposed to be an early game trident but i cannot bother to go thru the trouble of coding this
+            Item::new,
+            new Item.Properties()
+    );
+
     public static final Item angelsword = register(
             "angels_longsword",
             Item::new,

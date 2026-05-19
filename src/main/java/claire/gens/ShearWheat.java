@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class Obtain {
+public class ShearWheat {
     public static void register() {
         UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
             if (player.isSpectator()) return InteractionResult.PASS;
