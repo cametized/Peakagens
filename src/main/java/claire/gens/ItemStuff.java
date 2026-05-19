@@ -131,13 +131,13 @@ public class ItemStuff {
             "strength",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,30*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,20*20,0)))
     );
     public static final Item swiftness = register(
             "swiftness",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.SPEED,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.SPEED,30*20,0)))
     );
     public static final Item haste = register(
             "haste",
@@ -149,19 +149,19 @@ public class ItemStuff {
             "jump",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.JUMP_BOOST,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.JUMP_BOOST,15*20,0)))
     );
     public static final Item resist = register(
             "resistance",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.RESISTANCE,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.RESISTANCE,30*20,0)))
     );
     public static final Item absorption = register(
             "extraheart",
             properties -> new FragmentItem(properties,FragmentType.PotionUseAmplifier),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,120*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,60*20,0)))
     );
     public static final Item fireres = register(
             "fireres",
@@ -183,9 +183,9 @@ public class ItemStuff {
     );
     public static final Item invis = register(
             "invis",
-            properties -> new FragmentItem(properties,false),
+            properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,5*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0)))
     );
 
     //Fragments

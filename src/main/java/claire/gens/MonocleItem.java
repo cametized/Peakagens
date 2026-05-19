@@ -43,7 +43,7 @@ public class MonocleItem extends SpyglassItem {
         ItemEnchantments itemEnchantments = itemStack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
         if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","winvis")))) {
             if (!livingEntity.hasEffect(MobEffects.INVISIBILITY)) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,20));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,20*5));
             }
         }
     }
