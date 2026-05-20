@@ -77,11 +77,11 @@ public class ItemStuff {
             new Item.Properties()
     );
 
-    public static final Item angelsword = register(
-            "angels_longsword",
-            Item::new,
-            new Item.Properties().sword(angels_material, 3.5f, -2.5f)
-    );
+    //public static final Item angelsword = register(
+          //  "angels_longsword",
+           // Item::new,
+           // new Item.Properties().sword(angels_material, 3.5f, -2.5f)
+   // ); yeah
 
     public static final Item cardboardbox = register(
             "cardboardbox",
@@ -216,7 +216,6 @@ public class ItemStuff {
             new Item.Properties().stacksTo(1)
     );
 
-
     //Creative Tabs
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
@@ -232,7 +231,7 @@ public class ItemStuff {
                 output.accept(lifesteal);
                 output.accept(storming);
                 output.accept(cardboardbox);
-                output.accept(angelsword);
+                //output.accept(angelsword);
                 output.accept(wilted_alloy);
                 output.accept(spycicle);
 

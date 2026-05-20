@@ -23,7 +23,7 @@ public abstract class PlayerMixin {
     private void thatsWhatThePointOfthemaskIs(CallbackInfoReturnable<Component> cir) {
         Player player = (Player) (Object) this; // The answer is i have no idea
         if (player.getItemBySlot(EquipmentSlot.HEAD).is(ItemStuff.cardboardbox)) {
-            cir.setReturnValue(Component.literal("Someone"));
+            cir.setReturnValue(Component.literal("§kEntitorium")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
         }
     }
 
