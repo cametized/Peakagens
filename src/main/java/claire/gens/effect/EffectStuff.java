@@ -15,6 +15,9 @@ public class EffectStuff implements ModInitializer {
     public static final Holder<MobEffect> FLORAL =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "floral"), new Floral());
 
+    public static final Holder<MobEffect> Electrified =
+            Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "electrified"), new Electrified());
+
     public static void initialize() {
     }
 
