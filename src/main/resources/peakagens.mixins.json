@@ -6,7 +6,8 @@
     "AnvilMixin",
     "GemTooltipMixin",
     "LifestealMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "ThunderInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

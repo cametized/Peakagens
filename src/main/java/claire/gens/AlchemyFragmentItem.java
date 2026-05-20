@@ -30,7 +30,9 @@ public class AlchemyFragmentItem extends BlankFragmentItem {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         if (!player.getItemInHand(hand).getOrDefault(DataComponents.POTION_CONTENTS,PotionContents.EMPTY).hasEffects()) {
+            boolean soolean = false;
             if (!player.getActiveEffects().isEmpty()) {
+                soolean = true;
                 List<MobEffectInstance> balls = new ArrayList<>(player.getActiveEffects());
                 PotionContents potionContents = new PotionContents(Optional.empty(),Optional.empty(),balls,Optional.empty());
                 player.removeAllEffects();
@@ -38,7 +40,7 @@ public class AlchemyFragmentItem extends BlankFragmentItem {
                 player.getItemInHand(hand).set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true);
             }
             player.getCooldowns().addCooldown(player.getItemInHand(hand),10);
-            return InteractionResult.SUCCESS;
+            return soolean ? InteractionResult.SUCCESS : InteractionResult.PASS;
         } else {
             int cooldown = 1;
             PotionContents potionContents = player.getItemInHand(hand).get(DataComponents.POTION_CONTENTS);

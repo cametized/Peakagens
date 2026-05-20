@@ -7,10 +7,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.lwjgl.system.ffm.mapping.Mapping;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class LifestealFragmentItem extends BlankFragmentItem {
 
@@ -20,17 +22,9 @@ public class LifestealFragmentItem extends BlankFragmentItem {
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        Player player1 = null;
+        Player player1;
         if (!player.isCrouching()) {
-            boolean found = false;
-            Iterator<Player> plrList = level.getEntitiesOfClass(Player.class, AABB.ofSize(player.position(), 10, 10, 10)).iterator();
-            while (plrList.hasNext() && !found) {
-                Player cool = plrList.next();
-                if (cool.isLookingAtMe(player, 0.025, true, false, new double[]{player.getEyeY()}) && cool != player) { // to fix later: add priority for ppl the player is looking at more
-                    found = true;
-                    player1 = cool;
-                }
-            }
+            player1 = Peakagens.findWhoImLookingAt(level, player);
         } else {
             player1 = player;
         }
