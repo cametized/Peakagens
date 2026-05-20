@@ -29,9 +29,9 @@ public class StormingFragment extends BlankFragmentItem {
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         if (level.canHaveWeather() && player.isCrouching()) {
             if (level.isRaining()) {
-                Objects.requireNonNull(level.getServer()).setWeatherParameters(0, ServerLevel.RAIN_DELAY.sample(level.getRandom()),false,false);
+                level.getServer().setWeatherParameters(0, ServerLevel.RAIN_DELAY.sample(level.getRandom()),false,false);
             } else  {
-                Objects.requireNonNull(level.getServer()).setWeatherParameters(0, ServerLevel.RAIN_DURATION.sample(level.getRandom()),true,false);
+                level.getServer().setWeatherParameters(0, ServerLevel.RAIN_DURATION.sample(level.getRandom()),true,false);
             }
             return InteractionResult.SUCCESS;
         } else if (level.canHaveWeather()) {
