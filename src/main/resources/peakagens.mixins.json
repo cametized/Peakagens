@@ -6,6 +6,7 @@
     "AnvilMixin",
     "GemTooltipMixin",
     "LifestealMixin",
+    "PlayerInvoker",
     "PlayerMixin",
     "ThunderInvoker"
   ],

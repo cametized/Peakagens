@@ -28,12 +28,14 @@ public class EnchantingFragment extends BlankFragmentItem {
         Player player1;
         player1 = player.isCrouching() ? player : Peakagens.findWhoImLookingAt(level, player);
         if (player1 != null) {
+            boolean found = false;
 
             List<EquipmentSlot> equipmentSlotList = List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
             for (EquipmentSlot current : equipmentSlotList) {
                 ItemStack hey = player1.getItemBySlot(current);
                 ItemEnchantments itemEnchantments = hey.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
                 if (!itemEnchantments.isEmpty()) {
+                    found = true;
                     List<Holder<Enchantment>> yes = new ArrayList<>(itemEnchantments.keySet());
                     int lvl = itemEnchantments.getLevel(yes.getFirst());
                     ItemStack book = EnchantmentHelper.createBook(new EnchantmentInstance(yes.getFirst(), 1));
@@ -46,7 +48,10 @@ public class EnchantingFragment extends BlankFragmentItem {
                     hey.set(DataComponents.ENCHANTMENTS, yosup.toImmutable());
                 }
             }
-            return InteractionResult.SUCCESS;
+            if (found) {
+                player.getCooldowns().addCooldown(player.getItemInHand(hand),player==player1 ? 10 : 3*60*20);
+            }
+            return found ? InteractionResult.SUCCESS : InteractionResult.PASS;
         }
         return InteractionResult.PASS;
     }
