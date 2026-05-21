@@ -25,6 +25,9 @@ public abstract class PlayerMixin {
         if (player.getItemBySlot(EquipmentSlot.HEAD).is(ItemStuff.cardboardbox)) {
             cir.setReturnValue(Component.literal("§kHerobrineGamer")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
         }
+        if (player.getItemBySlot(EquipmentSlot.HEAD).is(ItemStuff.hidebox)) {
+            cir.setReturnValue(Component.literal("§kHerobrineGamer")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
+        }
     }
 
     // nah, i'd win

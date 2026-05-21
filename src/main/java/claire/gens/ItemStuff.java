@@ -1,6 +1,7 @@
 package claire.gens;
 
 import claire.gens.armor.CardboardBox;
+import claire.gens.armor.Overpower;
 import claire.gens.effect.EffectStuff;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -18,6 +19,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -34,13 +37,13 @@ public class ItemStuff {
         return item;
     }
 
-    public static final ToolMaterial angels_material = new ToolMaterial(
+    public static final ToolMaterial scythematerial = new ToolMaterial(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-            1024,
-            5.0F,
-            2F,
-            22,
-            ToolMaterial.GOLD.repairItems()
+            1248,
+            0.9F,
+            7F,
+            15,
+            ToolMaterial.IRON.repairItems()
     );
 
     public static final Item RadicalRadio = register(
@@ -65,6 +68,13 @@ public class ItemStuff {
             )
     );
 
+    public static final Item hidebox = register(
+            "hidebox",
+            Item::new,
+            new Item.Properties().humanoidArmor(Overpower.INSTANCE, ArmorType.HELMET)
+                    .durability(ArmorType.HELMET.getDurability(Overpower.BASE_DURABILITY))
+    );
+
     public static final Item wilted_alloy = register(
             "wiltedalloy",
             Item::new,
@@ -77,11 +87,11 @@ public class ItemStuff {
             new Item.Properties()
     );
 
-    //public static final Item angelsword = register(
-          //  "angels_longsword",
-           // Item::new,
-           // new Item.Properties().sword(angels_material, 3.5f, -2.5f)
-   // ); yeah
+    public static final Item scythe = register(
+            "scythe",
+            Item::new,
+            new Item.Properties().sword(scythematerial, -1.5f, -3f)
+    );
 
     public static final Item cardboardbox = register(
             "cardboardbox",
