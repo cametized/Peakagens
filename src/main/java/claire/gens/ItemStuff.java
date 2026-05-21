@@ -100,7 +100,6 @@ public class ItemStuff {
                     .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY))
     );
 
-
     public static final Item spycicle = register(
             "monocle",
             MonocleItem::new,
