@@ -5,7 +5,6 @@
   "mixins": [
     "AnvilMixin",
     "GemTooltipMixin",
-    "LifestealMixin",
     "PlayerInvoker",
     "PlayerMixin",
     "ThunderInvoker"
