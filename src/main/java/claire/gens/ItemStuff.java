@@ -83,7 +83,7 @@ public class ItemStuff {
 
     public static final Item pitchfork = register(
             "pitchfork", // this is like supposed to be an early game trident but i cannot bother to go thru the trouble of coding this
-            Item::new,
+            Item::new,         // cam i dont think it'd be crazy hard
             new Item.Properties()
     );
 
