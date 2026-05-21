@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "abc",
+    "def",
+    "ghi"
+  ],
+  "key": {
+    "g": "minecraft:stick",
+    "e": "minecraft:stick",
+    "c": "minecraft:iron_ingot",
+    "b": "minecraft:iron_sword",
+    "f": "minecraft:iron_axe"
+  },
+  "result": "peakagens:scythe"
+}

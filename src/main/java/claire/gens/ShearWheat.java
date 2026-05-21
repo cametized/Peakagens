@@ -36,7 +36,7 @@ public class ShearWheat {
             Block.popResource(level, pos, new ItemStack(ItemStuff.rice, 2));
             level.setBlock(pos, state.setValue(CropBlock.AGE, 0), 3);
             stack.hurtAndBreak(1, player, hand);
-            player.playSound(SoundEvents.CROP_BREAK, 1.0F, 1.0F);
+            player.playSound(SoundEvents.CROP_BREAK, 3.0F, 1.0F);
         }
     }
 }
