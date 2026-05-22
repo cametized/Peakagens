@@ -63,7 +63,7 @@ public class ItemStuff {
             new Item.Properties().component(
                     DataComponents.LORE,
                     new ItemLore(List.of(
-                            Component.literal("You think this actually does something? Lmao nah, it's just for show. Entitorium is Cam's Lore Character.").withColor(0xa561ff)
+                            Component.literal("Fakee").withColor(0xa561ff) //You think this actually does something? Lmao nah, it's just for show. Entitorium is Cam's Lore Character.
                     ))
             )
     );
@@ -76,21 +76,27 @@ public class ItemStuff {
     );
 
     public static final Item wilted_alloy = register(
-            "wiltedalloy",
+            "wilted_alloy",
             Item::new,
             new Item.Properties()
     );
 
-    public static final Item pitchfork = register(
-            "pitchfork", // this is like supposed to be an early game trident but i cannot bother to go thru the trouble of coding this
-            Item::new,         // cam i dont think it'd be crazy hard
-            new Item.Properties()
-    );
+    //public static final Item pitchfork = register(
+    //        "pitchfork", // this is like supposed to be an early game trident but i cannot bother to go thru the trouble of coding this
+    //        Item::new,         // cam i dont think it'd be crazy hard
+    //        new Item.Properties()
+    //);
 
     public static final Item scythe = register(
             "scythe",
             Item::new,
             new Item.Properties().sword(scythematerial, -1.5f, -3f)
+    );
+
+    public static final Item bloodMace = register(
+            "blood_mace",
+            BloodMace::new,
+            new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes())
     );
 
     public static final Item cardboardbox = register(
@@ -243,6 +249,8 @@ public class ItemStuff {
                 //output.accept(angelsword);
                 output.accept(wilted_alloy);
                 output.accept(spycicle);
+                output.accept(scythe);
+                output.accept(bloodMace);
 
                 output.accept(ricebowl);
                 output.accept(rice);

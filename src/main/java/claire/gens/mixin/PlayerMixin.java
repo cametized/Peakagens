@@ -5,6 +5,7 @@ import claire.gens.Peakagens;
 import claire.gens.effect.EffectStuff;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.NameAndId;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -38,11 +40,13 @@ public abstract class PlayerMixin {
     @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true)
     private void thatsWhatThePointOfthemaskIs(CallbackInfoReturnable<Component> cir) {
         Player player = (Player) (Object) this; // The answer is i have no idea
-        if (player.getItemBySlot(EquipmentSlot.HEAD).is(ItemStuff.cardboardbox)) {
-            cir.setReturnValue(Component.literal("§kHerobrineGamer")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
-        }
-        if (player.getItemBySlot(EquipmentSlot.HEAD).is(ItemStuff.hidebox)) {
-            cir.setReturnValue(Component.literal("§kHerobrineGamer")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
+        ItemStack itemStack = player.getItemBySlot(EquipmentSlot.HEAD);
+        if (itemStack.is(ItemStuff.cardboardbox) || itemStack.is(ItemStuff.hidebox)) {
+            if (itemStack.has(DataComponents.CUSTOM_NAME)) {
+                cir.setReturnValue(itemStack.get(DataComponents.CUSTOM_NAME));
+            } else {
+                cir.setReturnValue(Component.literal("§kHerobrine")); // guys your name is obfuscated cause of them and no one will know #Lore #Awesome
+            }
         }
     }
 
