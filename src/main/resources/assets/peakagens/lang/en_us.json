@@ -9,8 +9,16 @@
 
   "item.peakagens.grindrails": "Music Disc",
   "item.peakagens.flaxsong": "Music Disc",
+  "item.peakagens.disc1": "Music Disc",
+  "item.peakagens.test11": "Music Disc",
+  "item.peakagens.cleanup": "Music Disc",
+  "item.peakagens.yag": "Music Disc",
   "jukebox_song.peakagens.grindrails": "DB Ludo - Grindrails",
   "jukebox_song.peakagens.flaxsong": "Flaxez - Flaxez's Epic Minecraft Song 1.0",
+  "jukebox_song.peakagens.disc1": "fr3b - disc1",
+  "jukebox_song.peakagens.cleanup": "fr3b - cleanup",
+  "jukebox_song.peakagens.test11": "fr3b - test11",
+  "jukebox_song.peakagens.3pmyag": "fr3b - 3pm.yag",
 
   "enchantment.peakagens.inconspicuous": "Inconspicuous",
   "enchantment.peakagens.florist": "Florist",

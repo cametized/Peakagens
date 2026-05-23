@@ -1,5 +1,5 @@
 {
-  "grindrails": {
+"grindrails": {
     "category": "record",
     "sounds": [
       {
@@ -17,7 +17,43 @@
       }
     ]
   },
-  "fragmentused": {
+"test11": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:test11",
+        "stream": true
+      }
+    ]
+  },
+"disc1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:disc1",
+        "stream": true
+      }
+    ]
+  },
+"cleanup": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:cleanup",
+        "stream": true
+      }
+    ]
+  },
+"3pmyag": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:3pmyag",
+        "stream": true
+      }
+    ]
+  },
+"fragmentused": {
     "subtitle": "sound.peakagens.fragmentused",
     "sounds": ["peakagens:fragmentused"]
   }

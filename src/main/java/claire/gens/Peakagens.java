@@ -32,11 +32,15 @@ public class Peakagens implements ModInitializer {
 		EffectStuff.initialize();
 		ShearWheat.register();
 		FloristEnchant.init();
-		ModTablesIHateThis.modify();
+		LootTables.modify();
 		SoundClass.initialize();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+			entries.accept(ItemStuff.disc1);
+			entries.accept(ItemStuff.test11);
+			entries.accept(ItemStuff.cleanup);
+			entries.accept(ItemStuff.yag);
 			entries.accept(ItemStuff.grindrails);
 			entries.accept(ItemStuff.flaxsong);
 		});

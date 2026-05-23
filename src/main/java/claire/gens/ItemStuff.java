@@ -74,6 +74,42 @@ public class ItemStuff {
                     .jukeboxPlayable(Jukebox.FLAXSONG)
     );
 
+    public static final Item disc1 = register(
+            "disc1",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .jukeboxPlayable(Jukebox.DISC1)
+    );
+
+    public static final Item test11 = register(
+            "test11",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .jukeboxPlayable(Jukebox.TEST11)
+    );
+
+    public static final Item cleanup = register(
+            "cleanup",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .jukeboxPlayable(Jukebox.CLEANUP)
+    );
+
+    public static final Item yag = register(
+            "yag",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .jukeboxPlayable(Jukebox.YAG)
+    );
+
     public static final Item ThisItemDoesNothingAndItsForShow = register(
             "godsgem",
             Item::new,

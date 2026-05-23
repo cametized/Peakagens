@@ -1,0 +1,8 @@
+{
+  "sound_event": "peakagens:disc1",
+  "description": {
+    "translate": "jukebox_song.peakagens.disc1"
+  },
+  "length_in_seconds": 75,
+  "comparator_output": 15
+}

@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "peakagens:grindrails"
+    "peakagens:grindrails",
+    "peakagens:flaxsong",
+    "peakagens:disc1",
+    "peakagens:test11",
+    "peakagens:cleanup",
+    "peakagens:3pmyag"
   ]
 }
