@@ -1,0 +1,8 @@
+{
+  "sound_event": "peakagens:flaxsong",
+  "description": {
+    "translate": "jukebox_song.peakagens.flaxsong"
+  },
+  "length_in_seconds": 95,
+  "comparator_output": 15
+}

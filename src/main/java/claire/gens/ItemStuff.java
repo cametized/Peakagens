@@ -3,6 +3,7 @@ package claire.gens;
 import claire.gens.armor.CardboardBox;
 import claire.gens.armor.Overpower;
 import claire.gens.effect.EffectStuff;
+import claire.gens.sounds.Jukebox;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,8 +20,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -57,6 +56,24 @@ public class ItemStuff {
                             )
     );
 
+    public static final Item grindrails = register(
+            "grindrails",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // people suggested this i thought itd be funny lol
+                    .jukeboxPlayable(Jukebox.GRINDRAILS)
+    );
+
+    public static final Item flaxsong = register(
+            "flaxsong",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // i agreed to this and i mildly regret it cause of deltarune motifs :money_mouth:
+                    .jukeboxPlayable(Jukebox.FLAXSONG)
+    );
+
     public static final Item ThisItemDoesNothingAndItsForShow = register(
             "godsgem",
             Item::new,
@@ -90,7 +107,7 @@ public class ItemStuff {
     public static final Item scythe = register(
             "scythe",
             Item::new,
-            new Item.Properties().sword(scythematerial, -1.5f, -3f)
+            new Item.Properties().sword(scythematerial, -1f, -3f)
     );
 
     public static final Item bloodMace = register(

@@ -7,6 +7,11 @@
   "item.peakagens.scythe": "Scythe",
   "item.peakagens.godsgem": "Gods Gem of Will",
 
+  "item.peakagens.grindrails": "Music Disc",
+  "item.peakagens.flaxsong": "Music Disc",
+  "jukebox_song.peakagens.grindrails": "DB Ludo - Grindrails",
+  "jukebox_song.peakagens.flaxsong": "Flaxez - Flaxez's Epic Minecraft Song 1.0",
+
   "enchantment.peakagens.inconspicuous": "Inconspicuous",
   "enchantment.peakagens.florist": "Florist",
 
@@ -16,7 +21,7 @@
   "effect.peakagens.floral": "Floral",
 
   "item.peakagens.rice_bowl": "Bowl of Rice",
-  "item.peakagens.rice": "Ball of Rice",
+  "item.peakagens.rice": "Rice Grain",
   "item.peakagens.fried_egg": "Fried Egg",
   "item.peakagens.bacon": "Bacon",
 

@@ -1,0 +1,24 @@
+{
+  "grindrails": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:grindrails",
+        "stream": true
+      }
+    ]
+  },
+"flaxsong": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:flaxsong",
+        "stream": true
+      }
+    ]
+  },
+  "fragmentused": {
+    "subtitle": "sound.peakagens.fragmentused",
+    "sounds": ["peakagens:fragmentused"]
+  }
+}

@@ -1,9 +1,12 @@
 package claire.gens;
 
+import claire.gens.sounds.SoundClass;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -84,6 +87,7 @@ public class FragmentItem extends BlankFragmentItem {
                     player.addEffect(gesbian);
                 }
             }
+
             player.getCooldowns().addCooldown(this.getDefaultInstance(),Math.round(cooldown));
             return InteractionResult.SUCCESS;
         }

@@ -2,11 +2,14 @@ package claire.gens;
 
 import claire.gens.effect.EffectStuff;
 import claire.gens.recipes.AlchemyBottleRecipe;
+import claire.gens.sounds.SoundClass;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -29,8 +32,14 @@ public class Peakagens implements ModInitializer {
 		EffectStuff.initialize();
 		ShearWheat.register();
 		FloristEnchant.init();
+		ModTablesIHateThis.modify();
+		SoundClass.initialize();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+			entries.accept(ItemStuff.grindrails);
+			entries.accept(ItemStuff.flaxsong);
+		});
 	}
 
 	public static @Nullable Player findWhoImLookingAt(Level level, Player player) {
