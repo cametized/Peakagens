@@ -1,17 +1,17 @@
 {
   "exclusive_set": "#peakagens:monocle_incompat",
-  "anvil_cost": 3,
+  "anvil_cost": 6,
   "description": {
-    "translate": "enchantment.peakagens.inconspicuous",
-    "italic": true
+    "translate": "enchantment.peakagens.shining",
+    "bold": true
   },
   "max_cost": {
-    "base": 30,
+    "base": 35,
     "per_level_above_first": 0
   },
   "max_level": 1,
   "min_cost": {
-    "base": 3,
+    "base": 2,
     "per_level_above_first": 0
   },
   "slots": [

@@ -1,11 +1,14 @@
 package claire.gens;
 
 import net.fabricmc.fabric.impl.item.EnchantmentUtil;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
@@ -19,6 +22,10 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.spongepowered.asm.mixin.Unique;
+
+import java.util.Objects;
 
 public class MonocleItem extends SpyglassItem {
     public static final float ZOOM_FOV_MODIFIER = 0.75F;
@@ -38,6 +45,9 @@ public class MonocleItem extends SpyglassItem {
         return itemStack;
     }
 
+    public int initialSpotted = 24000;
+    public LivingEntity target = null;
+    public float progress = 0f;
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack itemStack, int ticksRemaining) {
         ItemEnchantments itemEnchantments = itemStack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
@@ -50,11 +60,49 @@ public class MonocleItem extends SpyglassItem {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,20*5));
                 }
             }
+            if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
+                itemStack.hurtAndBreak(1,livingEntity,livingEntity.getUsedItemHand());
+            }
+        } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wshine"))) && livingEntity instanceof Player player && !level.isClientSide()) {
+            LivingEntity hey = Peakagens.findWhatImLookingAt(level, player, 8);
+            if (hey != null) {
+                hey.igniteForTicks(20);
+                if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
+                    itemStack.hurtAndBreak(1,player,player.getUsedItemHand());
+                }
+            }
+        } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wblink"))) && livingEntity instanceof Player player) {
+            LivingEntity hey = Peakagens.findWhatImLookingAt(level, player, 16);
+            Vec3 heynow = (target != null ? target.position().subtract(player.position()).subtract(0,player.getBoundingBox().getYsize()/2,0).multiply(1.0/target.getBoundingBox().getXsize(),1.0/target.getBoundingBox().getYsize(),1.0/target.getBoundingBox().getZsize()).normalize() : Vec3.ZERO);
+            double dot = player.getViewVector(1.0f).normalize().dot(heynow);
+            if ((hey != null && hey == target) || (target != null && target.position().subtract(player.position()).length() <= 16f && dot > 0.75f)) {
+                progress = Math.clamp((initialSpotted-ticksRemaining)/20f,0f,1f);
+                Peakagens.LOGGER.info(String.valueOf(progress));
+                if (ticksRemaining < initialSpotted-20) {
+                    Vec3 auh = target.position().subtract(target.getLookAngle().multiply(3f, 3f, 3f));
+                    player.teleportTo(auh.x, auh.y, auh.z);
+                    player.lookAt(EntityAnchorArgument.Anchor.EYES, target.getEyePosition());
+                    level.playSound(null,auh.x,auh.y,auh.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
+                    itemStack.hurtAndBreak(4,player,player.getUsedItemHand());
+                    player.getCooldowns().addCooldown(itemStack,20*20);
+                    player.resetFallDistance();
+                    player.stopUsingItem();
+                }
+            } else {
+                target = hey;
+                initialSpotted = ticksRemaining;
+                progress = 0f;
+            }
+            itemStack.set(ModComponents.GenericFloat,progress);
         }
     }
 
     @Override
     public boolean releaseUsing(final ItemStack itemStack, final Level level, final LivingEntity entity, final int remainingTime) {
+        target = null;
+        initialSpotted = 24000;
+        progress = 0f;
+        itemStack.set(ModComponents.GenericFloat,0f);
         return true;
     }
 }

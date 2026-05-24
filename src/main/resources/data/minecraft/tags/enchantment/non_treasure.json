@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "peakagens:inconspicuous"
+    "peakagens:inconspicuous",
+    "peakagens:shining",
+    "peakagens:blink"
   ]
 }

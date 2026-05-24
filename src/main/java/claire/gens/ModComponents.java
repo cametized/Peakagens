@@ -13,6 +13,12 @@ public class ModComponents {
             DataComponentType.<Integer>builder().persistent(Codec.INT).build()
     );
 
+    public static final DataComponentType<Float> GenericFloat = Registry.register(
+            BuiltInRegistries.DATA_COMPONENT_TYPE,
+            Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "generic_float"),
+            DataComponentType.<Float>builder().persistent(Codec.FLOAT).build()
+    );
+
     protected static void initialize() {
         //Peakagens.LOGGER.info("Registering {} components", Peakagens.MOD_ID);
         // Technically this method can stay empty, but some developers like to notify

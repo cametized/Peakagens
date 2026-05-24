@@ -5,6 +5,7 @@ import claire.gens.armor.Overpower;
 import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.Jukebox;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.impl.item.EnchantmentUtil;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -20,6 +21,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -207,7 +210,7 @@ public class ItemStuff {
     public static final Item spycicle = register(
             "monocle",
             MonocleItem::new,
-            new Item.Properties().stacksTo(1)
+            new Item.Properties().stacksTo(1).enchantable(15).durability(16)
     );
 
     public static final Item ricebowl = register(
@@ -357,7 +360,7 @@ public class ItemStuff {
                 output.accept(wilted_alloy);
                 output.accept(spycicle);
                 output.accept(scythe);
-                output.accept(bloodMace);
+                //output.accept(bloodMace);
 
                 output.accept(ricebowl);
                 output.accept(rice);
@@ -385,6 +388,18 @@ public class ItemStuff {
                     output.accept(bro);
                     output.accept(ho);
                 }
+
+                output.accept(ItemStuff.disc1);
+                output.accept(ItemStuff.test11);
+                output.accept(ItemStuff.cleanup);
+                output.accept(ItemStuff.yag);
+                output.accept(ItemStuff.battle);
+                output.accept(ItemStuff.menu5);
+                output.accept(ItemStuff.revovlershowdown);
+                output.accept(ItemStuff.treeahohess);
+                output.accept(ItemStuff.grindrails);
+                output.accept(ItemStuff.colonize);
+                output.accept(ItemStuff.flaxsong);
             })
             .build();
 
