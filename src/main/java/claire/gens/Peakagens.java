@@ -42,6 +42,7 @@ public class Peakagens implements ModInitializer {
 			entries.accept(ItemStuff.cleanup);
 			entries.accept(ItemStuff.yag);
 			entries.accept(ItemStuff.grindrails);
+			entries.accept(ItemStuff.colonize);
 			entries.accept(ItemStuff.flaxsong);
 		});
 	}

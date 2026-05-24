@@ -53,6 +53,15 @@
       }
     ]
   },
+"colonize": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:colonize",
+        "stream": true
+      }
+    ]
+  },
 "fragmentused": {
     "subtitle": "sound.peakagens.fragmentused",
     "sounds": ["peakagens:fragmentused"]

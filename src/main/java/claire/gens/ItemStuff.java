@@ -110,6 +110,15 @@ public class ItemStuff {
                     .jukeboxPlayable(Jukebox.YAG)
     );
 
+    public static final Item colonize = register(
+            "colonize",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .jukeboxPlayable(Jukebox.COLONIZE)
+    );
+
     public static final Item ThisItemDoesNothingAndItsForShow = register(
             "godsgem",
             Item::new,

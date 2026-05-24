@@ -19,6 +19,7 @@ public class SoundClass {
     public static final SoundEvent TEST11 = registerSound("test11");
     public static final SoundEvent CLEANUP = registerSound("cleanup");
     public static final SoundEvent YAG = registerSound("3pmyag");
+    public static final SoundEvent COLONIZE = registerSound("colonize");
 
     private static SoundEvent registerSound(String id) {
         Identifier identifier = Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, id);
