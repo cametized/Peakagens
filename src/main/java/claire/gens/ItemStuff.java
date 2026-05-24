@@ -231,7 +231,7 @@ public class ItemStuff {
             "fried_egg",
             Item::new,
             new Item.Properties().food(
-                    new FoodProperties.Builder().nutrition(9).saturationModifier(1.5f).build(),
+                    new FoodProperties.Builder().nutrition(5).saturationModifier(1.5f).build(),
                     Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
             )
     );
@@ -243,6 +243,15 @@ public class ItemStuff {
                             new FoodProperties.Builder().nutrition(3).saturationModifier(0.2f).build(),
                             Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
                     )
+    );
+
+    public static final Item pork_belly = register(
+            "pork_belly",
+            Item::new,
+            new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(1).saturationModifier(0.2f).build(),
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,950))).build()
+            )
     );
 
     //Gems

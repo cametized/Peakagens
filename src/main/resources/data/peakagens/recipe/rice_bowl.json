@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "peakagens:rice"
+  ],
+  "result": "peakagens:rice_bowl"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": "peakagens:pork_belly",
+  "result": {
+    "count": 3,
+    "id": "peakagens:bacon"
+  },
+  "experience": 2,
+  "cookingtime": 150
+}
