@@ -3,7 +3,8 @@
   "package": "claire.gens.client.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "AnvilClientMixin"
+    "AnvilClientMixin",
+    "MouseHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
