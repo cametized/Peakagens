@@ -22,7 +22,7 @@ public class ShearWheat {
             BlockState state = level.getBlockState(pos);
             ItemStack stack = player.getItemInHand(hand);
 
-            if (state.is(Blocks.WHEAT) && state.getValue(CropBlock.AGE) == 7 && stack.is(Items.SHEARS)) {
+            if (state.is(Blocks.WHEAT) && state.getValue(CropBlock.AGE) == 7 && stack.is(ItemStuff.scythe)) {
                 handleShearing(level, player, pos, state, stack, hand);
                 return InteractionResult.SUCCESS;
             }
