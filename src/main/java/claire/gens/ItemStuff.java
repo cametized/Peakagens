@@ -366,6 +366,7 @@ public class ItemStuff {
                 output.accept(rice);
                 output.accept(friedegg);
                 output.accept(bacon);
+                output.accept(pork_belly);
 
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "pattern": [
+    "abc",
+    "def",
+    "g i"
+  ],
+  "key": {
+    "a": "#minecraft:logs_that_burn",
+    "b": "#minecraft:logs_that_burn",
+    "c": "#minecraft:logs_that_burn",
+    "d": "#minecraft:logs_that_burn",
+    "e": "peakagens:monocle",
+    "f": "#minecraft:logs_that_burn",
+    "g": "#minecraft:logs_that_burn",
+    "i": "#minecraft:logs_that_burn"
+  },
+  "result": {
+    "id": "peakagens:cardboardbox"
+  }
+}
