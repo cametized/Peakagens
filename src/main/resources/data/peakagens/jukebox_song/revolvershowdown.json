@@ -1,0 +1,8 @@
+{
+  "sound_event": "peakagens:revolvershowdown",
+  "description": {
+    "translate": "jukebox_song.peakagens.revolvershowdown"
+  },
+  "length_in_seconds": 84,
+  "comparator_output": 14
+}

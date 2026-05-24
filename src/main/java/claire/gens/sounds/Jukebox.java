@@ -14,4 +14,9 @@ public class Jukebox {
     public static final ResourceKey<JukeboxSong> CLEANUP = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "cleanup"));
     public static final ResourceKey<JukeboxSong> YAG = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "3pmyag"));
     public static final ResourceKey<JukeboxSong> COLONIZE = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "colonize"));
+    public static final ResourceKey<JukeboxSong> battle = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "battle"));
+    public static final ResourceKey<JukeboxSong> menu5 = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "menu5"));
+    public static final ResourceKey<JukeboxSong> revolvershowdown = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "revolvershowdown"));
+    public static final ResourceKey<JukeboxSong> treeahohess = ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "treeahohess"));
+
 }

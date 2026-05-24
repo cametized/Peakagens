@@ -20,6 +20,11 @@ public class SoundClass {
     public static final SoundEvent CLEANUP = registerSound("cleanup");
     public static final SoundEvent YAG = registerSound("3pmyag");
     public static final SoundEvent COLONIZE = registerSound("colonize");
+    public static final SoundEvent battle = registerSound("battle");
+    public static final SoundEvent menu5 = registerSound("menu5");
+    public static final SoundEvent revolvershowdown = registerSound("revolvershowdown");
+    public static final SoundEvent treeahohess = registerSound("treeahohess");
+
 
     private static SoundEvent registerSound(String id) {
         Identifier identifier = Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, id);

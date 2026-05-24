@@ -62,6 +62,42 @@
       }
     ]
   },
+  "battle": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:battle",
+        "stream": true
+      }
+    ]
+  },
+  "menu5": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:menu5",
+        "stream": true
+      }
+    ]
+  },
+  "revolvershowdown": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:revolvershowdown",
+        "stream": true
+      }
+    ]
+  },
+  "treeahohess": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "peakagens:treeahohess",
+        "stream": true
+      }
+    ]
+  },
 "fragmentused": {
     "subtitle": "sound.peakagens.fragmentused",
     "sounds": ["peakagens:fragmentused"]

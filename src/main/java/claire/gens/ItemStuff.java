@@ -115,8 +115,44 @@ public class ItemStuff {
             Item::new,
             new Item.Properties()
                     .stacksTo(1)
-                    .rarity(Rarity.UNCOMMON) // thanks cole
+                    .rarity(Rarity.UNCOMMON) // babadamphbadumpbaumbaumbaumbadapbadapbuhbuhmbaumbumbauchebauchebaumbachebache
                     .jukeboxPlayable(Jukebox.COLONIZE)
+    );
+
+    public static final Item battle = register(
+            "battle",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // he fought long and hard
+                    .jukeboxPlayable(Jukebox.battle)
+    );
+
+    public static final Item menu5 = register(
+            "menu5",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // balls deep
+                    .jukeboxPlayable(Jukebox.menu5)
+    );
+
+    public static final Item revovlershowdown = register(
+            "revolvershowdown",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // all knowing cat of the sky getting put into minecraft
+                    .jukeboxPlayable(Jukebox.revolvershowdown)
+    );
+
+    public static final Item treeahohess = register(
+            "treeahohess",
+            Item::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON) // tree ah oh ess
+                    .jukeboxPlayable(Jukebox.treeahohess)
     );
 
     public static final Item ThisItemDoesNothingAndItsForShow = register(

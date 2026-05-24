@@ -1,0 +1,8 @@
+{
+  "sound_event": "peakagens:battle",
+  "description": {
+    "translate": "jukebox_song.peakagens.battle"
+  },
+  "length_in_seconds": 93,
+  "comparator_output": 12
+}
