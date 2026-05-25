@@ -52,45 +52,30 @@ public class Peakagens implements ModInitializer {
 		});
 	}
 
-	public static @Nullable LivingEntity findWhatImLookingAt(Level level, Player player, double size) {
+	public static @Nullable LivingEntity findWhoImLookingAt(Level level, Player player, double size) {
 		LivingEntity player1 = null;
 		double foundDot = 0;
 		Iterator<LivingEntity> plrList = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(player.position(), size, size, size)).iterator();
 		while (plrList.hasNext()) {
 			LivingEntity cool = plrList.next();
-			Vec3 heynow = cool.position().subtract(player.position()).subtract(0,player.getBoundingBox().getYsize()/2,0).multiply(1.0/cool.getBoundingBox().getXsize(),1.0/cool.getBoundingBox().getYsize(),1.0/cool.getBoundingBox().getZsize()).normalize();
-			double dot = player.getViewVector(1.0f).normalize().dot(heynow);
+			AABB woah = cool.getBoundingBox();
+			Vec3 heynow = cool.position().subtract(player.position().add(0,player.getBoundingBox().getYsize()/2,0)).multiply(1/woah.getXsize(),1/woah.getYsize(),1/woah.getZsize());
+			double dot = player.getViewVector(1.0f).multiply(1/woah.getXsize(),1/woah.getYsize(),1/woah.getZsize()).normalize().dot(heynow.normalize());
 
-			//Peakagens.LOGGER.info(String.valueOf(dot));
-
-			if (dot >= 0.99f && cool != player && dot > foundDot) {
-				foundDot = dot;
-				player1 = cool;
+			if (cool != player) {
+				Peakagens.LOGGER.info(cool.getName().getString());
+				Peakagens.LOGGER.info(String.valueOf(dot));
+				//Peakagens.LOGGER.info(String.valueOf(heynow.y));
+				if (dot >= 0.99f && dot > foundDot) {
+					foundDot = dot;
+					player1 = cool;
+				}
 			}
 		}
 		return player1;
 	}
 
-	public static @Nullable Player findWhoImLookingAt(Level level, Player player, double size) {
-		Player player1 = null;
-		double foundDot = 0;
-		Iterator<Player> plrList = level.getEntitiesOfClass(Player.class, AABB.ofSize(player.position(), size, size, size)).iterator();
-		while (plrList.hasNext()) {
-			Player cool = plrList.next();
-			Vec3 heynow = cool.position().subtract(player.position()).subtract(0,player.getBoundingBox().getYsize()/2,0).multiply(1.0/cool.getBoundingBox().getXsize(),1.0/cool.getBoundingBox().getYsize(),1.0/cool.getBoundingBox().getZsize()).normalize();
-			double dot = player.getViewVector(1.0f).normalize().dot(heynow);
-
-			//Peakagens.LOGGER.info(String.valueOf(dot));
-
-			if (dot >= 0.99f && cool != player && dot > foundDot) {
-				foundDot = dot;
-				player1 = cool;
-			}
-		}
-		return player1;
-	}
-
-	public static @Nullable Player findWhoImLookingAt(Level level, Player player) {
+	public static @Nullable LivingEntity findWhoImLookingAt(Level level, Player player) {
 		return findWhoImLookingAt(level,player,16);
 	}
 }

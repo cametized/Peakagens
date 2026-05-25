@@ -64,7 +64,7 @@ public class MonocleItem extends SpyglassItem {
                 itemStack.hurtAndBreak(1,livingEntity,livingEntity.getUsedItemHand());
             }
         } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wshine"))) && livingEntity instanceof Player player && !level.isClientSide()) {
-            LivingEntity hey = Peakagens.findWhatImLookingAt(level, player, 8);
+            LivingEntity hey = Peakagens.findWhoImLookingAt(level, player, 8);
             if (hey != null) {
                 hey.igniteForTicks(20);
                 if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
@@ -72,13 +72,14 @@ public class MonocleItem extends SpyglassItem {
                 }
             }
         } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wblink"))) && livingEntity instanceof Player player) {
-            LivingEntity hey = Peakagens.findWhatImLookingAt(level, player, 16);
+            LivingEntity hey = Peakagens.findWhoImLookingAt(level, player, 16);
             Vec3 heynow = (target != null ? target.position().subtract(player.position()).subtract(0,player.getBoundingBox().getYsize()/2,0).multiply(1.0/target.getBoundingBox().getXsize(),1.0/target.getBoundingBox().getYsize(),1.0/target.getBoundingBox().getZsize()).normalize() : Vec3.ZERO);
             double dot = player.getViewVector(1.0f).normalize().dot(heynow);
-            if ((hey != null && hey == target) || (target != null && target.position().subtract(player.position()).length() <= 16f && dot > 0.75f)) {
-                progress = Math.clamp((initialSpotted-ticksRemaining)/20f,0f,1f);
-                Peakagens.LOGGER.info(String.valueOf(progress));
-                if (ticksRemaining < initialSpotted-20) {
+            if ((target != null) && ((hey == target) || (target.position().subtract(player.position()).length() <= 16f && dot > 0.75f))) {
+                float thenumber = player.fallDistance > 4 ? (float) (20f / (player.fallDistance / 2f)) : 20f;
+                progress = Math.clamp((initialSpotted-ticksRemaining)/thenumber,0f,1f);
+                //Peakagens.LOGGER.info(String.valueOf(progress));
+                if (ticksRemaining < initialSpotted-thenumber) {
                     Vec3 auh = target.position().subtract(target.getLookAngle().multiply(3f, 3f, 3f));
                     player.teleportTo(auh.x, auh.y, auh.z);
                     player.lookAt(EntityAnchorArgument.Anchor.EYES, target.getEyePosition());

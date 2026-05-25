@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -25,7 +26,7 @@ public class EnchantingFragment extends BlankFragmentItem {
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) { // this is 2 hours of work and research btw LMFAO
-        Player player1;
+        LivingEntity player1;
         player1 = player.isCrouching() ? player : Peakagens.findWhoImLookingAt(level, player);
         if (player1 != null) {
             boolean found = false;

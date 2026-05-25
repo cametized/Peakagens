@@ -53,8 +53,8 @@ public class StormingFragment extends BlankFragmentItem {
                 if (amount > 3) {
                     blockPos = player.blockPosition();
                     player.addEffect(new MobEffectInstance(EffectStuff.Electrified,20*180));
-                } else if (Peakagens.findWhatImLookingAt(level,player,16) != null) {
-                    blockPos = Objects.requireNonNull(Peakagens.findWhatImLookingAt(level, player,48)).blockPosition();
+                } else if (Peakagens.findWhoImLookingAt(level,player,16) != null) {
+                    blockPos = Objects.requireNonNull(Peakagens.findWhoImLookingAt(level, player,48)).blockPosition();
                 } else {
                     blockPos = ((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(serverLevel.getBlockRandomPos(chunk.getPos().getMinBlockX(),0,chunk.getPos().getMinBlockZ(),15)));
                 }

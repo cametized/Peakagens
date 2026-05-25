@@ -341,6 +341,14 @@ public class ItemStuff {
             new Item.Properties().stacksTo(1)
     );
 
+    //debug item
+
+    public static final Item theDEBUGitem = register(
+            "the_debug_item",
+            theDEBUGitem::new,
+            new Item.Properties().stacksTo(1).modelId(Identifier.parse("minecraft:stick")).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true)
+    );
+
     //Creative Tabs
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
