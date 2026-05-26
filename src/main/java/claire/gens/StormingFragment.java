@@ -19,11 +19,14 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.util.List;
 import java.util.Objects;
@@ -33,25 +36,36 @@ public class StormingFragment extends BlankFragmentItem {
         super(properties,FragmentType.Storm);
     }
 
-    @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        LivingEntity boo = Peakagens.findWhoImLookingAt(level,player);
+    @Unique public static int isConductive(ItemStack item) {
         int amount = 0;
-        List<EquipmentSlot> equipmentSlotList = List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
-        for (EquipmentSlot equipmentSlot : equipmentSlotList) {
-            Repairable repairable = player.getItemBySlot(equipmentSlot).get(DataComponents.REPAIRABLE);
-            if (repairable != null) {
-                for (int i = 0; i < repairable.items().size(); i++) {
-                    if (repairable.items().get(i).is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))) {
+        Repairable repairable = item.get(DataComponents.REPAIRABLE);
+        if (repairable != null) {
+            for (int i = 0; i < repairable.items().size(); i++) {
+                if (repairable.items().get(i).is(ItemStuff.conductiveTag)) {
+                    amount++;
+                    if (repairable.items().get(i).is(ItemStuff.ultraConductiveTag)) {
                         amount++;
-                        if (repairable.items().get(i).is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive")))) {
-                            amount++;
-                        }
-                        break;
                     }
+                    break;
                 }
             }
         }
+        return amount;
+    }
+
+    @Unique public static int hey(Player player) {
+        int amount = 0;
+        List<EquipmentSlot> equipmentSlotList = List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
+        for (EquipmentSlot equipmentSlot : equipmentSlotList) {
+            amount = amount + isConductive(player.getItemBySlot(equipmentSlot));
+        }
+        return amount;
+    }
+
+    @Override
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        LivingEntity boo = Peakagens.findWhoImLookingAt(level,player);
+        int amount = hey(player);
 
         if (level.canHaveWeather() && player.isCrouching() && boo == null) {
             if (level.isRaining() && !level.isClientSide()) {

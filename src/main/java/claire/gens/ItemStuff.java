@@ -13,6 +13,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -47,6 +48,9 @@ public class ItemStuff {
             15,
             ToolMaterial.IRON.repairItems()
     );
+
+    public static final TagKey<Item> conductiveTag = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive"));
+    public static final TagKey<Item> ultraConductiveTag = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive"));
 
     public static final Item RadicalRadio = register(
             "radical",

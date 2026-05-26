@@ -3,6 +3,7 @@ package claire.gens.mixin;
 import claire.gens.ItemStuff;
 import claire.gens.ModParticles;
 import claire.gens.Peakagens;
+import claire.gens.StormingFragment;
 import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.SoundClass;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
@@ -88,15 +89,10 @@ public abstract class PlayerMixin {
         return player.isUsingItem() && player.getUseItem().is(ItemStuff.spycicle);
     }
 
-    @Unique
-    public LivingEntity comboAttacker = null;
-    @Unique
-    public int comboCounter = 0;
-
     @Inject(at = @At("HEAD"), method = "attack")
     public void woop(Entity entity, CallbackInfo ci) {
         Player fuck = (Player) this.lambda$createAttackSource$0().getEntity();
-        if (!this.cannotAttack(entity) && fuck.hasEffect(EffectStuff.Electrified)) { //&& fuck.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))
+        if (!this.cannotAttack(entity) && fuck.hasEffect(EffectStuff.Electrified) && StormingFragment.isConductive(this.getWeaponItem()) >= 1) { //&& fuck.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))
             if (getAttackStrengthScale(0.5f) > 0.9f) {
                 boolean crit = this.canCriticalAttack(entity);
                 boolean knockback = fuck.isSprinting();
@@ -126,31 +122,9 @@ public abstract class PlayerMixin {
                 if (livingEntity.hasEffect(MobEffects.ABSORPTION)) {
                     MobEffectInstance wsg = livingEntity.getEffect(MobEffects.ABSORPTION);
                     assert wsg != null;
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,wsg.getDuration()+900,wsg.getAmplifier()+1));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, wsg.getDuration() + 900, wsg.getAmplifier() + 1));
                 } else {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,90*20,0));
-                }
-            }
-
-            if (livingEntity.hasEffect(EffectStuff.Electrified)) { //&& livingEntity.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive")))
-                Player fuck = (Player) this.lambda$createAttackSource$0().getDirectEntity();
-                if (fuck != null) {
-                    if (comboAttacker == livingEntity) {
-                        comboCounter++;
-                        if (((PlayerInvoker) comboAttacker).peakagens$canCriticalAttack(fuck)) {
-                            if (comboCounter >= 3 && livingEntity.isHolding(ItemStuff.storming)) {
-                                comboCounter = 0;
-                                damage = damage*1.35f;
-                                LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-                                lightningBolt.setPos(Objects.requireNonNull(fuck).position());
-                                lightningBolt.setVisualOnly(true);
-                                level.addFreshEntity(lightningBolt);
-                            }
-                        }
-                    } else {
-                        comboAttacker = livingEntity;
-                        comboCounter = 1;
-                    }
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 90 * 20, 0));
                 }
             }
         }

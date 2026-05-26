@@ -72,5 +72,7 @@
   "item.peakagens.enchantment_fragment": "Enchant Fragment",
   "item.peakagens.lifesteal_fragment": "Life Fragment",
   "item.peakagens.storm_fragment": "Storm Fragment",
-  "item.peakagens.alchemy_potion": "Alchemy Potion"
+  "item.peakagens.alchemy_potion": "Alchemy Potion",
+  "title.peakagens.combo": "Combo",
+  "title.peakagens.combo_full": "Combo 3/3"
 }
