@@ -19,6 +19,7 @@ import net.minecraft.server.players.NameAndId;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -95,7 +96,7 @@ public abstract class PlayerMixin {
     @Inject(at = @At("HEAD"), method = "attack")
     public void woop(Entity entity, CallbackInfo ci) {
         Player fuck = (Player) this.lambda$createAttackSource$0().getEntity();
-        if (!this.cannotAttack(entity) && fuck.hasEffect(EffectStuff.Electrified) && this.getWeaponItem().is(TagKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))) {
+        if (!this.cannotAttack(entity) && fuck.hasEffect(EffectStuff.Electrified)) { //&& fuck.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))
             if (getAttackStrengthScale(0.5f) > 0.9f) {
                 boolean crit = this.canCriticalAttack(entity);
                 boolean knockback = fuck.isSprinting();
@@ -131,7 +132,7 @@ public abstract class PlayerMixin {
                 }
             }
 
-            if (livingEntity.hasEffect(EffectStuff.Electrified) && livingEntity.getWeaponItem().is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive")))) {
+            if (livingEntity.hasEffect(EffectStuff.Electrified)) { //&& livingEntity.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive")))
                 Player fuck = (Player) this.lambda$createAttackSource$0().getDirectEntity();
                 if (fuck != null) {
                     if (comboAttacker == livingEntity) {
