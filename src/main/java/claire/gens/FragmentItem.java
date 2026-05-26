@@ -86,6 +86,7 @@ public class FragmentItem extends BlankFragmentItem {
                     MobEffectInstance gesbian = new MobEffectInstance(lesbian.getEffect(),lesbian.getDuration(),itemStack.getOrDefault(ModComponents.FragmentLevel, 0));
                     player.addEffect(gesbian);
                 }
+                level.playSound(null,player.blockPosition(),SoundClass.FRAGMENTUSED,SoundSource.PLAYERS);
             }
 
             player.getCooldowns().addCooldown(this.getDefaultInstance(),Math.round(cooldown));

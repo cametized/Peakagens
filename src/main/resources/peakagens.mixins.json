@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "AnvilMixin",
+    "EntityMixin",
     "GemTooltipMixin",
     "PlayerInvoker",
     "PlayerMixin",

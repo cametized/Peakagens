@@ -30,6 +30,11 @@
   "jukebox_song.peakagens.revolvershowdown": "fr3b - revolvershowdown",
   "jukebox_song.peakagens.treeahohess": "fr3b - tree ah oh ess",
 
+  "sound.peakagens.small_electricity": "Electricity Courses",
+  "sound.peakagens.electricity": "Electricity Crackles",
+  "sound.peakagens.zap": "Electricity Releases",
+  "sound.peakagens.fragmentused": "Gem Used",
+
   "enchantment.peakagens.inconspicuous": "Inconspicuous",
   "enchantment.peakagens.florist": "Florist",
   "enchantment.peakagens.shining": "Shining",
@@ -39,6 +44,7 @@
   "effect.peakagens.calmness": "Satiety",
   "effect.peakagens.panic": "Panic",
   "effect.peakagens.floral": "Floral",
+  "effect.peakagens.electrified": "Electrified",
 
   "item.peakagens.rice_bowl": "Bowl of Rice",
   "item.peakagens.rice": "Rice Grain",

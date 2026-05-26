@@ -98,8 +98,20 @@
       }
     ]
   },
-"fragmentused": {
-    "subtitle": "sound.peakagens.fragmentused",
-    "sounds": ["peakagens:fragmentused"]
+  "fragmentused": {
+      "subtitle": "sound.peakagens.fragmentused",
+      "sounds": ["peakagens:fragmentused"]
+  },
+  "electricity": {
+    "subtitle": "sound.peakagens.electricity",
+    "sounds": ["peakagens:elec1","peakagens:elec2","peakagens:elec3"]
+  },
+  "zap": {
+    "subtitle": "sound.peakagens.zap",
+    "sounds": ["peakagens:zap1","peakagens:zap2","peakagens:zap3"]
+  },
+  "small_electric": {
+    "subtitle": "sound.peakagens.small_electricity",
+    "sounds": ["peakagens:small_electric"]
   }
 }

@@ -12,6 +12,9 @@ public class SoundClass {
     }
 
     public static final SoundEvent FRAGMENTUSED = registerSound("fragmentused");
+    public static final SoundEvent electricity = registerSound("electricity");
+    public static final SoundEvent zap = registerSound("zap");
+    public static final SoundEvent smallElectricity = registerSound("small_electric");
 
     public static final SoundEvent GRINDRAILS = registerSound("grindrails");
     public static final SoundEvent FLAXSONG = registerSound("flaxsong");
