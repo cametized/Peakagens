@@ -80,7 +80,7 @@ public class StormingFragment extends BlankFragmentItem {
                 LevelChunk chunk = level.getChunk(player.chunkPosition().x()+1-level.getRandom().nextInt(3),player.chunkPosition().z()+1-level.getRandom().nextInt(3));
                 BlockPos blockPos;
 
-                if (amount > 4 && !(player.isCrouching() && boo != null)) {
+                if (amount > 4 && !((player.isCrouching() || player.hasEffect(EffectStuff.Electrified)) && boo != null)) {
                     blockPos = player.blockPosition();
                 } else if (boo != null) {
                     blockPos = Objects.requireNonNull(Peakagens.findWhoImLookingAt(level, player,48)).blockPosition();
