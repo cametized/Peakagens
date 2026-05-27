@@ -47,10 +47,10 @@ public abstract class LivingEntityMixin {
 
     @WrapMethod(method = "hurtServer")
     public boolean init(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
-        if (source.getEntity() instanceof LivingEntity livingEntity && source.is(DamageTypeTags.IS_PLAYER_ATTACK)) {
+        LivingEntity fuck = this.asLivingEntity();
+        if (source.getEntity() instanceof LivingEntity livingEntity && source.is(DamageTypeTags.IS_PLAYER_ATTACK) && fuck != null) {
             if (livingEntity.hasEffect(EffectStuff.Electrified) && StormingFragment.isConductive(livingEntity.getWeaponItem()) >= 2) { //&& livingEntity.getItemInHand(InteractionHand.MAIN_HAND).is()
                 //Peakagens.LOGGER.info("bitch");
-                LivingEntity fuck = this.asLivingEntity();
                 if (fuck != null) {
                     if (comboAttacker == livingEntity) {
                         comboCounter++;
@@ -78,6 +78,15 @@ public abstract class LivingEntityMixin {
                         comboAttacker = livingEntity;
                         comboCounter = 1;
                     }
+                }
+            }
+            if (livingEntity.isHolding(ItemStuff.lifesteal) && fuck.hasEffect(MobEffects.HEALTH_BOOST)) {
+                if (fuck.hasEffect(EffectStuff.Vulnerable)) {
+                    MobEffectInstance mobEffectInstance = fuck.getEffect(EffectStuff.Vulnerable);
+                    assert mobEffectInstance != null;
+                    fuck.addEffect(new MobEffectInstance(EffectStuff.Vulnerable,Math.round(Math.clamp(mobEffectInstance.getDuration() + Math.round(damage*2),10,30*20)),mobEffectInstance.getAmplifier() + Math.round(damage*2/3)));
+                } else {
+                    fuck.addEffect(new MobEffectInstance(EffectStuff.Vulnerable,Math.round(Math.clamp(Math.round(damage*2),10,10*20)),Math.round(damage*2/3)));
                 }
             }
         }

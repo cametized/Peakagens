@@ -33,7 +33,6 @@ public class LifestealFragmentItem extends BlankFragmentItem {
         if (player1 != null) {
             player.getCooldowns().addCooldown(player.getItemInHand(hand),20*30);
             player1.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST,-1,0));
-            player1.addEffect(new MobEffectInstance(EffectStuff.Vulnerable,-1,0));
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
