@@ -6,6 +6,7 @@ import claire.gens.effect.EffectStuff;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -13,6 +14,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,6 +32,15 @@ import java.util.Objects;
 public abstract class LivingEntityMixin {
     @Shadow
     public abstract @Nullable LivingEntity asLivingEntity();
+
+    @Shadow
+    public abstract boolean hasEffect(Holder<MobEffect> effect);
+
+    @Shadow
+    public abstract boolean addEffect(MobEffectInstance newEffect);
+
+    @Shadow
+    public abstract @Nullable MobEffectInstance getEffect(Holder<MobEffect> effect);
 
     @Unique public LivingEntity comboAttacker = null;
     @Unique public int comboCounter = 0;

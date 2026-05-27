@@ -117,12 +117,12 @@ public abstract class PlayerMixin {
     @Inject(at = @At("TAIL"), method = "hurtServer")
     public void init(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
         if (source.getEntity() instanceof LivingEntity livingEntity && source.is(DamageTypeTags.IS_PLAYER_ATTACK)) {
-
-            if (livingEntity.isHolding(ItemStuff.lifesteal)) {
+            LivingEntity fuck = Objects.requireNonNull(this.lambda$createAttackSource$0().getEntity()).asLivingEntity();
+            if (livingEntity.isHolding(ItemStuff.lifesteal) && !fuck.hasEffect(EffectStuff.Vulnerable)) {
                 if (livingEntity.hasEffect(MobEffects.ABSORPTION)) {
                     MobEffectInstance wsg = livingEntity.getEffect(MobEffects.ABSORPTION);
                     assert wsg != null;
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, wsg.getDuration() + 900, wsg.getAmplifier() + 1));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, wsg.getDuration() + 900, Math.clamp(wsg.getAmplifier() < Math.round(livingEntity.getAbsorptionAmount()/4) ? wsg.getAmplifier()+1 : Math.round(livingEntity.getAbsorptionAmount()/4),0,9)));
                 } else {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 90 * 20, 0));
                 }
