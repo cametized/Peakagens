@@ -47,6 +47,12 @@ public class LootTables {
                         .when(LootItemRandomChanceCondition.randomChance(0.35f))
                         .add(LootItem.lootTableItem(Items.ENCHANTED_BOOK));
                 tableBuilder.withPool(poolBuilder);
+            } else if (BuiltInLootTables.SIMPLE_DUNGEON.equals(key) &&  source.isBuiltin()) {
+                LootPool.Builder poolBuilder = LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(LootItemRandomChanceCondition.randomChance(0.10f))
+                        .add(LootItem.lootTableItem(ItemStuff.blood_cloth));
+                tableBuilder.withPool(poolBuilder);
             }
         });
     }

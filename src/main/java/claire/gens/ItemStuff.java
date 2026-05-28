@@ -10,6 +10,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.DoubleTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -180,6 +181,18 @@ public class ItemStuff {
                     .durability(ArmorType.HELMET.getDurability(Overpower.BASE_DURABILITY))
     );
 
+    public static final Item cloth = register(
+            "cloth",
+            Item::new,
+            new Item.Properties()
+    );
+
+    public static final Item blood_cloth = register(
+            "blood_cloth",
+            Item::new,
+            new Item.Properties()
+    );
+
     public static final Item wilted_alloy = register(
             "wilted_alloy",
             Item::new,
@@ -201,7 +214,7 @@ public class ItemStuff {
     public static final Item bloodMace = register(
             "blood_mace",
             BloodMace::new,
-            new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes())
+            new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes()).stacksTo(1)
     );
 
     public static final Item cardboardbox = register(
@@ -222,7 +235,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(6).saturationModifier(0.2f).build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
             )
     );
 
@@ -239,7 +252,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(5).saturationModifier(1.5f).build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
             )
     );
 
@@ -248,7 +261,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                             new FoodProperties.Builder().nutrition(3).saturationModifier(0.2f).build(),
-                            Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,2400))).build()
+                            Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
                     )
     );
 
@@ -257,7 +270,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(1).saturationModifier(0.2f).build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,950))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
             )
     );
 
@@ -372,7 +385,10 @@ public class ItemStuff {
                 output.accept(wilted_alloy);
                 output.accept(spycicle);
                 output.accept(scythe);
-                //output.accept(bloodMace);
+
+                output.accept(bloodMace);
+                output.accept(cloth);
+                output.accept(blood_cloth);
 
                 output.accept(ricebowl);
                 output.accept(rice);

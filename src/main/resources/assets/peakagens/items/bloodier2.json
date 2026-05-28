@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "peakagens:item/blood_mace",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 16742780
+      }
+    ]
+  }
+}
