@@ -1,7 +1,10 @@
 package claire.gens;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,6 +56,7 @@ public class BloodMace extends MaceItem {
                 player.level().sendParticles(ParticleTypes.FLAME, target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),particles, target.getBbWidth()/2, target.getBbHeight()/2, target.getBbWidth()/2, 0.0);
                 player.level().sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(), particles, target.getBbWidth()/2, target.getBbHeight()/2, target.getBbWidth()/2, 1.5);
                 stack.set(DataComponents.ITEM_MODEL, Identifier.fromNamespaceAndPath("peakagens","blood_mace"));
+                target.hurtServer((ServerLevel) level,player.damageSources().source(ResourceKey.create(Registries.DAMAGE_TYPE,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"blood_mace"))),18);
                 setComboStage(stack, 0);
             }
         }

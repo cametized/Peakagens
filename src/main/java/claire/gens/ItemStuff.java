@@ -184,13 +184,13 @@ public class ItemStuff {
     public static final Item cloth = register(
             "cloth",
             Item::new,
-            new Item.Properties()
+            new Item.Properties().stacksTo(1)
     );
 
     public static final Item blood_cloth = register(
             "blood_cloth",
             Item::new,
-            new Item.Properties()
+            new Item.Properties().stacksTo(1)
     );
 
     public static final Item wilted_alloy = register(
@@ -279,62 +279,64 @@ public class ItemStuff {
             "strength",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,20*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.STRENGTH,20*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item swiftness = register(
             "swiftness",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.SPEED,30*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.SPEED,30*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item haste = register(
             "haste",
             properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.HASTE,5*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.HASTE,5*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item jumpboos = register(
             "jump",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.JUMP_BOOST,15*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.JUMP_BOOST,15*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item resist = register(
             "resistance",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.RESISTANCE,30*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.RESISTANCE,30*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item absorption = register(
             "extraheart",
             properties -> new FragmentItem(properties,FragmentType.PotionUseAmplifier),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,60*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.ABSORPTION,60*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item fireres = register(
             "fireres",
             properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,5*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,5*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item nightvision = register(
             "nightvision",
             properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.NIGHT_VISION,10*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.NIGHT_VISION,10*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item waterbreath = register(
             "waterbreathe",
             properties -> new FragmentItem(properties,false),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.WATER_BREATHING,5*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.WATER_BREATHING,5*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
     public static final Item invis = register(
             "invis",
             properties -> new FragmentItem(properties,true),
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
-                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0)))
+                    .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
+
+    public static final List<Item> gemList = List.of(strength,swiftness,haste,jumpboos,resist,absorption,fireres,nightvision,waterbreath,invis);
 
     //Fragments
     public static final Item alchemy = register(

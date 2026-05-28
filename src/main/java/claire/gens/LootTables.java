@@ -1,12 +1,18 @@
 package claire.gens;
 
+import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+
+import java.util.List;
 
 public class LootTables {
     public static void modify() {
@@ -16,12 +22,6 @@ public class LootTables {
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.15f))
                         .add(LootItem.lootTableItem(ItemStuff.grindrails));
-                tableBuilder.withPool(poolBuilder);
-            } else if (BuiltInLootTables.BASTION_TREASURE.equals(key) &&  source.isBuiltin()) {
-                LootPool.Builder poolBuilder = LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(0.25f))
-                        .add(LootItem.lootTableItem(ItemStuff.yag));
                 tableBuilder.withPool(poolBuilder);
             } else if (BuiltInLootTables.IGLOO_CHEST.equals(key) &&  source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
@@ -51,8 +51,39 @@ public class LootTables {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.10f))
-                        .add(LootItem.lootTableItem(ItemStuff.blood_cloth));
+                        .add(LootItem.lootTableItem(ItemStuff.cloth));
                 tableBuilder.withPool(poolBuilder);
+            } else if (BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE.equals(key) && source.isBuiltin()) {
+                LootItemFunction lootItemFunction = new LootItemFunction() {
+                    @Override
+                    public MapCodec<? extends LootItemFunction> codec() {
+                        return null;
+                    }
+
+                    @Override
+                    public ItemStack apply(ItemStack itemStack, LootContext lootContext) {
+                        ItemStack gamer = ItemStuff.gemList.get(lootContext.getLevel().getRandom().nextIntBetweenInclusive(0,ItemStuff.gemList.size()-1)).getDefaultInstance();
+                        return itemStack.is(Items.HEAVY_CORE) ? gamer : itemStack;
+                    }
+                };
+                tableBuilder.apply(lootItemFunction);
+            } else if (List.of(BuiltInLootTables.BASTION_TREASURE,BuiltInLootTables.BASTION_BRIDGE,BuiltInLootTables.BASTION_OTHER,BuiltInLootTables.BASTION_HOGLIN_STABLE).contains(key) && source.isBuiltin()) {
+                LootPool.Builder poolBuilder = BuiltInLootTables.BASTION_TREASURE.equals(key) ?
+                        LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(0.25f)).add(LootItem.lootTableItem(ItemStuff.yag))
+                        : LootPool.lootPool();
+                LootItemFunction lootItemFunction = new LootItemFunction() {
+                    @Override
+                    public MapCodec<? extends LootItemFunction> codec() {
+                        return null;
+                    }
+
+                    @Override
+                    public ItemStack apply(ItemStack itemStack, LootContext lootContext) {
+                        ItemStack gamer = ItemStuff.gemList.get(lootContext.getLevel().getRandom().nextIntBetweenInclusive(0,ItemStuff.gemList.size()-1)).getDefaultInstance();
+                        return itemStack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE) ? gamer : itemStack;
+                    }
+                };
+                tableBuilder.apply(lootItemFunction).withPool(poolBuilder);
             }
         });
     }
