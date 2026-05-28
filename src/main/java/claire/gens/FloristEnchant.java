@@ -35,7 +35,7 @@ public class FloristEnchant {
                     Identifier.fromNamespaceAndPath(MOD_ID, "florist"));
 
     private static final List<Block> FLOWERS = List.of(
-            Blocks.DANDELION, Blocks.POPPY, Blocks.BLUE_ORCHID, Blocks.ALLIUM, Blocks.AZURE_BLUET, Blocks.RED_TULIP, Blocks.ORANGE_TULIP, Blocks.WHITE_TULIP, Blocks.PINK_TULIP, Blocks.OXEYE_DAISY, Blocks.CORNFLOWER, Blocks.LILY_OF_THE_VALLEY, Blocks.SHORT_GRASS, Blocks.TALL_GRASS, Blocks.ROSE_BUSH
+            Blocks.DANDELION, Blocks.POPPY, Blocks.BLUE_ORCHID, Blocks.ALLIUM, Blocks.AZURE_BLUET, Blocks.RED_TULIP, Blocks.ORANGE_TULIP, Blocks.WHITE_TULIP, Blocks.PINK_TULIP, Blocks.OXEYE_DAISY, Blocks.CORNFLOWER, Blocks.LILY_OF_THE_VALLEY, Blocks.SHORT_GRASS, Blocks.TALL_GRASS, Blocks.ROSE_BUSH, Blocks.PEONY, Blocks.LILAC, Blocks.WILDFLOWERS
     ); // hell on earth bro
 
     private static final Random RANDOM = new Random();
