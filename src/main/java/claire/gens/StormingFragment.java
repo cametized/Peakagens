@@ -3,12 +3,14 @@ package claire.gens;
 import claire.gens.effect.EffectStuff;
 import claire.gens.mixin.PlayerInvoker;
 import claire.gens.mixin.ThunderInvoker;
+import claire.gens.sounds.SoundClass;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -73,6 +75,7 @@ public class StormingFragment extends BlankFragmentItem {
             } else if (!level.isClientSide())  {
                 Objects.requireNonNull(level.getServer()).setWeatherParameters(0, ServerLevel.RAIN_DURATION.sample(level.getRandom()),true,false);
             }
+            level.playSound(null,player.blockPosition(), SoundClass.FRAGMENTUSED, SoundSource.PLAYERS);
             player.getCooldowns().addCooldown(player.getItemInHand(hand),20);
             return InteractionResult.SUCCESS;
         } else if (level.canHaveWeather()) {

@@ -37,6 +37,9 @@
   "sound.peakagens.zap": "Electricity Releases",
   "sound.peakagens.fragmentused": "Gem Used",
 
+  "death.attack.vulnerability": "%1$s couldn't",
+  "death.attack.vulnerability.player": "%1$s was slain by %2$s",
+
   "enchantment.peakagens.inconspicuous": "Inconspicuous",
   "enchantment.peakagens.florist": "Florist",
   "enchantment.peakagens.shining": "Shining",

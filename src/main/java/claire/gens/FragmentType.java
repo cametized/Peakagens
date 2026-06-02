@@ -8,6 +8,5 @@ public enum FragmentType {
     Alchemy,
     Enchanting,
     Lifesteal,
-    Storm,
-    Flight
+    Storm
 }

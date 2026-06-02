@@ -1,6 +1,8 @@
 package claire.gens;
 
 import claire.gens.effect.EffectStuff;
+import claire.gens.sounds.SoundClass;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -33,6 +35,7 @@ public class LifestealFragmentItem extends BlankFragmentItem {
         if (player1 != null) {
             player.getCooldowns().addCooldown(player.getItemInHand(hand),20*30);
             player1.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST,-1,0));
+            level.playSound(null,player.blockPosition(), SoundClass.FRAGMENTUSED, SoundSource.PLAYERS);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;

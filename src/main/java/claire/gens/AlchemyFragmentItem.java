@@ -1,7 +1,10 @@
 package claire.gens;
 
+import claire.gens.sounds.SoundClass;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -33,6 +36,7 @@ public class AlchemyFragmentItem extends BlankFragmentItem {
             boolean soolean = false;
             if (!player.getActiveEffects().isEmpty()) {
                 soolean = true;
+                level.playSound(null,player.blockPosition(), SoundEvents.BOTTLE_FILL,SoundSource.PLAYERS);
                 List<MobEffectInstance> balls = new ArrayList<>(player.getActiveEffects());
                 PotionContents potionContents = new PotionContents(Optional.empty(),Optional.empty(),balls,Optional.empty());
                 player.removeAllEffects();
@@ -69,6 +73,7 @@ public class AlchemyFragmentItem extends BlankFragmentItem {
                 areaEffectCloud.setPotionContents(potionContents);
                 level.addFreshEntity(areaEffectCloud);
             }
+            level.playSound(null,player.blockPosition(), SoundClass.FRAGMENTUSED, SoundSource.PLAYERS);
             player.getCooldowns().addCooldown(player.getItemInHand(hand),cooldown);
             return InteractionResult.SUCCESS;
         }

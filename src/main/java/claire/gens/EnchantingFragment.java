@@ -1,9 +1,11 @@
 package claire.gens;
 
+import claire.gens.sounds.SoundClass;
 import net.fabricmc.fabric.impl.item.EnchantmentUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -51,6 +53,7 @@ public class EnchantingFragment extends BlankFragmentItem {
             }
             if (found) {
                 player.getCooldowns().addCooldown(player.getItemInHand(hand),player==player1 ? 10 : 3*60*20);
+                level.playSound(null,player.blockPosition(), SoundClass.FRAGMENTUSED, SoundSource.PLAYERS);
             }
             return found ? InteractionResult.SUCCESS : InteractionResult.PASS;
         }

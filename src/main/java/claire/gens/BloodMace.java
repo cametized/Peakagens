@@ -18,7 +18,7 @@ public class BloodMace extends MaceItem {
         super(properties);
     }
     @Override
-    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Level level = attacker.level();
         boolean didHitEntity = !level.isClientSide();
         int combo = getComboStage(stack);
@@ -60,7 +60,7 @@ public class BloodMace extends MaceItem {
                 setComboStage(stack, 0);
             }
         }
-        super.hurtEnemy(stack, target, attacker);
+        super.postHurtEnemy(stack, target, attacker);
     }
     private int getComboStage(ItemStack stack) {
         Identifier model = stack.get(DataComponents.ITEM_MODEL);
