@@ -5,12 +5,12 @@ import claire.gens.armor.Overpower;
 import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.Jukebox;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.fabricmc.fabric.impl.item.EnchantmentUtil;
+import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.DoubleTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -20,11 +20,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -360,6 +360,32 @@ public class ItemStuff {
             new Item.Properties().stacksTo(1)
     );
 
+    public static final Holder<Potion> SHORT =
+            Registry.registerForHolder(
+                    BuiltInRegistries.POTION,
+                    Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "short"),
+                    new Potion("short",
+                            new MobEffectInstance(
+                                    EffectStuff.Short,
+                                    1800,
+                                    0
+                            )
+                    )
+            );
+
+    public static final Holder<Potion> LONG_SHORT =
+            Registry.registerForHolder(
+                    BuiltInRegistries.POTION,
+                    Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "long_short"),
+                    new Potion("long_short",
+                            new MobEffectInstance(
+                                    EffectStuff.Short,
+                                    3600,
+                                    0
+                            )
+                    )
+            );
+
     //debug item
 
     public static final Item theDEBUGitem = register(
@@ -436,6 +462,28 @@ public class ItemStuff {
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
+
+        FabricPotionBrewingBuilder.BUILD.register(builder -> {
+            builder.addMix(
+                    // Input potion.
+                    Potions.WATER,
+                    // Ingredient
+                    Items.GOLDEN_DANDELION,
+                    // Output potion.
+                    SHORT
+            );
+        });
+        FabricPotionBrewingBuilder.BUILD.register(builder -> {
+            builder.addMix(
+                    // Input potion.
+                    SHORT,
+                    // Ingredient
+                    Items.REDSTONE,
+                    // Output potion.
+                    LONG_SHORT
+            );
+        });
+
     }
 }
 

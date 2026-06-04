@@ -11,6 +11,16 @@
 
   "block.peakagens.smiley": "smiley :)",
 
+  "item.minecraft.potion.effect.short": "Potion of Short",
+  "item.minecraft.splash_potion.effect.short": "Splash Potion of Short",
+  "item.minecraft.lingering_potion.effect.short": "Lingering Potion of Short",
+  "item.minecraft.tipped_arrow.effect.short": "Arrow of Short",
+
+  "item.minecraft.potion.effect.long_short": "Potion of Short",
+   "item.minecraft.splash_potion.effect.long_short": "Splash Potion of Short",
+   "item.minecraft.lingering_potion.effect.long_short": "Lingering Potion of Short",
+   "item.minecraft.tipped_arrow.effect.long_short": "Arrow of Short",
+
   "item.peakagens.grindrails": "Music Disc",
   "item.peakagens.flaxsong": "Music Disc",
   "item.peakagens.disc1": "Music Disc",
@@ -52,6 +62,7 @@
   "effect.peakagens.vulnerable": "Vulnerable",
   "effect.peakagens.floral": "Floral",
   "effect.peakagens.electrified": "Electrified",
+  "effect.peakagens.short": "Short",
 
   "item.peakagens.rice_bowl": "Bowl of Rice",
   "item.peakagens.rice": "Rice Grain",
