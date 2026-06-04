@@ -211,11 +211,11 @@ public class ItemStuff {
             new Item.Properties().sword(scythematerial, -1f, -3f)
     );
 
-    public static final Item bloodMace = register(
-            "blood_mace",
-            BloodMace::new,
-            new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes()).stacksTo(1)
-    );
+    //public static final Item bloodMace = register(
+    //        "blood_mace",
+    //        BloodMace::new,
+    //        new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes()).stacksTo(1)
+    //);
 
     public static final Item cardboardbox = register(
             "cardboardbox",
@@ -388,7 +388,7 @@ public class ItemStuff {
                 output.accept(spycicle);
                 output.accept(scythe);
 
-                output.accept(bloodMace);
+                //output.accept(bloodMace);
                 output.accept(cloth);
                 output.accept(blood_cloth);
 
