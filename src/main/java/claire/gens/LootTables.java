@@ -16,6 +16,8 @@ import java.util.List;
 
 public class LootTables {
     public static void modify() {
+        // discs added: grindrails, cleanup, disc1, test11, yag
+        // discs not added: battle, menu5, revolvershowdown, treeahohess, colonize, flaxsong
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
             if (BuiltInLootTables.ABANDONED_MINESHAFT.equals(key) && source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
