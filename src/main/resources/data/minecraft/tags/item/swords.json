@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "peakagens:scythe"
+    "peakagens:scythe",
+    "peakagens:jthe"
   ]
 }

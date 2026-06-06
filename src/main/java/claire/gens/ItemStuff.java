@@ -68,6 +68,12 @@ public class ItemStuff {
                             )
     );
 
+    public static final Item jthe = register(
+            "jthe",
+            Item::new,
+            new Item.Properties().sword(ToolMaterial.DIAMOND, -100f, 1)
+    );
+
     public static final Item grindrails = register(
             "grindrails",
             Item::new,
