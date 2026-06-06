@@ -4,6 +4,7 @@ import claire.gens.effect.EffectStuff;
 import claire.gens.recipes.AlchemyBottleRecipe;
 import claire.gens.sounds.SoundClass;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
@@ -13,6 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.gamerules.GameRule;
+import net.minecraft.world.level.gamerules.GameRuleCategory;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
@@ -23,6 +26,11 @@ import java.util.Iterator;
 public class Peakagens implements ModInitializer {
 	public static final String MOD_ID = "peakagens";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static final GameRule<Boolean> literallyTheEnd = GameRuleBuilder
+			.forBoolean(true) // Default value declaration
+			.category(GameRuleCategory.MISC)
+			.buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "literally_the_end"));
 
 	@Override
 	public void onInitialize() {

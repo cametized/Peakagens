@@ -5,6 +5,7 @@
   "mixins": [
     "AnvilMixin",
     "EntityMixin",
+    "EyeLockMixin",
     "GemTooltipMixin",
     "LivingEntityMixin",
     "PlayerInvoker",

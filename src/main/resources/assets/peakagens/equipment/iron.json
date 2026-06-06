@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "peakagens:iron"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "peakagens:iron"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "peakagens:iron"
+      }
+    ]
+  }
+}

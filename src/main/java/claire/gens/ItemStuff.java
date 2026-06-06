@@ -36,6 +36,13 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ItemStuff {
+    public static <T extends Item> T register1(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
+        ResourceKey<@NotNull Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", name));
+        T item = itemFactory.apply(settings.setId(itemKey));
+
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+        return item;
+    }
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<@NotNull Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, name));
         T item = itemFactory.apply(settings.setId(itemKey));
@@ -214,6 +221,33 @@ public class ItemStuff {
     //        Item::new,         // cam i dont think it'd be crazy hard
     //        new Item.Properties()
     //);
+
+    public static final Item emralh = register1(
+            "rzrenyq_uryzrg",
+            properties -> new NameItem(properties,Component.literal("Emerald Helmet")),
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.HELMET)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_helmet")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+    );
+    public static final Item emralc = register1(
+            "rzrenyq_purfgcyngr",
+            properties -> new NameItem(properties,Component.literal("Emerald Chestplate")),
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.CHESTPLATE)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_chestplate")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+    );
+    public static final Item emralb = register1(
+            "rzrenyq_obbgf",
+            properties -> new NameItem(properties,Component.literal("Emerald Boots")),
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.BOOTS)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_boots")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+    );
+    public static final Item emrall = register1(
+            "rzrenyq_yrttvatf",
+            properties -> new NameItem(properties,Component.literal("Emerald Leggings")),
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.LEGGINGS)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_leggings")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+    );
+
+
 
     public static final Item scythe = register(
             "scythe",
@@ -426,7 +460,7 @@ public class ItemStuff {
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
                 output.accept(RadicalRadio);
-                output.accept(ThisItemDoesNothingAndItsForShow);
+                //output.accept(ThisItemDoesNothingAndItsForShow);
                 output.accept(alchemy);
                 output.accept(enchanting);
                 output.accept(lifesteal);
