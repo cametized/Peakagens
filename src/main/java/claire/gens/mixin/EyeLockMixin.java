@@ -15,7 +15,7 @@ import java.util.Objects;
 public class EyeLockMixin {
     @WrapMethod(method = "useOn")
     public InteractionResult init(UseOnContext context, Operation<InteractionResult> original) {
-        if (Objects.requireNonNull(context.getLevel().getServer()).getGameRules().get(Peakagens.literallyTheEnd)) {
+        if (!context.getLevel().isClientSide() && Objects.requireNonNull(context.getLevel().getServer()).getGameRules().get(Peakagens.literallyTheEnd)) {
             return original.call(context);
         }
         return InteractionResult.PASS;
