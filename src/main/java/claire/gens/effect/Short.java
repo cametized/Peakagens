@@ -10,7 +10,7 @@ public class Short extends MobEffect {
     public Short() {
         super(MobEffectCategory.BENEFICIAL, 0xffffff);
 
-        this.addAttributeModifier(Attributes.SCALE, Identifier.parse("short"), -0.8D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+        this.addAttributeModifier(Attributes.SCALE, Identifier.parse("short"), -0.5D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     }
 
     @Override

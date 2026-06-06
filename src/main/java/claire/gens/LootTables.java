@@ -2,13 +2,20 @@ package claire.gens;
 
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.TagEntry;
+import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 
@@ -47,7 +54,15 @@ public class LootTables {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.35f))
-                        .add(LootItem.lootTableItem(Items.ENCHANTED_BOOK));
+                        .add(LootItem.lootTableItem(Items.ENCHANTED_BOOK)
+                                .apply(new SetEnchantmentsFunction.Builder()
+                                        .withEnchantment(
+                                                registries.lookupOrThrow(Registries.ENCHANTMENT)
+                                                        .getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(FloristEnchant.MOD_ID, "florist"))),
+                                                ConstantValue.exactly(1)
+                                        )
+                                )
+                        );
                 tableBuilder.withPool(poolBuilder);
             } else if (BuiltInLootTables.SIMPLE_DUNGEON.equals(key) &&  source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()

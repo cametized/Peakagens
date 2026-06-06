@@ -8,6 +8,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -33,6 +34,7 @@ public class FloristEnchant {
     private static final TagKey<Enchantment> FLORIST =
             TagKey.create(Registries.ENCHANTMENT,
                     Identifier.fromNamespaceAndPath(MOD_ID, "florist"));
+    public static final ResourceKey<Enchantment> FLORIST_KEY = ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(MOD_ID, "florist"));
 
     private static final List<Block> FLOWERS = List.of(
             Blocks.DANDELION, Blocks.POPPY, Blocks.BLUE_ORCHID, Blocks.ALLIUM, Blocks.AZURE_BLUET, Blocks.RED_TULIP, Blocks.ORANGE_TULIP, Blocks.WHITE_TULIP, Blocks.PINK_TULIP, Blocks.OXEYE_DAISY, Blocks.CORNFLOWER, Blocks.LILY_OF_THE_VALLEY, Blocks.SHORT_GRASS, Blocks.TALL_GRASS, Blocks.ROSE_BUSH, Blocks.PEONY, Blocks.LILAC, Blocks.WILDFLOWERS
