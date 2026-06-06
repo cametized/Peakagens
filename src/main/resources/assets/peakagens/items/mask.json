@@ -1,0 +1,44 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:custom_model_data",
+    "cases": [
+      {
+        "when": {
+          "strings": [
+            "mask"
+          ]
+        },
+        "model": {
+          "type": "minecraft:model",
+          "model": "peakagens:item/mask1",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": [
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "peakagens:item/mask",
+      "tints": [
+        {
+          "type": "minecraft:dye",
+          "default": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

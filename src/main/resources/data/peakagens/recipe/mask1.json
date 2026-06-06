@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "#minecraft:wool",
+    "#minecraft:wool",
+    "minecraft:white_dye",
+    "#minecraft:wool",
+    "#minecraft:wool"
+  ],
+  "result": {
+    "id": "peakagens:mask"
+  }
+}

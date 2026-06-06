@@ -69,6 +69,7 @@ public class MonocleItem extends SpyglassItem {
             if (hey != null) {
                 hey.igniteForTicks(20); // later imma try to make this do more damage prolly
                 if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
+
                     itemStack.hurtAndBreak(1,player,player.getUsedItemHand());
                 }
             }

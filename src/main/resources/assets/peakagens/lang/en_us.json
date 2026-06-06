@@ -3,7 +3,9 @@
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
   "item.peakagens.monocle": "Monocle",
   "item.peakagens.wilted_alloy": "Wilted Alloy",
+  "item.peakagens.cardboardboxhelmet": "Cardboard Box",
   "item.peakagens.cardboardbox": "Cardboard Box",
+  "item.peakagens.mask": "Mask",
   "item.peakagens.scythe": "Scythe",
   "item.peakagens.godsgem": "Gods Gem of Will",
   "item.peakagens.cloth": "Cloth",
@@ -92,5 +94,6 @@
   "item.peakagens.storm_fragment": "Storm Fragment",
   "item.peakagens.alchemy_potion": "Alchemy Potion",
   "title.peakagens.combo": "Combo",
-  "title.peakagens.combo_full": "Combo 3/3"
+  "title.peakagens.combo_full": "Combo 3/3",
+  "item.peakagens.cardboardbox.lore": "Mask"
 }

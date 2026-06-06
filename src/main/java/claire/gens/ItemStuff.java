@@ -15,14 +15,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.CommonColors;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -52,6 +55,7 @@ public class ItemStuff {
 
     public static final TagKey<Item> conductiveTag = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive"));
     public static final TagKey<Item> ultraConductiveTag = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"ultraconductive"));
+    public static final TagKey<Item> hideNameTag = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"hide_name"));
 
     public static final Item RadicalRadio = register(
             "radical",
@@ -217,11 +221,24 @@ public class ItemStuff {
             new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes()).stacksTo(1)
     );
 
+    public static final Item cardboardboxhelmet = register(
+            "cardboardboxhelmet",
+            Item::new,
+            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"cardboardbox"))
+    );
+
     public static final Item cardboardbox = register(
             "cardboardbox",
             Item::new,
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY))
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).component(DataComponents.LORE,new ItemLore(List.of(Component.translatable("item.peakagens.cardboardbox.lore").withColor(CommonColors.GRAY))))
+    );
+
+    public static final Item Mask = register(
+            "mask",
+            Item::new,
+            new Item.Properties().equippable(EquipmentSlot.HEAD).stacksTo(1)
     );
 
     public static final Item spycicle = register(
@@ -408,11 +425,15 @@ public class ItemStuff {
                 output.accept(enchanting);
                 output.accept(lifesteal);
                 output.accept(storming);
+                output.accept(cardboardboxhelmet);
                 output.accept(cardboardbox);
                 //output.accept(angelsword);
                 output.accept(wilted_alloy);
                 output.accept(spycicle);
                 output.accept(scythe);
+
+                ItemStack maskNorm = Mask.getDefaultInstance();
+                output.accept(maskNorm);
 
                 //output.accept(bloodMace);
                 output.accept(cloth);

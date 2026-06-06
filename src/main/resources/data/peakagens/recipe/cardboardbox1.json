@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "peakagens:cardboardboxhelmet",
+  "addition": "peakagens:mask",
+  "template": "minecraft:slime_ball",
+  "result": {
+    "id": "peakagens:cardboardbox"
+  }
+}

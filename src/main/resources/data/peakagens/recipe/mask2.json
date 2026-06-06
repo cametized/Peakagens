@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "peakagens:mask",
+  "addition": "minecraft:glass",
+  "template": "minecraft:slime_ball",
+  "result": {
+    "id": "peakagens:mask",
+    "components": {
+      "minecraft:custom_model_data": {
+        "strings": [
+          "mask"
+        ]
+      }
+    }
+  }
+}
