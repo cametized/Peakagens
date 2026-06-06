@@ -28,6 +28,7 @@ import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.levelgen.Heightmap;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.List;
@@ -84,7 +85,7 @@ public class StormingFragment extends BlankFragmentItem {
                 BlockPos blockPos;
 
                 if (amount > 4 && !((player.isCrouching() || player.hasEffect(EffectStuff.Electrified)) && boo != null)) {
-                    blockPos = player.blockPosition();
+                    blockPos = serverLevel.canSeeSkyFromBelowWater(player.blockPosition()) || serverLevel.canSeeSky(player.blockPosition()) ? player.blockPosition() : serverLevel.getHeightmapPos(Heightmap.Types.WORLD_SURFACE_WG,player.blockPosition());
                 } else if (boo != null) {
                     BlockPos ball = Objects.requireNonNull(Peakagens.findWhoImLookingAt(level, player,48)).blockPosition();
                     blockPos = ((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(ball));
