@@ -65,9 +65,9 @@ public class MonocleItem extends SpyglassItem {
                 itemStack.hurtAndBreak(1,livingEntity,livingEntity.getUsedItemHand());
             }
         } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wshine"))) && livingEntity instanceof Player player && !level.isClientSide()) {
-            LivingEntity hey = Peakagens.findWhoImLookingAt(level, player, 8);
+            LivingEntity hey = Peakagens.findWhoImLookingAt(level, player, 14);
             if (hey != null) {
-                hey.igniteForTicks(20); // later imma try to make this do more damage prolly
+                hey.igniteForTicks(40); // later imma try to make this do more damage prolly
                 if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
 
                     itemStack.hurtAndBreak(1,player,player.getUsedItemHand());

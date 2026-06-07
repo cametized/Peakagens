@@ -2,8 +2,7 @@
   "exclusive_set": "#peakagens:monocle_incompat",
   "anvil_cost": 3,
   "description": {
-    "translate": "enchantment.peakagens.inconspicuous",
-    "italic": true
+    "translate": "enchantment.peakagens.inconspicuous"
   },
   "max_cost": {
     "base": 30,

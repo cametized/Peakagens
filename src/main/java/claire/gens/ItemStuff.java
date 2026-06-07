@@ -308,7 +308,7 @@ public class ItemStuff {
             "fried_egg",
             Item::new,
             new Item.Properties().food(
-                    new FoodProperties.Builder().nutrition(5).saturationModifier(1.5f).build(),
+                    new FoodProperties.Builder().nutrition(4).saturationModifier(1.5f).alwaysEdible().build(),
                     Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
             )
     );

@@ -2,8 +2,7 @@
   "exclusive_set": "#peakagens:monocle_incompat",
   "anvil_cost": 8,
   "description": {
-    "translate": "enchantment.peakagens.blink",
-    "color": "gold"
+    "translate": "enchantment.peakagens.blink"
   },
   "max_cost": {
     "base": 50,
