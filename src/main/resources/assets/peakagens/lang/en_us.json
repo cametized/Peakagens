@@ -1,5 +1,6 @@
 {
   "creativeTab.peakagens": "Peakagens",
+
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
   "item.peakagens.monocle": "Monocle",
   "item.peakagens.wilted_alloy": "Wilted Alloy",
@@ -11,12 +12,14 @@
   "item.peakagens.cloth": "Cloth",
   "item.peakagens.blood_cloth": "Blood Cloth",
 
-  "block.peakagens.smiley": "smiley :)",
+  "item.peakagens.gem_upgrade": "Gem Upgrader",
 
   "item.minecraft.potion.effect.short": "Potion of Short",
-  "item.minecraft.splash_potion.effect.short": "Splash Potion of Short",
-  "item.minecraft.lingering_potion.effect.short": "Lingering Potion of Short",
-  "item.minecraft.tipped_arrow.effect.short": "Arrow of Short",
+    "item.minecraft.splash_potion.effect.short": "Splash Potion of Short",
+    "item.minecraft.lingering_potion.effect.short": "Lingering Potion of Short",
+    "item.minecraft.tipped_arrow.effect.short": "Arrow of Short",
+
+  "block.peakagens.smiley": "smiley :)",
 
   "item.minecraft.potion.effect.long_short": "Potion of Short",
    "item.minecraft.splash_potion.effect.long_short": "Splash Potion of Short",

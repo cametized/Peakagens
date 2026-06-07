@@ -393,6 +393,12 @@ public class ItemStuff {
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
 
+    public static final Item gem_upgrade = register(
+            "gem_upgrade",
+            Item::new,
+            new Item.Properties().stacksTo(1)
+    );
+
     public static final List<Item> gemList = List.of(strength,swiftness,haste,jumpboos,resist,absorption,fireres,nightvision,waterbreath,invis);
 
     //Fragments
@@ -506,6 +512,7 @@ public class ItemStuff {
                     output.accept(bro);
                     output.accept(ho);
                 }
+                output.accept(gem_upgrade);
 
                 output.accept(ItemStuff.disc1);
                 output.accept(ItemStuff.test11);

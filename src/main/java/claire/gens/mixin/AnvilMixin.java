@@ -65,7 +65,7 @@ public class AnvilMixin extends ItemCombinerMenu {
         return false;
     }
 
-    @Inject(method = "createResult",at = @At("RETURN"))
+    @Inject(method = "createResult", at = @At("RETURN"))
     public void init(CallbackInfo ci) {
         if (resultSlots.getItem(0).isEmpty()) {
             if (inputSlots.getItem(0).getItem() instanceof FragmentItem fragmentItem && inputSlots.getItem(1).getItem() instanceof FragmentItem fragmentItem1) {
@@ -74,22 +74,43 @@ public class AnvilMixin extends ItemCombinerMenu {
                     ItemStack itemStack1 = inputSlots.getItem(1);
                     ItemStack result = itemStack.copy();
                     int price = 1;
-                    int level = itemStack.getOrDefault(ModComponents.FragmentLevel,0);
-                    int level1 = itemStack1.getOrDefault(ModComponents.FragmentLevel,0);
-                    if (level == level1 && level+1 < 4) {
+                    int level = itemStack.getOrDefault(ModComponents.FragmentLevel, 0);
+                    int level1 = itemStack1.getOrDefault(ModComponents.FragmentLevel, 0);
+                    if (level == level1 && level - 1 < 4) {
                         if (!Objects.equals(this.itemName, itemStack.getHoverName().toString()) && !StringUtil.isBlank(this.itemName)) {
-                            if (itemStack.getItem().getName(itemStack) == itemStack1.getOrDefault(DataComponents.CUSTOM_NAME,Component.empty())) {
+                            if (itemStack.getItem().getName(itemStack) == itemStack1.getOrDefault(DataComponents.CUSTOM_NAME, Component.empty())) {
                                 result.remove(DataComponents.CUSTOM_NAME);
                             } else {
                                 result.set(DataComponents.CUSTOM_NAME, Component.literal(this.itemName));
                             }
                             price += 1;
                         }
-                        result.set(DataComponents.ITEM_MODEL, Identifier.parse("peakagens:fragment"+String.valueOf(level+2)));
-                        result.set(ModComponents.FragmentLevel,level+1);
-                        this.resultSlots.setItem(0,result);
+                        result.set(DataComponents.ITEM_MODEL, Identifier.parse("peakagens:fragment" + String.valueOf(level + 2)));
+                        result.set(ModComponents.FragmentLevel, level + 1);
+                        this.resultSlots.setItem(0, result);
                         this.cost.set(price);
                     }
+                }
+            } else if ((inputSlots.getItem(0).getItem() instanceof FragmentItem && inputSlots.getItem(1).getItem() == ItemStuff.gem_upgrade)) {
+                ItemStack itemStack = inputSlots.getItem(0); // yes this is messy, yes I don't care
+                ItemStack itemStack1 = inputSlots.getItem(1); // ;D
+                ItemStack result = itemStack.copy();
+                int price = 1;
+                int level = itemStack.getOrDefault(ModComponents.FragmentLevel, 0);
+                int level1 = level;
+                if (level - 1 < 4) {
+                    if (!Objects.equals(this.itemName, itemStack.getHoverName().toString()) && !StringUtil.isBlank(this.itemName)) {
+                        if (itemStack.getItem().getName(itemStack) == itemStack1.getOrDefault(DataComponents.CUSTOM_NAME, Component.empty())) {
+                            result.remove(DataComponents.CUSTOM_NAME);
+                        } else {
+                            result.set(DataComponents.CUSTOM_NAME, Component.literal(this.itemName));
+                        }
+                        price += 1;
+                    }
+                    result.set(DataComponents.ITEM_MODEL, Identifier.parse("peakagens:fragment" + String.valueOf(level + 2)));
+                    result.set(ModComponents.FragmentLevel, level + 1);
+                    this.resultSlots.setItem(0, result);
+                    this.cost.set(price);
                 }
             }
         }
