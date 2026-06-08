@@ -43,6 +43,7 @@ public class Peakagens implements ModInitializer {
 		EffectStuff.initialize();
 		ShearWheat.register();
 		FloristEnchant.init();
+		//SawEnchant.init();
 		LootTables.modify();
 		SoundClass.initialize();
 		ModParticles.initialize();
@@ -74,8 +75,8 @@ public class Peakagens implements ModInitializer {
 			double dot = player.getViewVector(1.0f).multiply(1/woah.getXsize(),1/woah.getYsize(),1/woah.getZsize()).normalize().dot(heynow.normalize());
 
 			if (cool != player) {
-				Peakagens.LOGGER.info(cool.getName().getString());
-				Peakagens.LOGGER.info(String.valueOf(dot));
+				//Peakagens.LOGGER.info(cool.getName().getString());
+				//Peakagens.LOGGER.info(String.valueOf(dot));
 				//Peakagens.LOGGER.info(String.valueOf(heynow.y));
 				if (dot >= 0.99f && dot > foundDot) {
 					foundDot = dot;
