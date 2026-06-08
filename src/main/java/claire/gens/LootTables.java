@@ -77,7 +77,7 @@ public class LootTables {
                     }
                 };
                 tableBuilder.apply(lootItemFunction);
-            } else if (List.of(BuiltInLootTables.BASTION_TREASURE,BuiltInLootTables.BASTION_BRIDGE,BuiltInLootTables.BASTION_OTHER,BuiltInLootTables.BASTION_HOGLIN_STABLE,BuiltInLootTables.END_CITY_TREASURE).contains(key) && source.isBuiltin()) {
+            } else if (List.of(BuiltInLootTables.BASTION_TREASURE,BuiltInLootTables.BASTION_BRIDGE,BuiltInLootTables.BASTION_OTHER,BuiltInLootTables.BASTION_HOGLIN_STABLE).contains(key) && source.isBuiltin()) {
                 LootPool.Builder poolBuilder = BuiltInLootTables.BASTION_TREASURE.equals(key) ?
                         LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(0.25f)).add(LootItem.lootTableItem(ItemStuff.yag))
                         : LootPool.lootPool();
@@ -95,29 +95,6 @@ public class LootTables {
                 };
                 tableBuilder.apply(lootItemFunction).withPool(poolBuilder);
 
-            } else if (BuiltInLootTables.END_CITY_TREASURE.equals(key) &&  source.isBuiltin()) {
-                LootPool.Builder poolBuilder = LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(1f))
-                        .add(LootItem.lootTableItem(ItemStuff.gemList.get(0))
-                                .apply(SetComponentsFunction.setComponent(ModComponents.FragmentLevel,1))
-                        );
-                tableBuilder.withPool(poolBuilder);
-            } else if (BuiltInLootTables.END_CITY_TREASURE.equals(key) &&  source.isBuiltin()) { // go away slimey yellow highlight
-                LootPool.Builder poolBuilder = LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(0.25f))
-                        .add(LootItem.lootTableItem(ItemStuff.gemList.get(0))
-                                .apply(SetComponentsFunction.setComponent(ModComponents.FragmentLevel,2))
-                        );
-                tableBuilder.withPool(poolBuilder);
-
-            } else if (List.of(BuiltInLootTables.BASTION_TREASURE,BuiltInLootTables.BASTION_BRIDGE,BuiltInLootTables.BASTION_HOGLIN_STABLE,BuiltInLootTables.BASTION_OTHER,BuiltInLootTables.ANCIENT_CITY,BuiltInLootTables.END_CITY_TREASURE,BuiltInLootTables.STRONGHOLD_LIBRARY,BuiltInLootTables.STRONGHOLD_CORRIDOR,BuiltInLootTables.IGLOO_CHEST).equals(key) &&  source.isBuiltin()) { // go away slimey yellow highlight
-                LootPool.Builder poolBuilder = LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(0.12f))
-                        .add(LootItem.lootTableItem(ItemStuff.gem_upgrade));
-                tableBuilder.withPool(poolBuilder);
             }
         });
     }
