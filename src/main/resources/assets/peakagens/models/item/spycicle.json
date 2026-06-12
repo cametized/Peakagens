@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "peakagens:item/spycicle"
+    "layer0": "peakagens:item/monocle"
   }
 }

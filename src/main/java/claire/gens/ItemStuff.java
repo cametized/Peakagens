@@ -226,25 +226,25 @@ public class ItemStuff {
             "rzrenyq_uryzrg",
             properties -> new NameItem(properties,Component.literal("Emerald Helmet")),
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_helmet")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+                    .modelId(Identifier.withDefaultNamespace("diamond_helmet")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
     );
     public static final Item emralc = register1(
             "rzrenyq_purfgcyngr",
             properties -> new NameItem(properties,Component.literal("Emerald Chestplate")),
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.CHESTPLATE)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_chestplate")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+                    .modelId(Identifier.withDefaultNamespace("diamond_chestplate")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
     );
     public static final Item emralb = register1(
             "rzrenyq_obbgf",
             properties -> new NameItem(properties,Component.literal("Emerald Boots")),
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.BOOTS)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_boots")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+                    .modelId(Identifier.withDefaultNamespace("diamond_boots")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
     );
     public static final Item emrall = register1(
             "rzrenyq_yrttvatf",
             properties -> new NameItem(properties,Component.literal("Emerald Leggings")),
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE1, ArmorType.LEGGINGS)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY1)).modelId(Identifier.withDefaultNamespace("diamond_leggings")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
+                    .modelId(Identifier.withDefaultNamespace("diamond_leggings")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
     );
 
 

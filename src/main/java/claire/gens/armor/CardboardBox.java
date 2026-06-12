@@ -22,7 +22,7 @@ public class CardboardBox {
     public static final ResourceKey<EquipmentAsset> BOX_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "cardboardbox"));
     public static final TagKey<Item> REPAIR_BOX = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "repair_box"));
     public static final ArmorMaterial INSTANCE = new ArmorMaterial(
-            BASE_DURABILITY,
+            5,
             Map.of(
                     ArmorType.HELMET, 1,
                     ArmorType.CHESTPLATE, 8,
@@ -41,7 +41,7 @@ public class CardboardBox {
     public static final ResourceKey<EquipmentAsset> BOX_KEY1 = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "iron"));
     public static final TagKey<Item> REPAIR_BOX1 = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "freaky"));
     public static final ArmorMaterial INSTANCE1 = new ArmorMaterial(
-            BASE_DURABILITY,
+            BASE_DURABILITY1,
             Map.of(
                     ArmorType.HELMET, 3,
                     ArmorType.CHESTPLATE, 8,
