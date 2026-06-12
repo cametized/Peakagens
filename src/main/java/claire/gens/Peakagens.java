@@ -1,6 +1,8 @@
 package claire.gens;
 
 import claire.gens.effect.EffectStuff;
+import claire.gens.enchant.FloristEnchant;
+import claire.gens.enchant.SawEnchant;
 import claire.gens.recipes.AlchemyBottleRecipe;
 import claire.gens.sounds.SoundClass;
 import net.fabricmc.api.ModInitializer;
@@ -13,7 +15,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
 import net.minecraft.world.phys.AABB;
@@ -43,7 +44,7 @@ public class Peakagens implements ModInitializer {
 		EffectStuff.initialize();
 		ShearWheat.register();
 		FloristEnchant.init();
-		//SawEnchant.init();
+		SawEnchant.init();
 		LootTables.modify();
 		SoundClass.initialize();
 		ModParticles.initialize();

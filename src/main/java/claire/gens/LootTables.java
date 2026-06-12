@@ -1,5 +1,6 @@
 package claire.gens;
 
+import claire.gens.enchant.FloristEnchant;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.core.registries.Registries;
@@ -7,15 +8,11 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.TagEntry;
-import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -24,14 +21,20 @@ import java.util.List;
 
 public class LootTables {
     public static void modify() {
-        // discs added: grindrails, cleanup, disc1, test11, yag
-        // discs not added: battle, menu5, revolvershowdown, treeahohess, colonize, flaxsong
+        // discs added: grindrails, cleanup, disc1, test11, yag, colonize
+        // discs not added: battle, menu5, revolvershowdown, treeahohess, flaxsong
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
             if (BuiltInLootTables.ABANDONED_MINESHAFT.equals(key) && source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.15f))
                         .add(LootItem.lootTableItem(ItemStuff.grindrails));
+                tableBuilder.withPool(poolBuilder);
+            } else if (List.of(BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR_POT,BuiltInLootTables.TRIAL_CHAMBERS_INTERSECTION_BARREL,BuiltInLootTables.TRIAL_CHAMBERS_CHAMBER_DISPENSER).equals(key) &&  source.isBuiltin()) {
+                LootPool.Builder poolBuilder = LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(LootItemRandomChanceCondition.randomChance(0.75f))
+                        .add(LootItem.lootTableItem(ItemStuff.colonize));
                 tableBuilder.withPool(poolBuilder);
             } else if (BuiltInLootTables.IGLOO_CHEST.equals(key) &&  source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()

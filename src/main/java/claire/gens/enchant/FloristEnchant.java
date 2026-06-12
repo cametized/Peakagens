@@ -1,4 +1,4 @@
-package claire.gens;
+package claire.gens.enchant;
 
 import claire.gens.effect.EffectStuff;
 import claire.gens.mixin.PlayerInvoker;
