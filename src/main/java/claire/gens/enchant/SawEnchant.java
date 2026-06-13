@@ -46,24 +46,31 @@ public class SawEnchant {
     private static void KillYuu(ServerLevel level, BlockPos start, ServerPlayer player) {
         Set<BlockPos> visited = new HashSet<>();
         Queue<BlockPos> queue = new LinkedList<>();
-        queue.add(start);
-        Peakagens.LOGGER.info("help");
+
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    if (x == 0 && y == 0 && z == 0) continue;
+                    queue.add(start.offset(x, y, z));
+                }
+            }
+        }
 
         while (!queue.isEmpty() && visited.size() < MAX_LOGS) {
             BlockPos current = queue.poll();
-            if (!visited.add(current)) {continue;}
-            if (!level.getBlockState(current).is(BlockTags.LOGS)) {continue;}
+
+            if (!visited.add(current)) continue;
+            if (!level.getBlockState(current).is(BlockTags.LOGS)) continue;
+
             level.destroyBlock(current, true, player);
-            Peakagens.LOGGER.info("is it destroying?");
 
             for (int x = -1; x <= 1; x++) {
                 for (int y = -1; y <= 1; y++) {
                     for (int z = -1; z <= 1; z++) {
                         queue.add(current.offset(x, y, z));
-                        Peakagens.LOGGER.info("idfk bruh");
                     }
                 }
             }
         }
     }
-}
+    }
