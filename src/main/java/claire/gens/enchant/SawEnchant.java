@@ -33,6 +33,7 @@ public class SawEnchant {
         //Peakagens.LOGGER.info("Init Saw");
         PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
             //Peakagens.LOGGER.info("Init Break");
+            if (player.isCrouching()) {return;}
             if (world.isClientSide()) {return;}
             ItemStack stack = player.getMainHandItem();
             if (!((stack.get(DataComponents.TOOL) != null && Objects.requireNonNull(stack.get(DataComponents.TOOL)).isCorrectForDrops(state)) || (stack.is(Items.SHEARS) && state.is(BlockTags.LEAVES)))) {return;}
