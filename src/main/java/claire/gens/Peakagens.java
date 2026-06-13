@@ -32,6 +32,10 @@ public class Peakagens implements ModInitializer {
 			.forBoolean(true) // Default value declaration
 			.category(GameRuleCategory.MISC)
 			.buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "literally_the_end"));
+	public static final GameRule<Integer> maxChainedBlocks = GameRuleBuilder
+			.forInteger(72) // Default value declaration
+			.category(GameRuleCategory.PLAYER)
+			.buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "max_chained_blocks"));
 
 	@Override
 	public void onInitialize() {
