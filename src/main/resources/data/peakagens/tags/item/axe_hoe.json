@@ -1,6 +1,7 @@
 {
   "values": [
     "#minecraft:axes",
-    "#minecraft:hoes"
+    "#minecraft:hoes",
+    "minecraft:shears"
   ]
 }

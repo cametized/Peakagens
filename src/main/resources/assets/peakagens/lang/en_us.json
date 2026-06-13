@@ -98,5 +98,6 @@
   "item.peakagens.alchemy_potion": "Alchemy Potion",
   "title.peakagens.combo": "Combo",
   "title.peakagens.combo_full": "Combo 3/3",
-  "item.peakagens.cardboardbox.lore": "Mask"
+  "item.peakagens.cardboardbox.lore": "Mask",
+  "title.peakagens.saw_break": "Low Durability, Saw will not be used."
 }
