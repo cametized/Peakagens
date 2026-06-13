@@ -57,7 +57,7 @@ public class LootTables {
             } else if (BuiltInLootTables.SHIPWRECK_TREASURE.equals(key) &&  source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(0.35f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.5f))
                         .add(LootItem.lootTableItem(Items.ENCHANTED_BOOK).apply(new SetEnchantmentsFunction.Builder().withEnchantment(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(FloristEnchant.MOD_ID, "florist"))), ConstantValue.exactly(1))));
                 tableBuilder.withPool(poolBuilder);
             } else if (BuiltInLootTables.SIMPLE_DUNGEON.equals(key) &&  source.isBuiltin()) {
@@ -65,7 +65,11 @@ public class LootTables {
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.10f))
                         .add(LootItem.lootTableItem(ItemStuff.cloth));
-                tableBuilder.withPool(poolBuilder);
+                LootPool.Builder poolBuilder1 = LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(LootItemRandomChanceCondition.randomChance(0.35f))
+                        .add(LootItem.lootTableItem(Items.ENCHANTED_BOOK).apply(new SetEnchantmentsFunction.Builder().withEnchantment(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(FloristEnchant.MOD_ID, "florist"))), ConstantValue.exactly(1))));
+                tableBuilder.withPool(poolBuilder).withPool(poolBuilder1);
             } else if (BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE.equals(key) && source.isBuiltin()) {
                 LootItemFunction lootItemFunction = new LootItemFunction() {
                     @Override

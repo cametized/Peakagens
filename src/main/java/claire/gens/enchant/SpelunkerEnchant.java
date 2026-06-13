@@ -1,7 +1,6 @@
 package claire.gens.enchant;
 
 import claire.gens.Peakagens;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -13,18 +12,17 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-public class SawEnchant {
+public class SpelunkerEnchant {
     public static ResourceKey<Enchantment> getKey() {
-        return ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "saw"));
+        return ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "spelunker"));
     }
 
     public static void init() {
@@ -79,13 +77,14 @@ public class SawEnchant {
 
     public static List<BlockPos> Gimme(ServerLevel level, BlockPos start, ServerPlayer Player) {
         List<BlockPos> list = new ArrayList<>();
+        BlockState initial = level.getBlockState(start);
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 for (int z = 0; z < 3; z++) {
                     Peakagens.LOGGER.info(String.valueOf(x-1)+" "+String.valueOf(y-1)+" "+String.valueOf(z-1));
                     BlockPos yo = start.offset(x-1,y-1,z-1);
                     BlockState blockState = level.getBlockState(yo);
-                    if (Player.getMainHandItem().is(ItemTags.HOES) ? blockState.is(BlockTags.LEAVES) : blockState.is(BlockTags.LOGS) || blockState.is(BlockTags.LEAVES)) {
+                    if (blockState.is(BlockTags.STONE_ORE_REPLACEABLES) && initial.is(blockState.getBlock())) {
                         list.add(yo);
                     }
                 }

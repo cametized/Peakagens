@@ -1,5 +1,5 @@
 {
-  "supported_items": "#minecraft:axes",
+  "supported_items": "#peakagens:axe_hoe",
   "anvil_cost": 4,
   "description": {
     "translate": "enchantment.peakagens.saw"
