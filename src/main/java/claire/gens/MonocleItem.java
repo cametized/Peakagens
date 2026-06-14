@@ -6,6 +6,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -67,10 +68,12 @@ public class MonocleItem extends SpyglassItem {
         } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wshine"))) && livingEntity instanceof Player player && !level.isClientSide()) {
             LivingEntity hey = Peakagens.findWhoImLookingAt(level, player, 14);
             if (hey != null) {
-                hey.igniteForTicks(40); // later imma try to make this do more damage prolly
+                hey.igniteForTicks(80); // later imma try to make this do more damage prolly
                 if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*20)) {
-
                     itemStack.hurtAndBreak(1,player,player.getUsedItemHand());
+                }
+                if (((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*150 == Math.round(((double) ticksRemaining/this.getUseDuration(itemStack,livingEntity))*150)) {
+                    hey.hurtServer((ServerLevel) level,livingEntity.damageSources().source(ResourceKey.create(Registries.DAMAGE_TYPE,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"shiningfire"))),1f);
                 }
             }
         } else if (EnchantmentHelper.hasTag(itemStack, TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath("peakagens","wblink"))) && livingEntity instanceof Player player) {
