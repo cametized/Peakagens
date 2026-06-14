@@ -54,19 +54,6 @@ public class Peakagens implements ModInitializer {
 		ModParticles.initialize();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
-		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
-			entries.accept(ItemStuff.disc1);
-			entries.accept(ItemStuff.test11);
-			entries.accept(ItemStuff.cleanup);
-			entries.accept(ItemStuff.yag);
-			entries.accept(ItemStuff.battle);
-			entries.accept(ItemStuff.menu5);
-			entries.accept(ItemStuff.revovlershowdown);
-			entries.accept(ItemStuff.treeahohess);
-			entries.accept(ItemStuff.grindrails);
-			entries.accept(ItemStuff.colonize);
-			entries.accept(ItemStuff.flaxsong);
-		});
 	}
 
 	public static @Nullable LivingEntity findWhoImLookingAt(Level level, Player player, double size) {
