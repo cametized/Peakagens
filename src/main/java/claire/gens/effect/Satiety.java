@@ -10,9 +10,9 @@ public class Satiety extends MobEffect {
     public Satiety() {
         super(MobEffectCategory.BENEFICIAL, 0x33f4ff);
 
-        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-        this.addAttributeModifier(Attributes.SNEAKING_SPEED, Identifier.parse("calmness"), 0.5D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("calmness"), 0.2D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        this.addAttributeModifier(Attributes.MOVEMENT_SPEED, Identifier.parse("satiety"), 0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        this.addAttributeModifier(Attributes.SNEAKING_SPEED, Identifier.parse("satiety"), 0.5D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        this.addAttributeModifier(Attributes.BLOCK_BREAK_SPEED, Identifier.parse("satiety"), 0.2D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     }
 
     @Override
