@@ -9,8 +9,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffect;
 
 public class EffectStuff implements ModInitializer {
-    public static final Holder<MobEffect> CALMNESS =
-            Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "calmness"), new Calmness());
+    public static final Holder<MobEffect> SATIETY =
+            Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "satiety"), new Satiety());
 
     public static final Holder<MobEffect> FLORAL =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "floral"), new Floral());

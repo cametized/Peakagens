@@ -247,8 +247,6 @@ public class ItemStuff {
                     .modelId(Identifier.withDefaultNamespace("diamond_leggings")).component(DataComponents.CUSTOM_MODEL_DATA,new CustomModelData(List.of(),List.of(),List.of("emerald"),List.of()))
     );
 
-
-
     public static final Item scythe = register(
             "scythe",
             Item::new,
@@ -292,7 +290,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(6).saturationModifier(0.2f).build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.SATIETY,600))).build()
             )
     );
 
@@ -309,7 +307,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(4).saturationModifier(1.5f).alwaysEdible().build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.SATIETY,600))).build()
             )
     );
 
@@ -318,7 +316,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                             new FoodProperties.Builder().nutrition(3).saturationModifier(0.2f).build(),
-                            Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
+                            Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.SATIETY,600))).build()
                     )
     );
 
@@ -327,7 +325,7 @@ public class ItemStuff {
             Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(1).saturationModifier(0.2f).build(),
-                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.CALMNESS,600))).build()
+                    Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.SATIETY,600))).build()
             )
     );
 
