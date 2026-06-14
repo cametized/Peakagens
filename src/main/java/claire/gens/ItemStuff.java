@@ -204,6 +204,12 @@ public class ItemStuff {
             new Item.Properties().stacksTo(1)
     );
 
+    public static final Item darkened_cloth = register(
+            "darkened_cloth", // this will be related to the wilted alloy
+            Item::new,
+            new Item.Properties().stacksTo(1)
+    );
+
     public static final Item blood_cloth = register(
             "blood_cloth",
             Item::new,
@@ -481,6 +487,7 @@ public class ItemStuff {
 
                 //output.accept(bloodMace);
                 output.accept(cloth);
+                output.accept(darkened_cloth);
                 output.accept(blood_cloth);
 
                 output.accept(ricebowl);

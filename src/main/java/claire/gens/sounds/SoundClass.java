@@ -16,6 +16,8 @@ public class SoundClass {
     public static final SoundEvent zap = registerSound("zap");
     public static final SoundEvent smallElectricity = registerSound("small_electric");
 
+    public static final SoundEvent scythe_hit = registerSound("scythe_hit");
+
     public static final SoundEvent GRINDRAILS = registerSound("grindrails");
     public static final SoundEvent FLAXSONG = registerSound("flaxsong");
     public static final SoundEvent DISC1 = registerSound("disc1");

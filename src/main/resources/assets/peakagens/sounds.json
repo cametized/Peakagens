@@ -102,6 +102,10 @@
       "subtitle": "sound.peakagens.fragmentused",
       "sounds": ["peakagens:fragmentused"]
   },
+"scythe_hit": {
+      "subtitle": "sound.peakagens.scythe_hit",
+      "sounds": ["peakagens:scythe_hit"]
+  },
   "electricity": {
     "subtitle": "sound.peakagens.electricity",
     "sounds": ["peakagens:elec1","peakagens:elec2","peakagens:elec3"]

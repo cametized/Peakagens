@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:netherite_ingot",
+    "peakagens:darkened_cloth"
+  ],
+  "result": "peakagens:wilted_alloy"
+}
