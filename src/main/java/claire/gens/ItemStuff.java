@@ -4,6 +4,7 @@ import claire.gens.armor.CardboardBox;
 import claire.gens.armor.Overpower;
 import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.Jukebox;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.minecraft.core.Holder;
@@ -573,6 +574,19 @@ public class ItemStuff {
             );
         });
 
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
+            entries.accept(ItemStuff.disc1);
+            entries.accept(ItemStuff.test11);
+            entries.accept(ItemStuff.cleanup);
+            entries.accept(ItemStuff.yag);
+            entries.accept(ItemStuff.battle);
+            entries.accept(ItemStuff.menu5);
+            entries.accept(ItemStuff.revovlershowdown);
+            entries.accept(ItemStuff.treeahohess);
+            entries.accept(ItemStuff.grindrails);
+            entries.accept(ItemStuff.colonize);
+            entries.accept(ItemStuff.flaxsong);
+        });
     }
 }
 

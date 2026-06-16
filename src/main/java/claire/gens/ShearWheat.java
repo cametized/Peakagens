@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,7 +24,7 @@ public class ShearWheat {
             BlockState state = level.getBlockState(pos);
             ItemStack stack = player.getItemInHand(hand);
 
-            if (state.is(Blocks.WHEAT) && state.getValue(CropBlock.AGE) == 7 && stack.is(ItemStuff.scythe)) {
+            if (state.is(Blocks.WHEAT) && state.getValue(CropBlock.AGE) == 7 && (stack.is(ItemStuff.scythe) || stack.getItem() instanceof ShearsItem)) {
                 handleShearing(level, player, pos, state, stack, hand);
                 return InteractionResult.SUCCESS;
             }

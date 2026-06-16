@@ -3,26 +3,43 @@ package claire.gens;
 import claire.gens.enchant.FloristEnchant;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.advancements.criterion.*;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderOwner;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponentExactPredicate;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class LootTables {
     public static void modify() {
-        // discs added: grindrails, cleanup, disc1, test11, yag, colonize
-        // discs not added: battle, menu5, revolvershowdown, treeahohess, flaxsong
+        // discs added: grindrails, cleanup, disc1, test11, yag, colonize, flaxsong
+        // discs not added: battle, menu5, revolvershowdown, treeahohess
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
             if (BuiltInLootTables.ABANDONED_MINESHAFT.equals(key) && source.isBuiltin()) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
@@ -101,7 +118,12 @@ public class LootTables {
                     }
                 };
                 tableBuilder.apply(lootItemFunction).withPool(poolBuilder);
-
+            } else if (key.equals(BuiltInLootTables.CHARGED_CREEPER_WITHER_SKELETON) && source.isBuiltin()) { // i told you i'd make it hard asf to get
+                LootPool.Builder poolBuilder = LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(LootItemRandomChanceCondition.randomChance(0.25f))
+                        .add(LootItem.lootTableItem(ItemStuff.flaxsong));
+                tableBuilder.withPool(poolBuilder);
             }
         });
     }

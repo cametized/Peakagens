@@ -17,6 +17,8 @@ public class EyeLockMixin {
     public InteractionResult init(UseOnContext context, Operation<InteractionResult> original) {
         if (!context.getLevel().isClientSide() && Objects.requireNonNull(context.getLevel().getServer()).getGameRules().get(Peakagens.literallyTheEnd)) {
             return original.call(context);
+        } else if (context.getLevel().isClientSide()) {
+            return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }

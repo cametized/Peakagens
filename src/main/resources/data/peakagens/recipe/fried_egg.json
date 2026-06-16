@@ -3,7 +3,6 @@
   "category": "food",
   "ingredient": "#minecraft:eggs",
   "result": {
-      "count": 2,
       "id": "peakagens:fried_egg"
     },
   "experience": 1,
