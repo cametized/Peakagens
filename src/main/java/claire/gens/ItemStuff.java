@@ -36,9 +36,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Function;
 
-import static claire.gens.blahaj.block.BlahajBlocks.BLAHAJ_BLOCK;
-import static claire.gens.blahaj.block.BlahajBlocks.BREAD_BLOCK;
-
 public class ItemStuff {
     public static <T extends Item> T register1(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<@NotNull Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", name));
@@ -544,8 +541,6 @@ public class ItemStuff {
             .icon(() -> new ItemStack(jthe))
             .title(Component.translatable("dumbCommunity.peakagens"))
             .displayItems((params, output) -> {
-                output.accept(BLAHAJ_BLOCK);
-                output.accept(BREAD_BLOCK);
             })
             .build();
 
