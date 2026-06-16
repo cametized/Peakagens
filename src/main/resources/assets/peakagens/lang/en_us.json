@@ -1,5 +1,6 @@
 {
   "creativeTab.peakagens": "Peakagens",
+  "dumbCommunity.peakagens": "MY COMMUNITY IS GAY AS HELL",
 
   "item.peakagens.radical": "Elite RadicalRadio Fragment",
   "item.peakagens.monocle": "Monocle",
@@ -13,19 +14,25 @@
   "item.peakagens.darkened_cloth": "Darkened Cloth",
   "item.peakagens.blood_cloth": "Blood Cloth",
 
+  "block.blahaj.blue_shark": "Soft Toy Shark",
+  "block.blahaj.blue_shark.tooltip": "a.k.a. Blahaj",
+  "block.blahaj.bread": "Bread Pillow",
+  "tooltip.blahaj.owner.craft": "Crafted by %s",
+  "tooltip.blahaj.owner.rename": "%s of %s",
+
   "item.peakagens.gem_upgrade": "Gem Upgrader",
 
   "item.minecraft.potion.effect.short": "Potion of Short",
-    "item.minecraft.splash_potion.effect.short": "Splash Potion of Short",
-    "item.minecraft.lingering_potion.effect.short": "Lingering Potion of Short",
-    "item.minecraft.tipped_arrow.effect.short": "Arrow of Short",
+  "item.minecraft.splash_potion.effect.short": "Splash Potion of Short",
+  "item.minecraft.lingering_potion.effect.short": "Lingering Potion of Short",
+  "item.minecraft.tipped_arrow.effect.short": "Arrow of Short",
 
   "block.peakagens.smiley": "smiley :)",
 
   "item.minecraft.potion.effect.long_short": "Potion of Short",
-   "item.minecraft.splash_potion.effect.long_short": "Splash Potion of Short",
-   "item.minecraft.lingering_potion.effect.long_short": "Lingering Potion of Short",
-   "item.minecraft.tipped_arrow.effect.long_short": "Arrow of Short",
+  "item.minecraft.splash_potion.effect.long_short": "Splash Potion of Short",
+  "item.minecraft.lingering_potion.effect.long_short": "Lingering Potion of Short",
+  "item.minecraft.tipped_arrow.effect.long_short": "Arrow of Short",
 
   "item.peakagens.grindrails": "Music Disc",
   "item.peakagens.flaxsong": "Music Disc",

@@ -35,6 +35,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Function;
 
+import static claire.gens.blahaj.block.BlahajBlocks.BLAHAJ_BLOCK;
+import static claire.gens.blahaj.block.BlahajBlocks.BREAD_BLOCK;
+
 public class ItemStuff {
     public static <T extends Item> T register1(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<@NotNull Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", name));
@@ -465,6 +468,9 @@ public class ItemStuff {
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
     );
+    public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_IDIOT = ResourceKey.create(
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "blahaj")
+    );
     public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricCreativeModeTab.builder() // hi :)
             .icon(() -> new ItemStack(friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
@@ -533,8 +539,18 @@ public class ItemStuff {
             })
             .build();
 
+    public static final CreativeModeTab DUMB_COMMUNITY_TAB = FabricCreativeModeTab.builder() // hi :)
+            .icon(() -> new ItemStack(jthe))
+            .title(Component.translatable("dumbCommunity.peakagens"))
+            .displayItems((params, output) -> {
+                output.accept(BLAHAJ_BLOCK);
+                output.accept(BREAD_BLOCK);
+            })
+            .build();
+
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_IDIOT, DUMB_COMMUNITY_TAB);
 
         FabricPotionBrewingBuilder.BUILD.register(builder -> {
             builder.addMix(

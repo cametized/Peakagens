@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_25",
   "client": [
     "AnvilClientMixin",
-    "MouseHandlerMixin"
+    "MouseHandlerMixin",
+    "AvatarRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

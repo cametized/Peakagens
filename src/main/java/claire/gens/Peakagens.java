@@ -1,5 +1,7 @@
 package claire.gens;
 
+import claire.gens.blahaj.BlahajDataComponentTypes;
+import claire.gens.blahaj.block.BlahajBlocks;
 import claire.gens.effect.EffectStuff;
 import claire.gens.enchant.FloristEnchant;
 import claire.gens.enchant.SawEnchant;
@@ -52,6 +54,8 @@ public class Peakagens implements ModInitializer {
 		LootTables.modify();
 		SoundClass.initialize();
 		ModParticles.initialize();
+		BlahajDataComponentTypes.register();
+		BlahajBlocks.register();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
