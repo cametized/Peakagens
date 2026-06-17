@@ -37,6 +37,25 @@ public class CardboardBox {
             BOX_KEY
     );
 
+    public static final int BASE_DURABILITYMASK = 125;
+    public static final ResourceKey<EquipmentAsset> MASK_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "mask"));
+    public static final TagKey<Item> REPAIR_MASK = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "repair_mask"));
+    public static final ArmorMaterial MASKINSTANCE = new ArmorMaterial(
+            5,
+            Map.of(
+                    ArmorType.HELMET, 1,
+                    ArmorType.CHESTPLATE, 8,
+                    ArmorType.LEGGINGS, 6,
+                    ArmorType.BOOTS, 3
+            ),
+            5,
+            SoundEvents.ARMOR_EQUIP_GENERIC,
+            0.0F,
+            0.0F,
+            REPAIR_MASK,
+            MASK_KEY
+    );
+
     public static final int BASE_DURABILITY1 = 33;
     public static final ResourceKey<EquipmentAsset> BOX_KEY1 = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "iron"));
     public static final TagKey<Item> REPAIR_BOX1 = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "freaky"));

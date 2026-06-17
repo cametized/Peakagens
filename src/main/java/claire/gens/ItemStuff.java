@@ -286,7 +286,8 @@ public class ItemStuff {
     public static final Item Mask = register(
             "mask",
             Item::new,
-            new Item.Properties().equippable(EquipmentSlot.HEAD).stacksTo(1)
+            new Item.Properties().humanoidArmor(CardboardBox.MASKINSTANCE, ArmorType.HELMET)
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITYMASK)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"mask"))
     );
 
     public static final Item spycicle = register(
