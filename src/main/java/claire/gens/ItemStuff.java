@@ -15,6 +15,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,15 +28,20 @@ import net.minecraft.world.item.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class ItemStuff {
@@ -270,27 +278,30 @@ public class ItemStuff {
             "cardboardboxhelmet",
             Item::new,
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"cardboardbox"))
+                    .durability(ArmorType.HELMET.getDurability(125)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"cardboardbox"))
     );
 
     public static final Item cardboardbox = register(
             "cardboardbox",
             Item::new,
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).component(DataComponents.LORE,new ItemLore(List.of(Component.translatable("item.peakagens.cardboardbox.lore").withColor(CommonColors.GRAY))))
+                    .durability(ArmorType.HELMET.getDurability(125)).component(DataComponents.LORE,new ItemLore(List.of(Component.translatable("item.peakagens.cardboardbox.lore").withColor(CommonColors.GRAY))))
     );
 
     public static final Item Mask = register(
             "mask",
             Item::new,
-            new Item.Properties().humanoidArmor(CardboardBox.MASKINSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITYMASK)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"mask"))
+            new Item.Properties().stacksTo(1)
+                    .equippable(EquipmentSlot.HEAD)
+                    //.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setAsset(ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "mask"))).build())
+            // cam, enable the line above and disable the one above that when you fix the texture to make it look less freaky
+            // fyi you broke a feature the mask has where you could hide it on your character when doing that so you gotta add a solution to that
     );
 
     public static final Item spycicle = register(
             "monocle",
             MonocleItem::new,
-            new Item.Properties().stacksTo(1).enchantable(15).durability(16)
+            new Item.Properties().stacksTo(1).enchantable(15).durability(32)
     );
 
     public static final Item ricebowl = register(
@@ -314,7 +325,7 @@ public class ItemStuff {
             "fried_egg",
             Item::new,
             new Item.Properties().food(
-                    new FoodProperties.Builder().nutrition(4).saturationModifier(1.5f).alwaysEdible().build(),
+                    new FoodProperties.Builder().nutrition(6).saturationModifier(1.35f).alwaysEdible().build(),
                     Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(EffectStuff.SATIETY,600))).build()
             )
     );
@@ -398,11 +409,23 @@ public class ItemStuff {
             new Item.Properties().component(ModComponents.FragmentLevel,0).stacksTo(1)
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
+    public static final Item PassiveGemShield = register(
+            "gem_shield_passive",
+            PassiveGemShieldItem::new,
+            new Item.Properties().durability(336)
+                    .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).repairable(ItemTags.WOODEN_TOOL_MATERIALS)
+                    .equippableUnswappable(EquipmentSlot.OFFHAND)
+                    .delayedComponent(DataComponents.BLOCKS_ATTACKS, (context) -> new BlocksAttacks(0.25F, 1.0F, List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)), new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F), Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)), Optional.of(SoundEvents.SHIELD_BLOCK), Optional.of(SoundEvents.SHIELD_BREAK)))
+                    .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)
+                    .component(ModComponents.FragmentLevel,0)
+                    .component(ModComponents.AppliedGemName,"item.peakagens.none")
+                    .component(DataComponents.POTION_CONTENTS,PotionContents.EMPTY)
+    );
 
     public static final Item gem_upgrade = register(
             "gem_upgrade",
             Item::new,
-            new Item.Properties().stacksTo(1)
+            new Item.Properties().stacksTo(1).component(DataComponents.LORE,new ItemLore(List.of(Component.translatable("item.peakagens.gem_upgrade_lore"))))
     );
 
     public static final List<Item> gemList = List.of(strength,swiftness,haste,jumpboos,resist,absorption,fireres,nightvision,waterbreath,invis);
@@ -467,6 +490,9 @@ public class ItemStuff {
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "creative_tab")
     );
+    public static final ResourceKey<@NotNull CreativeModeTab> GEM_TAB_KEY = ResourceKey.create(
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "gems")
+    );
     public static final ResourceKey<@NotNull CreativeModeTab> CUSTOM_IDIOT = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "blahaj")
     );
@@ -474,34 +500,49 @@ public class ItemStuff {
             .icon(() -> new ItemStack(friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
-                output.accept(RadicalRadio);
+                output.accept(scythe);
+                output.accept(spycicle);
                 //output.accept(ThisItemDoesNothingAndItsForShow);
+                ItemStack maskNorm = Mask.getDefaultInstance();
+                output.accept(maskNorm);
+                output.accept(cardboardboxhelmet);
+                output.accept(cardboardbox);
+                //output.accept(angelsword);
+
+                output.accept(cloth);
+                output.accept(blood_cloth);
+                output.accept(darkened_cloth); //fyi the alloy im likely finna rework and this likely wont be a part of this, however this might be a good crafting material for other things
+                output.accept(wilted_alloy);
+
+                output.accept(pork_belly);
+                output.accept(bacon);
+                output.accept(friedegg);
+                output.accept(rice);
+                output.accept(ricebowl);
+
+                output.accept(ItemStuff.disc1);
+                output.accept(ItemStuff.test11);
+                output.accept(ItemStuff.cleanup);
+                output.accept(ItemStuff.yag);
+                output.accept(ItemStuff.battle);
+                output.accept(ItemStuff.menu5);
+                output.accept(ItemStuff.revovlershowdown);
+                output.accept(ItemStuff.treeahohess);
+                output.accept(ItemStuff.grindrails);
+                output.accept(ItemStuff.colonize);
+                output.accept(ItemStuff.flaxsong);
+            })
+            .build();
+    public static final CreativeModeTab GEM_TAB = FabricCreativeModeTab.builder() // hi :)
+            .icon(() -> new ItemStack(ThisItemDoesNothingAndItsForShow))
+            .title(Component.translatable("creativeTab.peakagens_gems"))
+            .displayItems((params, output) -> {
+                output.accept(RadicalRadio);
                 output.accept(alchemy);
                 output.accept(enchanting);
                 output.accept(lifesteal);
                 output.accept(storming);
-                output.accept(cardboardboxhelmet);
-                output.accept(cardboardbox);
-                //output.accept(angelsword);
-                output.accept(wilted_alloy);
-                output.accept(spycicle);
-                output.accept(scythe);
-
-                ItemStack maskNorm = Mask.getDefaultInstance();
-                output.accept(maskNorm);
-
-                //output.accept(bloodMace);
-                output.accept(cloth);
-                output.accept(darkened_cloth);
-                output.accept(blood_cloth);
-
-                output.accept(ricebowl);
-                output.accept(rice);
-                output.accept(friedegg);
-                output.accept(bacon);
-                output.accept(pork_belly);
                 output.accept(gem_upgrade);
-
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {
                     ItemStack yo = new ItemStack(hey.get(i));
@@ -523,18 +564,6 @@ public class ItemStuff {
                     output.accept(bro);
                     output.accept(ho);
                 }
-
-                output.accept(ItemStuff.disc1);
-                output.accept(ItemStuff.test11);
-                output.accept(ItemStuff.cleanup);
-                output.accept(ItemStuff.yag);
-                output.accept(ItemStuff.battle);
-                output.accept(ItemStuff.menu5);
-                output.accept(ItemStuff.revovlershowdown);
-                output.accept(ItemStuff.treeahohess);
-                output.accept(ItemStuff.grindrails);
-                output.accept(ItemStuff.colonize);
-                output.accept(ItemStuff.flaxsong);
             })
             .build();
 
@@ -547,6 +576,7 @@ public class ItemStuff {
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, GEM_TAB_KEY, GEM_TAB);
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_IDIOT, DUMB_COMMUNITY_TAB);
 
         FabricPotionBrewingBuilder.BUILD.register(builder -> {

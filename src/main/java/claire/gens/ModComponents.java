@@ -19,6 +19,12 @@ public class ModComponents {
             DataComponentType.<Float>builder().persistent(Codec.FLOAT).build()
     );
 
+    public static final DataComponentType<String> AppliedGemName = Registry.register(
+            BuiltInRegistries.DATA_COMPONENT_TYPE,
+            Identifier.fromNamespaceAndPath(Peakagens.MOD_ID, "applied_gem_name"),
+            DataComponentType.<String>builder().persistent(Codec.STRING).build()
+    );
+
     protected static void initialize() {
         //Peakagens.LOGGER.info("Registering {} components", Peakagens.MOD_ID);
         // Technically this method can stay empty, but some developers like to notify

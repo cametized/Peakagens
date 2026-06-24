@@ -39,8 +39,8 @@ public class BlahajBlocks {
     public static Block registerCuddlyBlockAndItem(Identifier id, String tooltip) {
         ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, id);
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, id);
-        Block block = (Block)Registry.register((Registry)BuiltInRegistries.BLOCK, id, new CuddlyBlock(BlockBehaviour.Properties.ofFullCopy((BlockBehaviour)Blocks.WHITE_WOOL).setId(blockKey)));
-        Item item = (Item)Registry.register((Registry)BuiltInRegistries.ITEM, id, new CuddlyItem(block, (new Item.Properties())
+        Block block = (Block)Registry.register(BuiltInRegistries.BLOCK, id, new CuddlyBlock(BlockBehaviour.Properties.ofFullCopy((BlockBehaviour)Blocks.WHITE_WOOL).setId(blockKey)));
+        Item item = (Item)Registry.register(BuiltInRegistries.ITEM, id, new CuddlyItem(block, (new Item.Properties())
                 .setId(itemKey)
                 .useBlockDescriptionPrefix()
                 .stacksTo(1)
@@ -49,7 +49,7 @@ public class BlahajBlocks {
         BLOCKS.add(block);
         ITEMS.add(item);
         return block;
-    }
+    } // nuke the whole generation
 
     public static void registerClient() {}
 }

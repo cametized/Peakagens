@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "key": {
+    "b": "peakagens:darkened_cloth"
+  },
+  "result": {
+    "id": "minecraft:gray_wool"
+  }
+}

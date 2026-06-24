@@ -89,6 +89,7 @@
   "item.peakagens.frag_2": "Greater Gem of ",
   "item.peakagens.frag_3": "Mythic Gem of ",
 
+  "item.peakagens.none": "None",
   "item.peakagens.strength": "Strength",
   "item.peakagens.swiftness": "Swiftness",
   "item.peakagens.haste": "Haste",
@@ -108,5 +109,9 @@
   "title.peakagens.combo": "Combo",
   "title.peakagens.combo_full": "Combo 3/3",
   "item.peakagens.cardboardbox.lore": "Mask",
-  "title.peakagens.saw_break": "Low Durability, Saw will not be used."
+  "title.peakagens.saw_break": "Low Durability, Saw will not be used.",
+  "item.peakagens.gem_upgrade_lore": "unobtainable",
+  "creativeTab.peakagens_gems": "Peakagens Gems",
+  "item.peakagens.gem_type": "Type",
+  "item.peakagens.gem_level": "Level"
 }

@@ -7,6 +7,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.CommonColors;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -98,6 +99,28 @@ public class FragmentItem extends BlankFragmentItem {
     @Override
     public Component getName(ItemStack itemStack) {
         return Component.translatable("item.peakagens.frag_"+itemStack.getOrDefault(ModComponents.FragmentLevel, 0)).append(super.getName(itemStack));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+        builder.accept(Component.translatable("item.peakagens.gem_type").append(" ").append(Component.translatable("enchantment.level."+String.valueOf(getTypeAsInt(type)))).withColor(CommonColors.LIGHT_GRAY));
+        //builder.accept(Component.translatable("item.peakagens.gem_level").append(" ").append(Component.translatable("enchantment.level."+String.valueOf(itemStack.getOrDefault(ModComponents.FragmentLevel,0)+1))).withColor(CommonColors.LIGHT_GRAY));
+        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+    }
+
+    public static Integer getTypeAsInt(FragmentType fragmentType) {
+        switch (fragmentType) {
+            case PotionUse -> {
+                return 1;
+            }
+            case PotionPassive -> {
+                return 2;
+            }
+            case PotionUseAmplifier -> {
+                return 3;
+            }
+        }
+        return 0;
     }
 
     public static PotionContents createPotionOf(MobEffectInstance mobEffectInstance1) {

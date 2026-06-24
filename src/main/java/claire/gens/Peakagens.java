@@ -54,8 +54,8 @@ public class Peakagens implements ModInitializer {
 		LootTables.modify();
 		SoundClass.initialize();
 		ModParticles.initialize();
-		BlahajDataComponentTypes.register();
-		BlahajBlocks.register();
+		BlahajDataComponentTypes.register(); // casual reminder to swap out everything before any release
+		BlahajBlocks.register(); // casual reminder to swap out everything before any release
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 	}

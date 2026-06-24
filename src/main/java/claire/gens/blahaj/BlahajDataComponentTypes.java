@@ -14,7 +14,7 @@ public class BlahajDataComponentTypes {
     }
 
     private static <T> DataComponentType<T> register(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
-        return (DataComponentType<T>)Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath("blahaj", id), ((DataComponentType.Builder)builderOperator.apply(DataComponentType.builder())).build());
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath("blahaj", id), (builderOperator.apply(DataComponentType.builder())).build());
     }
 
     public static void register() {}
