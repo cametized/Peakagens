@@ -3,15 +3,17 @@
 	"id": "peakagens",
 	"version": "${version}",
 	"name": "Peakagens",
-	"description": "Gens of peak. Yes.",
+	"description": "A event-focused mod with items that only most worthy shall obtain.",
 	"authors": [
 		"Cametized",
-		"LLEVC",
-		"phonproi",
-		"Fr3der",
-		"DB Ludo",
-		"epicflaxezwow"
+		"LLEVC"
 	],
+    "contributors": [
+        "phonproi - Textures",
+        "Fr3der - Music",
+        "DB Ludo - Music",
+        "epic_flaxez - Textures & Music"
+    ],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
