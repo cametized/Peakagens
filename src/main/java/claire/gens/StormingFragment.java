@@ -16,10 +16,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -93,8 +90,8 @@ public class StormingFragment extends BlankFragmentItem {
                     blockPos = ((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(((ThunderInvoker) serverLevel).peakagens$findLightningTargetAround(serverLevel.getBlockRandomPos(chunk.getPos().getMinBlockX(),0,chunk.getPos().getMinBlockZ(),15)));
                 }
 
-                LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT,level);
-                lightningBolt.setPos(blockPos.getBottomCenter());
+                LightningBolt lightningBolt = new LightningBolt(EntityTypes.LIGHTNING_BOLT,level);
+                lightningBolt.setPos(blockPos.getX()+.5,blockPos.getY()+.5,blockPos.getZ()+.5);
                 serverLevel.addFreshEntity(lightningBolt);
             }
             player.getCooldowns().addCooldown(player.getItemInHand(hand),10*20);

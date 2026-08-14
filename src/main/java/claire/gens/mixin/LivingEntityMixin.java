@@ -19,6 +19,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -71,7 +72,7 @@ public abstract class LivingEntityMixin {
                                     player.connection.send(clientboundSetActionBarTextPacket);
                                 }
                                 damage = damage * 1.35f;
-                                LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
+                                LightningBolt lightningBolt = new LightningBolt(EntityTypes.LIGHTNING_BOLT, level);
                                 lightningBolt.setPos(Objects.requireNonNull(fuck).position());
                                 lightningBolt.setVisualOnly(true);
                                 level.addFreshEntity(lightningBolt);

@@ -399,12 +399,6 @@ public class ItemStuff {
                     .component(DataComponents.POTION_CONTENTS,FragmentItem.createPotionOf(new MobEffectInstance(MobEffects.INVISIBILITY,20*20,0))).fireResistant().modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"fragment1"))
     );
 
-    public static final Item gem_upgrade = register(
-            "gem_upgrade",
-            Item::new,
-            new Item.Properties().stacksTo(1)
-    );
-
     public static final List<Item> gemList = List.of(strength,swiftness,haste,jumpboos,resist,absorption,fireres,nightvision,waterbreath,invis);
 
     //Fragments
@@ -500,7 +494,7 @@ public class ItemStuff {
                 output.accept(friedegg);
                 output.accept(bacon);
                 output.accept(pork_belly);
-                output.accept(gem_upgrade);
+                //output.accept(gem_upgrade);
 
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {

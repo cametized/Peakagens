@@ -2,25 +2,17 @@ package claire.gens.mixin;
 
 import claire.gens.ItemStuff;
 import claire.gens.ModParticles;
-import claire.gens.Peakagens;
 import claire.gens.StormingFragment;
 import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.SoundClass;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.sun.jna.platform.win32.WinBase;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.NameAndId;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -42,7 +34,6 @@ import java.util.Objects;
 @Mixin(Player.class)
 public abstract class PlayerMixin {
 
-    @Shadow
     protected abstract DamageSource lambda$createAttackSource$0();
 
     @Shadow
@@ -84,14 +75,14 @@ public abstract class PlayerMixin {
     @WrapMethod(method = "isScoping")
     public boolean init(Operation<Boolean> original) {
         if (original.call()) return true;
-        Player player = (Player) this.lambda$createAttackSource$0().getEntity(); // weird way of getting the player cuz i lowk dont feel like figuring it out normally lmao
+        Player player = (Player) (Object) this;
         assert player != null;
         return player.isUsingItem() && player.getUseItem().is(ItemStuff.spycicle);
     }
 
     @Inject(at = @At("HEAD"), method = "attack")
     public void woop(Entity entity, CallbackInfo ci) {
-        Player fuck = (Player) this.lambda$createAttackSource$0().getEntity();
+        Player fuck = (Player) (Object) this;
         if (!this.cannotAttack(entity) && fuck.hasEffect(EffectStuff.Electrified) && StormingFragment.isConductive(this.getWeaponItem()) >= 1) { //&& fuck.getItemInHand(InteractionHand.MAIN_HAND).is(TagKey.create(Registries.ITEM,Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"conductive")))
             if (getAttackStrengthScale(0.5f) > 0.9f) {
                 boolean crit = this.canCriticalAttack(entity);
