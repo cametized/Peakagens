@@ -34,8 +34,6 @@ import java.util.Objects;
 @Mixin(Player.class)
 public abstract class PlayerMixin {
 
-    protected abstract DamageSource lambda$createAttackSource$0();
-
     @Shadow
     public abstract NameAndId nameAndId();
 
@@ -56,6 +54,9 @@ public abstract class PlayerMixin {
 
     @Shadow
     public abstract ItemStack getWeaponItem();
+
+    @Shadow
+    public abstract DamageSource createDamageSource();
 
     @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true)
     private void thatsWhatThePointOfthemaskIs(CallbackInfoReturnable<Component> cir) {
@@ -108,7 +109,7 @@ public abstract class PlayerMixin {
     @Inject(at = @At("TAIL"), method = "hurtServer")
     public void init(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
         if (source.getEntity() instanceof LivingEntity livingEntity && source.is(DamageTypeTags.IS_PLAYER_ATTACK)) {
-            LivingEntity fuck = Objects.requireNonNull(this.lambda$createAttackSource$0().getEntity()).asLivingEntity();
+            LivingEntity fuck = Objects.requireNonNull(this.createDamageSource().getEntity()).asLivingEntity();
             if (livingEntity.isHolding(ItemStuff.lifesteal) && !fuck.hasEffect(EffectStuff.Vulnerable)) {
                 if (livingEntity.hasEffect(MobEffects.ABSORPTION)) {
                     MobEffectInstance wsg = livingEntity.getEffect(MobEffects.ABSORPTION);
