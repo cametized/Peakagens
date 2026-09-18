@@ -25,7 +25,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Iterator;
 
 public class Peakagens implements ModInitializer {
-	public static final String MOD_ID = "peakagens";
+// comment
+public static final String MOD_ID = "peakagens";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public static final GameRule<Boolean> literallyTheEnd = GameRuleBuilder
