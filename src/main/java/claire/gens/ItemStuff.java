@@ -6,7 +6,6 @@ import claire.gens.effect.EffectStuff;
 import claire.gens.sounds.Jukebox;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -29,6 +28,7 @@ import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.alchemy.PotionContents;
 import org.jetbrains.annotations.NotNull;
@@ -541,28 +541,7 @@ public class ItemStuff {
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_IDIOT, DUMB_COMMUNITY_TAB);
-
-        FabricPotionBrewingBuilder.BUILD.register(builder -> {
-            builder.addMix(
-                    // Input potion.
-                    Potions.WATER,
-                    // Ingredient
-                    Items.GOLDEN_DANDELION,
-                    // Output potion.
-                    SHORT
-            );
-        });
-        FabricPotionBrewingBuilder.BUILD.register(builder -> {
-            builder.addMix(
-                    // Input potion.
-                    SHORT,
-                    // Ingredient
-                    Items.REDSTONE,
-                    // Output potion.
-                    LONG_SHORT
-            );
-        });
+        //Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_IDIOT, DUMB_COMMUNITY_TAB);
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
             entries.accept(ItemStuff.disc1);
