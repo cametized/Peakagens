@@ -55,6 +55,6 @@ public class AlchemyBottleRecipe extends CustomRecipe {
     static {
         MAP_CODEC = MapCodec.unit(instance);
         STREAM_CODEC = StreamCodec.unit(instance);
-        SERIALIZER = new RecipeSerializer(MAP_CODEC, STREAM_CODEC);
+        SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
     }
 }

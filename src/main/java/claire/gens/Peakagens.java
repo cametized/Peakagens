@@ -29,15 +29,6 @@ public class Peakagens implements ModInitializer {
 public static final String MOD_ID = "peakagens";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final GameRule<Boolean> literallyTheEnd = GameRuleBuilder
-			.forBoolean(true) // Default value declaration
-			.category(GameRuleCategory.MISC)
-			.buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "literally_the_end"));
-	public static final GameRule<Integer> maxChainedBlocks = GameRuleBuilder
-			.forInteger(72) // Default value declaration
-			.category(GameRuleCategory.PLAYER)
-			.buildAndRegister(Identifier.fromNamespaceAndPath(MOD_ID, "max_chained_blocks"));
-
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Hello Peak inc.. -Cam");
@@ -53,6 +44,7 @@ public static final String MOD_ID = "peakagens";
 		LootTables.modify();
 		SoundClass.initialize();
 		ModParticles.initialize();
+		ModGamerules.initialize();
 
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Identifier.fromNamespaceAndPath(MOD_ID,"crafting_special_alchemy"), AlchemyBottleRecipe.SERIALIZER);
 	}

@@ -1,5 +1,6 @@
 package claire.gens.mixin;
 
+import claire.gens.ModGamerules;
 import claire.gens.Peakagens;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -15,7 +16,7 @@ import java.util.Objects;
 public class EyeLockMixin {
     @WrapMethod(method = "useOn")
     public InteractionResult init(UseOnContext context, Operation<InteractionResult> original) {
-        if (!context.getLevel().isClientSide() && Objects.requireNonNull(context.getLevel().getServer()).getGameRules().get(Peakagens.literallyTheEnd)) {
+        if (!context.getLevel().isClientSide() && Objects.requireNonNull(context.getLevel().getServer()).getGameRules().get(ModGamerules.literallyTheEnd)) {
             return original.call(context);
         } else if (context.getLevel().isClientSide()) {
             return InteractionResult.SUCCESS;

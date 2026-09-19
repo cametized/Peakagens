@@ -1,6 +1,7 @@
 package claire.gens.mixin;
 
 import claire.gens.FragmentItem;
+import claire.gens.FragmentType;
 import claire.gens.ItemStuff;
 import claire.gens.ModComponents;
 import net.minecraft.core.component.DataComponents;
@@ -25,6 +26,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -69,7 +71,8 @@ public class AnvilMixin extends ItemCombinerMenu {
     public void init(CallbackInfo ci) {
         if (resultSlots.getItem(0).isEmpty()) {
             if (inputSlots.getItem(0).getItem() instanceof FragmentItem fragmentItem && inputSlots.getItem(1).getItem() instanceof FragmentItem fragmentItem1) {
-                if (fragmentItem.type.equals(fragmentItem1.type)) {
+                List<FragmentType> validTypes = List.of(FragmentType.PotionPassive,FragmentType.PotionUse,FragmentType.PotionUseAmplifier);
+                if (validTypes.contains(fragmentItem.type) && validTypes.contains(fragmentItem1.type)) {
                     ItemStack itemStack = inputSlots.getItem(0);
                     ItemStack itemStack1 = inputSlots.getItem(1);
                     ItemStack result = itemStack.copy();

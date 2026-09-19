@@ -1,5 +1,6 @@
 package claire.gens.enchant;
 
+import claire.gens.ModGamerules;
 import claire.gens.Peakagens;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -52,7 +53,7 @@ public class SawEnchant {
             List<BlockPos> list = List.of(pos);
             List<BlockPos> listChange = new ArrayList<>();
             listChange.add(pos);
-            while (!(list.size() == checked.size()) && checked.size() <= Objects.requireNonNull(world.getServer()).getGameRules().get(Peakagens.maxChainedBlocks)) {
+            while (!(list.size() == checked.size()) && checked.size() <= Objects.requireNonNull(world.getServer()).getGameRules().get(ModGamerules.maxChainedBlocks)) {
                 for (BlockPos next : list.stream().toList()) {
                     if (!checked.contains(next)) {
                         List<BlockPos> newList = Gimme((ServerLevel) world,next,(ServerPlayer) player);

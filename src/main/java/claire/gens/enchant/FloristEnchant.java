@@ -51,7 +51,7 @@ public class FloristEnchant {
         for (var entry : EnchantmentHelper.getEnchantmentsForCrafting(item).entrySet()) {
 
             Holder<Enchantment> enchantment = entry.getKey();
-            int level = entry.getValue();
+            int level = entry.getIntValue();
 
             if (level > 0 && enchantment.is(FLORIST)) {
                 hasFlorist = true;

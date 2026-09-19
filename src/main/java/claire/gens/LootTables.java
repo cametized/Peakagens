@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -80,8 +81,12 @@ public class LootTables {
 
                     @Override
                     public ItemStack apply(ItemStack itemStack, LootContext lootContext) {
-                        ItemStack gamer = ItemStuff.gemList.get(lootContext.getLevel().getRandom().nextIntBetweenInclusive(0,ItemStuff.gemList.size()-1)).getDefaultInstance();
-                        return itemStack.is(Items.HEAVY_CORE) ? gamer : itemStack;
+                        ServerLevel thelevel = lootContext.getLevel();
+                        Boolean ohyeah = thelevel.getGameRules().get(ModGamerules.gemReplacesCores);
+                        Integer ohnobro = thelevel.getGameRules().get(ModGamerules.gemReplaceChance);
+                        Boolean ohbrono = ohnobro >= 100 || thelevel.getRandom().nextIntBetweenInclusive(0, 100) > ohnobro;
+                        ItemStack gamer = ItemStuff.gemList.get(thelevel.getRandom().nextIntBetweenInclusive(0,ItemStuff.gemList.size()-1)).getDefaultInstance();
+                        return itemStack.is(Items.HEAVY_CORE) && ohyeah && ohbrono ? gamer : itemStack;
                     }
                 };
                 tableBuilder.apply(lootItemFunction);
@@ -97,8 +102,12 @@ public class LootTables {
 
                     @Override
                     public ItemStack apply(ItemStack itemStack, LootContext lootContext) {
-                        ItemStack gamer = ItemStuff.gemList.get(lootContext.getLevel().getRandom().nextIntBetweenInclusive(0,ItemStuff.gemList.size()-1)).getDefaultInstance();
-                        return itemStack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE) ? gamer : itemStack;
+                        ServerLevel thelevel = lootContext.getLevel();
+                        Boolean ohyeah = thelevel.getGameRules().get(ModGamerules.gemReplacesUpgrades);
+                        Integer ohnobro = thelevel.getGameRules().get(ModGamerules.gemReplaceChance);
+                        Boolean ohbrono = ohnobro >= 100 || thelevel.getRandom().nextIntBetweenInclusive(0, 100) > ohnobro;
+                        ItemStack gamer = ItemStuff.gemList.get(thelevel.getRandom().nextIntBetweenInclusive(0, ItemStuff.gemList.size() - 1)).getDefaultInstance();
+                        return itemStack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE) && ohyeah && ohbrono ? gamer : itemStack;
                     }
                 };
                 tableBuilder.apply(lootItemFunction).withPool(poolBuilder);
