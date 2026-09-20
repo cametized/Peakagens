@@ -1,7 +1,8 @@
 {
+  "replace": false,
   "values": [
     "peakagens:cardboardbox",
     "peakagens:mask",
-    "peakagens:hidebox"
+    "minecraft:rzrenyq_uryzrg"
   ]
 }

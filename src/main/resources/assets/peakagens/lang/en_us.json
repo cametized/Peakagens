@@ -108,5 +108,14 @@
   "title.peakagens.combo": "Combo",
   "title.peakagens.combo_full": "Combo 3/3",
   "item.peakagens.cardboardbox.lore": "Mask",
-  "title.peakagens.saw_break": "Low Durability, Saw will not be used."
+  "title.peakagens.saw_break": "Low Durability, Saw will not be used.",
+
+  "gamerule.peakagens.literally_the_end":"Ender Eyes work on End Portal Frames",
+  "gamerule.peakagens.max_chained_blocks":"Max chained blocks",
+  "gamerule.peakagens.max_chained_blocks.description": "The limit of how many blocks can be broken by the Saw enchantment.",
+  "gamerule.peakagens.gem_replace_chance":"Gem replace chance",
+  "gamerule.peakagens.gem_replaces_cores":"Gems replace Heavy Cores",
+  "gamerule.peakagens.gem_replaces_upgrades":"Gems replace Netherite Upgrades",
+  "gamerule.peakagens.gem_replace_chance.description":"The chance for a random gem to replace certain items.",
+  "item.peakagens.hide_name": "Obfuscates Name"
 }

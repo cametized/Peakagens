@@ -2,7 +2,13 @@
   "layers": {
     "humanoid": [
       {
-        "texture": "peakagens:mask"
+        "texture": "peakagens:mask",
+        "dyeable": {
+          "color_when_undyed": 16777215
+        }
+      },
+      {
+        "texture": "peakagens:mask_strings"
       }
     ]
   }

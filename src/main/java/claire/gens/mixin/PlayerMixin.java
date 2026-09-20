@@ -1,6 +1,7 @@
 package claire.gens.mixin;
 
 import claire.gens.ItemStuff;
+import claire.gens.ModComponents;
 import claire.gens.ModParticles;
 import claire.gens.StormingFragment;
 import claire.gens.effect.EffectStuff;
@@ -62,7 +63,7 @@ public abstract class PlayerMixin {
     private void thatsWhatThePointOfthemaskIs(CallbackInfoReturnable<Component> cir) {
         Player player = (Player) (Object) this; // The answer is i have no idea
         ItemStack itemStack = player.getItemBySlot(EquipmentSlot.HEAD);
-        if (itemStack.is(ItemStuff.hideNameTag)) {
+        if (itemStack.getOrDefault(ModComponents.hideName,false)) {
             if (itemStack.has(DataComponents.CUSTOM_NAME)) {
                 cir.setReturnValue(itemStack.get(DataComponents.CUSTOM_NAME));
             } else {

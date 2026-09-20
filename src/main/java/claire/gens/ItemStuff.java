@@ -266,25 +266,18 @@ public class ItemStuff {
             new Item.Properties().component(DataComponents.ATTRIBUTE_MODIFIERS,BloodMace.createAttributes()).stacksTo(1)
     );
 
-    public static final Item cardboardboxhelmet = register(
-            "cardboardboxhelmet",
-            Item::new,
-            new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"cardboardbox"))
-    );
-
     public static final Item cardboardbox = register(
             "cardboardbox",
             Item::new,
             new Item.Properties().humanoidArmor(CardboardBox.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).component(DataComponents.LORE,new ItemLore(List.of(Component.translatable("item.peakagens.cardboardbox.lore").withColor(CommonColors.GRAY))))
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITY)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"cardboardbox"))
     );
 
     public static final Item Mask = register(
             "mask",
             Item::new,
             new Item.Properties().humanoidArmor(CardboardBox.MASKINSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITYMASK)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"mask"))
+                    .durability(ArmorType.HELMET.getDurability(CardboardBox.BASE_DURABILITYMASK)).modelId(Identifier.fromNamespaceAndPath(Peakagens.MOD_ID,"mask")).component(ModComponents.hideName,true)
     );
 
     public static final Item spycicle = register(
@@ -468,34 +461,34 @@ public class ItemStuff {
             .icon(() -> new ItemStack(friedegg))
             .title(Component.translatable("creativeTab.peakagens"))
             .displayItems((params, output) -> {
-                output.accept(RadicalRadio);
+                //output.accept(RadicalRadio);
                 //output.accept(ThisItemDoesNothingAndItsForShow);
-                output.accept(alchemy);
-                output.accept(enchanting);
-                output.accept(lifesteal);
-                output.accept(storming);
-                output.accept(cardboardboxhelmet);
                 output.accept(cardboardbox);
-                //output.accept(angelsword);
-                output.accept(wilted_alloy);
-                output.accept(spycicle);
-                output.accept(scythe);
 
                 ItemStack maskNorm = Mask.getDefaultInstance();
                 output.accept(maskNorm);
 
+                output.accept(spycicle);
+                output.accept(scythe);
                 //output.accept(bloodMace);
+                //output.accept(angelsword);
+                //output.accept(wilted_alloy);
+
+                output.accept(friedegg);
+                output.accept(bacon);
+                output.accept(pork_belly);
+                output.accept(ricebowl);
+                output.accept(rice);
+
+                //output.accept(gem_upgrade);
                 output.accept(cloth);
                 output.accept(darkened_cloth);
                 output.accept(blood_cloth);
 
-                output.accept(ricebowl);
-                output.accept(rice);
-                output.accept(friedegg);
-                output.accept(bacon);
-                output.accept(pork_belly);
-                //output.accept(gem_upgrade);
-
+                output.accept(alchemy);
+                output.accept(enchanting);
+                output.accept(lifesteal);
+                output.accept(storming);
                 List<Item> hey = List.of(strength,haste,swiftness,jumpboos,fireres,resist,absorption,nightvision,waterbreath,invis);
                 for (int i = 0; i < hey.size()-1; i++) {
                     ItemStack yo = new ItemStack(hey.get(i));
