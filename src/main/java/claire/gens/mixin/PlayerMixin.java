@@ -110,12 +110,12 @@ public abstract class PlayerMixin {
     @Inject(at = @At("TAIL"), method = "hurtServer")
     public void init(ServerLevel level, DamageSource source, float damage, CallbackInfoReturnable<Boolean> cir) {
         if (source.getEntity() instanceof LivingEntity livingEntity && source.is(DamageTypeTags.IS_PLAYER_ATTACK)) {
-            LivingEntity fuck = Objects.requireNonNull(this.createDamageSource().getEntity()).asLivingEntity();
-            if (livingEntity.isHolding(ItemStuff.lifesteal) && !fuck.hasEffect(EffectStuff.Vulnerable)) {
+            LivingEntity fuck = Objects.requireNonNull(Objects.requireNonNull(this.createDamageSource().getEntity()).asLivingEntity());
+            if (livingEntity.isHolding(ItemStuff.lifesteal) && !fuck.hasEffect(MobEffects.HEALTH_BOOST)) {
                 if (livingEntity.hasEffect(MobEffects.ABSORPTION)) {
                     MobEffectInstance wsg = livingEntity.getEffect(MobEffects.ABSORPTION);
                     assert wsg != null;
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, wsg.getDuration() + 900, Math.clamp(wsg.getAmplifier() < Math.round(livingEntity.getAbsorptionAmount()/4) ? wsg.getAmplifier()+1 : Math.round(livingEntity.getAbsorptionAmount()/4),0,9)));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, Math.clamp(wsg.getDuration() + 900,20,180*20), Math.clamp(wsg.getAmplifier() < Math.round(livingEntity.getAbsorptionAmount()/4) ? wsg.getAmplifier()+1 : Math.round(livingEntity.getAbsorptionAmount()/4),0,4)));
                 } else {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 90 * 20, 0));
                 }
